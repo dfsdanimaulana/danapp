@@ -1,3 +1,8 @@
 exports.view = (req, res) => {
-    res.render('page/index')
+    const params = {
+        title: "page not found",
+        style: "page",
+        script: "page"
+    }
+    res.render('page', params)
 }

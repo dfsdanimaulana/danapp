@@ -1,0 +1,70 @@
+:root {
+    --dark: rgb(1,43,65);
+    --primary: rgb(2,84,140);
+    --secondary: rgb(63,119,188);
+    --soft: rgb(143,176,226);
+    --light: rgb(204,212,233);
+}
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--light);
+}
+a,a:link,a:visited,a:focus,a:hover,a:active {
+    color: var(--soft);
+    outline: none;
+    text-decoration: none;
+}
+
+/* button */
+.button-main {
+    background-color: var(--primary);
+    padding: .8rem;
+    position: fixed;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 25px;
+}
+/* button end*/
+
+/* header */
+.grid-container {
+    display: grid;
+    grid-template-areas: "navbar navbar"
+    "chats status";
+    background-color: var(--primary);
+    align-items: center;
+    position: sticky;
+    top: 0;
+
+}
+.grid-item-navbar h1 {
+    color: var(--soft);
+    place-self: start;
+}
+.grid-item-navbar {
+    grid-area: navbar;
+    display: grid;
+    grid-template-columns: auto 2.5rem 2.5rem;
+    place-items: center;
+    padding: .7rem;
+    font-size: 25px;
+}
+.grid-item-chats {
+    grid-area: chats;
+    text-align: center;
+    padding: 1rem;
+
+}
+.grid-item-status {
+    grid-area: status;
+    text-align: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+/* header end*/
