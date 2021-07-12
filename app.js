@@ -8,7 +8,6 @@ const port = 3000
 app.set('view engine', 'ejs')
 
 // layouts
-
 app.use(expressLayouts)
 // set the default layout
 app.set('layout', './layouts/main')
@@ -19,16 +18,17 @@ app.use('./css', express.static(__dirname + 'public/css'))
 app.use('./js', express.static(__dirname + 'public/js'))
 app.use('./images', express.static(__dirname + 'public/images'))
 
+// database connection
+const dbConnection = require('./core/db.connect')
+dbConnection.dbConnect
+.then(res =>  console.log('Connected to database!'))
+.catch(err => console.log('Database connection failed!', err))
+
 // router
 require('./routes/page.route')(app)
 require('./routes/chat.route')(app)
-/*
-app.get('/', (req, res)=> {
-    res.render('chat', {
-        title: 'chat', style: 'chat', script: 'script'
-    })
-})
-*/
+
+
 app.use('/', (req, res)=> {
     const params = {
         layout: "layouts/html",

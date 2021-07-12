@@ -4,11 +4,17 @@
     "author": "dfsdanimaulana",
     "main": "app.js",
     "scripts": {
+        "watch": "nodemon",
         "start": "node app"
+    },
+    "nodemonConfig": {
+        "delay": 2000,
+        "ignore":["docs/*","dist/*","*/*.css*"]
     },
     "dependencies": {
         "ejs": "~3.1.6",
         "express": "~4.16.1",
-        "express-ejs-layouts": "^2.5.1"
+        "express-ejs-layouts": "^2.5.1",
+        "mongodb": "^3.6.10"
     }
 }
