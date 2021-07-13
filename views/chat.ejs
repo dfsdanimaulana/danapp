@@ -1,6 +1,9 @@
-<% for (let i = 0; i <= 15; i++) {
+<% data.forEach(list => {
     %>
-    <%- include('layouts/chat-profile') %>
+    <%- include('layouts/chat-profile', {
+        list
+    })%>
     <%
-}%>
+}) %>
+
 <a href="page">go to page</a>

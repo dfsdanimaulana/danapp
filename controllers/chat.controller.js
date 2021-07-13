@@ -1,7 +1,8 @@
 exports.view = (req, res) => {
     const chatModel = require('../models/chat.model')
     chatModel.findAll().then(arr => {
-        const data = arr[0]
+        const data = arr // array of object
+
         const params = {
             title: 'page not found',
             style: 'chat',
