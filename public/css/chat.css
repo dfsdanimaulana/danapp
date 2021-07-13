@@ -17,6 +17,7 @@
 .chat-profile img {
     grid-area: img;
     width: 3.3rem;
+    height: 3.3rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
