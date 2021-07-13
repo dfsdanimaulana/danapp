@@ -14,7 +14,7 @@ function cbAdd (err, strout, stdin) {
         console.log(err)
         return
     }
-    exec(`git commit -m "${str}"`, cbCommit)
+    exec(`git commit -m "${str}" && git push`, cbCommit)
 }
 
 function cbCommit(err, strout, stdin) {
