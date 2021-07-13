@@ -11,5 +11,6 @@ const client = new MongoClient(dbConfig.url, {
 const dbConnect = client.connect()
 
 module.exports = {
-    dbConnect
+    dbConnect,
+    client
 }

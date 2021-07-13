@@ -24,6 +24,7 @@ dbConnection.dbConnect
 .then(res =>  console.log('Connected to database!'))
 .catch(err => console.log('Database connection failed!', err))
 
+
 // router
 require('./routes/page.route')(app)
 require('./routes/chat.route')(app)

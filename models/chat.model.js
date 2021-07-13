@@ -1,6 +1,12 @@
-module.exports = {
-    img: 'images/Dani.jpg',
-    username: 'Dani Maulana',
-    message: 'what are you doing?',
-    timeSend: '11:59 am'
+const {client} = require('../core/db.connect')
+
+const db = client.db('db_wa')
+const dbCollect = db.collection('collect_wa')
+
+function findAll() {
+    return dbCollect.find().toArray()
+}
+
+module.exports= {
+    findAll
 }
