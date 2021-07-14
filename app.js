@@ -1,7 +1,9 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
+require('dotenv').config()
+
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 
 // view engine
@@ -24,6 +26,14 @@ dbConnection.dbConnect
 .then(res =>  console.log('Connected to database!'))
 .catch(err => console.log('Database connection failed!', err))
 
+app.get('/old', (req,res)=>{
+    res.redirect(301,'/new')
+    
+})
+app.get('/new', (req,res)=>{
+    res.send('<h1>Redirected!</h1>') // determine the content type automatically
+    
+})
 
 // router
 require('./routes/page.route')(app)
@@ -42,6 +52,10 @@ app.use('/', (req, res)=> {
     res.render('error/404', params)
 })
 
-app.listen(port, ()=> {
+app.listen(port, (err)=> {
+    if(err){
+        console.log('there is a problem ',err)
+        return
+    }
     console.log(`App listening on http://localhost/${port}`)
 })

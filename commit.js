@@ -1,6 +1,4 @@
-const {
-    exec
-} = require('child_process')
+const {exec} = require('child_process')
 
 let args = process.argv
 args.splice(0, 2)
@@ -14,7 +12,7 @@ function cbAdd (err, strout, stdin) {
         console.log(err)
         return
     }
-    exec(`git commit -m "${str}" && git push`, cbCommit)
+    exec(`git commit -m "${str}"`, cbCommit)
 }
 
 function cbCommit(err, strout, stdin) {
