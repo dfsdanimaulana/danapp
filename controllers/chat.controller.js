@@ -21,6 +21,7 @@ exports.view = (req, res) => {
         },
     ]
     const params = {
+            layout: 'layouts/main',
             title: 'page not found',
             style: 'chat',
             script: 'chat',

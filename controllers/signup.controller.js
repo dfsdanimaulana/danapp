@@ -1,9 +1,10 @@
-exports.view = (req, res) => {
+exports.view = (req,res)=>{
     const params = {
-        layout: 'layouts/main',
+        layout: 'layouts/html',
         title: "page not found",
         style: "page",
         script: "page"
     }
-    res.render('page', params)
+    res.render('signup',params)
+    
 }

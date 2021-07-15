@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 // layouts
 app.use(expressLayouts)
 // set the default layout
-app.set('layout', './layouts/main')
+// app.set('layout', './layouts/main')
 
 //access public folder
 app.use('/', express.static('public'))
