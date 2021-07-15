@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 module.exports = (app) => {
-    const page = require('../controllers/page.controller')
+  const page = require('../controllers/page.controller')
 
-    router.get('/', page.view)
+  router.get('/', page.view)
 
-    app.use('/page', router)
+  app.use('/page', router)
 }
