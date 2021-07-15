@@ -36,8 +36,7 @@ app.get('/new', (req,res)=>{
 })
 
 // router
-require('./routes/page.route')(app)
-require('./routes/chat.route')(app)
+require('./routes')(app)
 
 
 app.use('/', (req, res)=> {
