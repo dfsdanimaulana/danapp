@@ -20,11 +20,6 @@ app.use('/', express.static('public'))
 // app.use('./js', express.static(__dirname + 'public/js'))
 // app.use('./images', express.static(__dirname + 'public/images'))
 
-// database connection
-const dbConnection = require('./core/db.connect')
-dbConnection.dbConnect
-.then(res =>  console.log('Connected to database!'))
-.catch(err => console.log('Database connection failed!', err))
 
 app.get('/old', (req,res)=>{
     res.redirect(301,'/new')
