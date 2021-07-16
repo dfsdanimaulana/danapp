@@ -5,6 +5,13 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT
 
+// database connection
+const database = require('./core/db.connect')
+database.db.on('error', console.error.bind(console, 'connection error:'))
+database.db.once('open', function() {
+  console.log('Database Connected!')
+})
+
 // view engine
 app.set('view engine', 'ejs')
 

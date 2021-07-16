@@ -10,10 +10,11 @@
 }
 
 body {
-    background-color: var(--secondary);
+    background: var(--secondary)url('../images/Mina-full.jpg') no-repeat fixed;
     margin: 0 auto;
-
+    background-size: 100%;
 }
+
 h1 {
     font-size: 1.5rem;
     font-family: 'Dancing Script', cursive;
@@ -21,13 +22,13 @@ h1 {
 
 }
 .flex-container {
-    color: var(--primary);
+    color: rgba(2, 84, 140);
+    opacity: .8;
     padding: 1rem;
     background-color: var(--light);
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: space-around;
     justify-content: space-around;
     -webkit-border-radius: 7;
     -moz-border-radius: 7;
@@ -42,6 +43,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     padding: 2rem;
     height: 15rem;
     width: 90%;
@@ -77,6 +79,7 @@ h1 {
     padding: 5px;
     text-decoration: none;
     border: none;
+    align-self: stretch;
 }
 
 .btn:hover {
