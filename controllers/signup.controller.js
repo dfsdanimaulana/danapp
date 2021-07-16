@@ -7,3 +7,10 @@ exports.view = (req, res) => {
   }
   res.render('signup', params)
 }
+
+exports.show = (req,res)=>{
+    
+    console.log(req.body)
+    res.send(req.body)
+    
+}

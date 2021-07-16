@@ -14,6 +14,9 @@ app.use(expressLayouts)
 //access public folder
 app.use('/', express.static('public'))
 
+// built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
+app.use(express.urlencoded({extended:true}))
+
 app.get('/old', (req, res) => {
   res.redirect(301, '/new')
 })

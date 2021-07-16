@@ -1,16 +1,16 @@
 <div class="flex-container">
-  <h1>Create Account</h1>
-  <form action="" method="POST">
-    <div class="name">
-      <input type="text" class="inp" placeholder="First Name" id="" name="" />
-      <input type="text" class="inp" placeholder="Last Name" id="" name="" />
+    <h1>Create Account</h1>
+    <form action="/signup" method="post">
+        <div class="name">
+            <input type="text" class="inp" placeholder="First Name" id="first_name" name="first_name" />
+            <input type="text" class="inp" placeholder="Last Name" id="last_name" name="last_name" />
+        </div>
+        <input type="email" class="inp" placeholder="Email" id="email" name="email" />
+        <input type="password" class="inp" placeholder="Password" id="password" name="password" />
+        <input type="password" class="inp" placeholder="Repeat Your Password" id="password_check" name="password_check" />
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <div class="footer">
+        Have Already an Account? <a href="/login">Login here</a>
     </div>
-    <input type="text" class="inp" placeholder="Email" id="" name="" />
-    <input type="text" class="inp" placeholder="Password" id="" name="" />
-    <input type="text" class="inp" placeholder="Repeat Your Password" id="" name="" />
-    <button class="btn">Submit</button>
-  </form>
-  <div class="footer">
-    Have Already an Account? <a href="/login">Login here</a>
-  </div>
 </div>
