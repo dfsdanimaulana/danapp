@@ -1,0 +1,49 @@
+:root {
+    --dark: rgb(1, 43, 65);
+    --primary: rgb(2, 84, 140);
+    --secondary: rgb(63, 119, 188);
+    --soft: rgb(143, 176, 226);
+    --light: rgb(204, 212, 233);
+}
+
+.profile-container {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--secondary);
+    height: 100vh;
+    color: var(--dark);
+}
+
+.header {
+    display:grid;
+    grid-template-columns: 1rem auto 1rem;
+    font-size: 1.3rem;
+}
+
+.header h1 {
+    margin-left: 1rem;
+}
+.profile-container a {
+    align-self: center;
+     color: var(--dark);
+}
+.profile-container a img{
+    width: 6rem;
+    border-radius: 50%;
+    margin: 1rem;
+    border: 2px solid var(--soft);
+    align-self: center;
+}
+.box {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--soft);
+    margin-bottom: 1rem;
+}
+
+.box p{
+
+}

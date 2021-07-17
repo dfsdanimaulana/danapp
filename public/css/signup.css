@@ -8,9 +8,12 @@
     --soft: rgb(143, 176, 226);
     --light: rgb(204, 212, 233);
 }
+main {
+    border: 1px solid var(--secondary);
+    background: var(--secondary)url('../images/Mina-full.jpg') no-repeat fixed;
+}
 
 body {
-    background: var(--secondary)url('../images/Mina-full.jpg') no-repeat fixed;
     margin: 0 auto;
     background-size: 100%;
 }
@@ -19,7 +22,7 @@ h1 {
     font-size: 1.5rem;
     font-family: 'Dancing Script', cursive;
     padding: 1rem auto;
-
+    
 }
 .flex-container {
     color: rgba(2, 84, 140);

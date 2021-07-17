@@ -1,22 +1,35 @@
 <div class="profile-container">
     <div class="header">
-        <i class="bi bi-arrow-left"></i>
+        <a href="/chat">
+            <i class="bi bi-arrow-left"></i>
+        </a>
         <h1>Profile</h1>
+        <a href="#">
+            <i class="bi bi-three-dots-vertical"></i>
+        </a>
     </div>
-    <img src="images/Dani.jpg"></img>
+    <a href="#">
+        <img src=<%= data.img %> alt="not found"></img>
+    </a>
     <div class="box">
         <i class="bi bi-person-circle"></i>
-        <p class="desc"></p>
-        <i class="bi bi-pencil-square"></i>
+        <p class="desc"><%= data.username %></p>
+        <a href="#">
+            <i class="bi bi-pencil-square"></i>
+        </a>
     </div>
     <div class="box">
         <i class="bi bi-at"></i>
-        <p class="desc"></p>
-        <i class="bi bi-pencil-square"></i>
+        <p class="desc"><%= data.email %> </p>
+        <a href="#">  
+            <i class="bi bi-pencil-square"></i>
+         </a>
     </div>
     <div class="box">
         <i class="bi bi-stickies"></i>
-        <p class="desc"></p>
-        <i class="bi bi-pencil-square"></i>
+        <p class="desc"><%= data.info %> </p>
+        <a href="#">
+            <i class="bi bi-pencil-square"></i>
+        </a>
     </div>
 </div>
