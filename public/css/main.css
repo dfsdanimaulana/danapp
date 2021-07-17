@@ -8,9 +8,15 @@
 
 
 body {
-    width: max-width(440px);
-    height: auto;
     background-color: var(--light);
+}
+
+main {
+    width: 460px;
+    position: relative;
+    margin: 0 auto;
+    height: 100vh;
+    box-shadow: 2px 2px 2px rgba(63,129,188,.5);
 }
 a,
 a:link,
@@ -74,3 +80,14 @@ a:active {
 }
 
 /* header end*/
+
+/* Responsive */
+@media screen and (max-width: 576px) {
+    main {
+        width: 100%;
+        margin: 0 auto;
+        height: 100vh;
+        border: 1px solid black;
+        position: relative;
+    }
+}

@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 module.exports = (app) => {
-  const chat = require('../controllers/chat.controller')
+  const { view }= require('../controllers/chat.controller')
 
-  router.get('/', chat.view)
+  router.get('/', view)
 
   app.use('/chat', router)
 }

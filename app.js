@@ -12,6 +12,7 @@ database.db.once('open', function() {
   console.log('Database Connected!')
 })
 
+
 // view engine
 app.set('view engine', 'ejs')
 
