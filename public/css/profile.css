@@ -17,7 +17,7 @@
 }
 
 .header {
-    display:grid;
+    display: grid;
     grid-template-columns: 1rem auto 1rem;
     font-size: 1.3rem;
 }
@@ -27,23 +27,28 @@
 }
 .profile-container a {
     align-self: center;
-     color: var(--dark);
+    color: var(--dark);
 }
-.profile-container a img{
+.profile-container a img {
     width: 6rem;
     border-radius: 50%;
-    margin: 1rem;
+    margin: 1.5rem;
     border: 2px solid var(--soft);
     align-self: center;
+
 }
 .box {
-    padding: 1rem;
+    padding: .7rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid var(--soft);
     margin-bottom: 1rem;
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
 }
 
-.box p{
-
+.box i {
+    font-size: 1.5rem;
 }

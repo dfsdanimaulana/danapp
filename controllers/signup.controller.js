@@ -3,7 +3,7 @@ exports.view = (req, res) => {
     layout: 'layouts/html',
     title: 'Signup Page',
     style: 'signup',
-    script: 'page',
+    script: 'page'
   }
   res.render('signup', params)
 }
