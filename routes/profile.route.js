@@ -4,6 +4,7 @@ const router = express.Router()
 module.exports = (app) => {
   const {view, addData} = require('../controllers/profile.controller')
 
+  router.get('/:id', view)
   router.get('/', view)
   router.post('/', addData)
   

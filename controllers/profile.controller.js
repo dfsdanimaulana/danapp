@@ -2,11 +2,9 @@
 const { Profile } = require('../models/profile.model')
 
 const view = (req, res) => {
-  
-  Profile.find(async (err,list)=>{
-        if(err) console.error(err)
-        
-        const data = await list[0]
+  const id = req.params.id
+  Profile.findById(id).then(async (list)=>{
+        const data = await list
         const params = {
         layout: 'layouts/html',
         title: 'Profile Page',
@@ -15,7 +13,9 @@ const view = (req, res) => {
         data
       }
     res.render('profile', params)
-      
+  }).catch(err=>{
+    console.log(err)
+    res.send(err)
   })
   
 }
@@ -35,7 +35,7 @@ const addData = (req,res) =>{
     profile.save((err,list)=>{
         if(err) console.error(err)
         console.log(list)
-        res.redirect(301, '/chat')
+        res.redirect(301, '/contacts')
     })
 }
 

@@ -1,10 +1,29 @@
+.contacts-container {
+    display: grid;
+    background-color: var(--primary);
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+.contacts-item-navbar h1 {
+    color: var(--soft);
+    place-self: start;
+}
+.contacts-item-navbar {
+    display: grid;
+    grid-template-columns: 2rem auto 2rem 2rem;
+    place-items: center;
+    padding: 0.7rem;
+    font-size: 1.3rem;
+}
+
+
+/* header end*/
+
 /* contact profile */
 
 .contact-profile {
     display: grid;
-    /*
-    grid-template-columns: 1.5fr .5fr 5fr auto auto;
-    */
     grid-template-columns: 4rem 2rem auto 2rem 2.5rem;
     grid-template-areas:
     'img name name tops tops'
@@ -18,8 +37,8 @@
 
 }
 .contact-profile a img {
-    width: 3.3rem;
-    height: 3.3rem;
+    width: 3rem;
+    height: 3rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -48,14 +67,14 @@
 }
 .contact-profile i:nth-child(6) {
     grid-area: mute;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: rgba(0, 0, 0, 0.6);
 }
 
 .contact-profile i:nth-child(7) {
     color: rgba(0, 0, 0, 0.6);
     grid-area: count;
-    font-size: 1.5rem;
+    font-size: 1rem;
     display: grid;
     place-items: center;
 }

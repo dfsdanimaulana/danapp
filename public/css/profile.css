@@ -13,7 +13,7 @@
     padding: 1rem;
     background-color: var(--secondary);
     height: 100vh;
-    color: var(--dark);
+    color: var(--soft);
 }
 
 .header {
@@ -27,7 +27,6 @@
 }
 .profile-container a {
     align-self: center;
-    color: var(--dark);
 }
 .profile-container a img {
     width: 6rem;
@@ -35,14 +34,14 @@
     margin: 1.5rem;
     border: 2px solid var(--soft);
     align-self: center;
-
+    
 }
 .box {
     padding: .7rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid var(--soft);
+    border: 1px solid var(--dark);
     margin-bottom: 1rem;
     -webkit-border-radius: 7;
     -moz-border-radius: 7;
@@ -51,4 +50,5 @@
 
 .box i {
     font-size: 1.5rem;
+    color: var(--dark);
 }

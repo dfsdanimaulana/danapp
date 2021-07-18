@@ -1,17 +1,30 @@
-<div class="contact-profile">
-    <a href="/profile">
-        <img src="<%= data.img %>" alt="not found"></img>
-    </a>
-<p>
-    <%= data.name %>
-</p>
-<i class="bi bi-dot"></i>
-<p>
-    <%= data.status %>
-</p>
-<p>
-    <%= data.timeSend %>
-</p>
-<i class="bi bi-chat"></i>
-<i class="bi bi-pencil-square"></i>
+<!-- header -->
+<div class="contacts-container">
+    <div class="contacts-item-navbar">
+        <a href="/chat"><i class="bi bi-arrow-left"></i></a>
+        <h1>Select Contact</h1>
+        <a href="#"><i class="bi bi-search"></i></a>
+        <a href="/signup"><i class="bi bi-three-dots-vertical"></i></a>
+    </div>
 </div>
+<!-- header end -->
+
+<% data.forEach(list => { %>
+    <div class="contact-profile">
+        <a href="/profile">
+            <img src="/<%= list.img %>" alt="not found"></img>
+        </a>
+    <p>
+        <%= list.name %>
+    </p>
+    <i class="bi bi-dot"></i>
+    <p>
+        <%= list.status %>
+    </p>
+    <p>
+        <%= list.timeSend %>
+    </p>
+    <i class="bi bi-chat"></i>
+    <i class="bi bi-pencil-square"></i>
+    </div>
+<% }) %>

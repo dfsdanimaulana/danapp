@@ -9,12 +9,12 @@ const port = process.env.PORT
 // database connection
 const database = require('./core/db.connect')
 database.db.on('error', console.error.bind(console, 'connection error:'))
-database.db.once('open', function() {
+database.db.once('open', function () {
   console.log('Database Connected!')
 })
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 // method-override
 app.use(methodOverride('_method'))
@@ -27,7 +27,6 @@ app.use(expressLayouts)
 
 //access public folder
 app.use('/', express.static('public'))
-
 
 app.get('/old', (req, res) => {
   res.redirect(301, '/new')
@@ -45,14 +44,14 @@ app.get('/404', (req, res) => {
     layout: 'layouts/html',
     title: 'page not found',
     style: '404',
-    script: '404'
+    script: '404',
   }
   res.status(404)
   res.render('error/404', params)
 })
 
-app.use('/', (req,res)=>{
-    res.redirect(301,'/404')
+app.use('/', (req, res) => {
+  res.redirect(301, '/404')
 })
 
 app.listen(port, (err) => {

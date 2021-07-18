@@ -5,7 +5,7 @@ const view = (req, res) => {
     Profile.find(async (err, list)=>{
         
         if (err) return console.error(err)
-        const data = await list[0]
+        const data = await list
         
         const params = {
             layout: 'layouts/html',
