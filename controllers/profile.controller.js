@@ -3,10 +3,10 @@ const { Profile } = require('../models/profile.model')
 
 const view = (req, res) => {
   
-  Profile.find((err,list)=>{
+  Profile.find(async (err,list)=>{
         if(err) console.error(err)
         
-        const data = list[0]
+        const data = await list[0]
         const params = {
         layout: 'layouts/html',
         title: 'Profile Page',

@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 const expressLayouts = require('express-ejs-layouts')
 require('dotenv').config()
 
@@ -12,6 +13,11 @@ database.db.once('open', function() {
   console.log('Database Connected!')
 })
 
+// built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
+app.use(express.urlencoded({extended:true}))
+
+// method-override
+app.use(methodOverride('_method'))
 
 // view engine
 app.set('view engine', 'ejs')
@@ -22,8 +28,6 @@ app.use(expressLayouts)
 //access public folder
 app.use('/', express.static('public'))
 
-// built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
-app.use(express.urlencoded({extended:true}))
 
 app.get('/old', (req, res) => {
   res.redirect(301, '/new')
@@ -35,16 +39,20 @@ app.get('/new', (req, res) => {
 // router
 require('./routes')(app)
 
-app.use('/', (req, res) => {
+// error page
+app.get('/404', (req, res) => {
   const params = {
     layout: 'layouts/html',
     title: 'page not found',
     style: '404',
-    script: '404',
-    page: req.url.replace('/', ''),
+    script: '404'
   }
   res.status(404)
   res.render('error/404', params)
+})
+
+app.use('/', (req,res)=>{
+    res.redirect(301,'/404')
 })
 
 app.listen(port, (err) => {

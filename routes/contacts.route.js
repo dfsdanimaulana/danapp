@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 module.exports = (app) => {
-  const { view } = require('../controllers/page.controller')
+  const { view }= require('../controllers/contacts.controller')
 
   router.get('/', view)
 
-  app.use('/page', router)
+  app.use('/contacts', router)
 }
