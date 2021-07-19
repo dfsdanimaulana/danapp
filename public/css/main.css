@@ -33,7 +33,7 @@ a:active {
 .button-main {
     background-color: var(--primary);
     padding: 0.8rem;
-    position: fixed;
+    position: absolute;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
