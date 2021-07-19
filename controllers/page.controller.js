@@ -1,3 +1,5 @@
+'use strict'
+
 exports.view = (req, res) => {
   const params = {
     layout: 'layouts/main',

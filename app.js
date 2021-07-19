@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require('express')
 const methodOverride = require('method-override')
 const expressLayouts = require('express-ejs-layouts')
@@ -27,13 +29,6 @@ app.use(expressLayouts)
 
 //access public folder
 app.use('/', express.static('public'))
-
-app.get('/old', (req, res) => {
-  res.redirect(301, '/new')
-})
-app.get('/new', (req, res) => {
-  res.send('<h1>Redirected!</h1>') // determine the content type automatically
-})
 
 // router
 require('./routes')(app)

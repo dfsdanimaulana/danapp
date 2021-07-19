@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+'use strict'
+
 const { Profile } = require('../models/profile.model')
 
 const view = (req, res) => {

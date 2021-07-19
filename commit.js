@@ -1,4 +1,6 @@
-const { exec } = require('child_process')
+'use strict'
+
+const {exec} =require('child_process')
 
 let args = process.argv
 args.splice(0, 2)

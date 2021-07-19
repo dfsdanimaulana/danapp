@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
+'use strict'
+
 const moment = require('moment')
-const time = moment().format('hh:mm A')
 
 const { Profile } = require('../models/profile.model')
 
