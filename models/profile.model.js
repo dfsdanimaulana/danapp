@@ -40,7 +40,7 @@ const ProfileSchema = new Schema({
         default: timeNow
     },
 });
-
+console.log(timeNow)
 const Profile = mongoose.model("Profile", ProfileSchema)
 
 // const data = new Profile({
