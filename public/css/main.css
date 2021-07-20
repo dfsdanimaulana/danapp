@@ -12,11 +12,13 @@ body {
 }
 
 main {
-    width: 460px;
-    position: relative;
+    width: 100%;
     margin: 0 auto;
-    height: 100vh;
+    bottom: 0;
+    /*  border: .3px solid var(--primary); */
+    position: relative;
 }
+
 a,
 a:link,
 a:visited,
@@ -44,14 +46,15 @@ a:active {
 
 /* header */
 .grid-container {
+    position: sticky;
+    top: 0;
     display: grid;
     grid-template-areas:
     'navbar navbar'
     'chats status';
     background-color: var(--primary);
     align-items: center;
-    position: sticky;
-    top: 0;
+    z-index: 99999;
 }
 .grid-item-navbar h1 {
     color: var(--soft);
@@ -81,12 +84,6 @@ a:active {
 /* header end*/
 
 /* Responsive */
-@media screen and (max-width: 576px) {
-    main {
-        width: 100%;
-        margin: 0 auto;
-        height: 100vh;
-        border: .3px solid var(--primary);
-        position: relative;
-    }
-}
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {}

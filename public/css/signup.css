@@ -22,7 +22,7 @@ h1 {
     font-size: 1.5rem;
     font-family: 'Dancing Script', cursive;
     padding: 1rem auto;
-    
+
 }
 .flex-container {
     color: rgba(2, 84, 140);
@@ -99,3 +99,8 @@ h1 {
     font-size: .8rem;
     padding: 1rem;
 }
+
+/* Responsive */
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {}

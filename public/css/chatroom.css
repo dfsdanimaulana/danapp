@@ -1,81 +1,101 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.grid-item-status ,.grid-item-chats,.button-main {
+    display: none;
+}
+
 .chat-room-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+    position: fixed;
 }
 /* chat room body start */
 .chat-room-body {
-  border: 1px solid black;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-  height: 73%;
-  overflow: auto;
-  margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    width: 100%;
 }
 .msg {
-  margin: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #000;
-  max-width: 300px;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    max-width: 300px;
 }
 .msg-left {
-  align-self: flex-start;
-  padding: 5px;
+    align-self: flex-start;
+    padding: 5px;
 }
 .msg-right {
-  align-self: flex-end;
-  padding: 5px;
+    align-self: flex-end;
+    padding: 5px;
 }
 /* chat room body end */
 
 /*  input msg start  */
+
 .input-msg-container {
-  position: absolute;
-  width: 90%;
-  bottom: 0.5rem;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    width: 95%;
+    padding: .5rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: inherit;
+    z-index: 999;
+    position: fixed;
+    bottom: .5rem;
 }
+
+
 .input-msg {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #3f3f3f;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  padding: 5px;
-  font-size: 30px;
-  position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f3f3f;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    padding: 5px;
+    font-size: 30px;
+    position: relative;
 }
 .input-msg a i.bi-camera {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #289afd;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #289afd;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 .input-msg input {
-  border: none;
-  background-color: inherit;
-  font-size: 15px;
-  color: #fff;
-  outline-style: none;
+    border: none;
+    background-color: inherit;
+    font-size: 15px;
+    color: #fff;
+    outline-style: none;
 }
 /*  input msg end  */
+
+/* Responsive */
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {}

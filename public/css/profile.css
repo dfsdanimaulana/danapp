@@ -34,7 +34,7 @@
     margin: 1.5rem;
     border: 2px solid var(--soft);
     align-self: center;
-    
+
 }
 .box {
     padding: .7rem;
@@ -52,3 +52,8 @@
     font-size: 1.5rem;
     color: var(--dark);
 }
+
+/* Responsive */
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {}

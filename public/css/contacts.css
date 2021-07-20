@@ -65,7 +65,7 @@
     grid-area: tops;
     font-size: 0.8rem;
 }
-.contact-profile i:nth-child(6) {
+.contact-profile a:nth-child(6) {
     grid-area: mute;
     font-size: 1rem;
     color: rgba(0, 0, 0, 0.6);
@@ -78,3 +78,8 @@
     display: grid;
     place-items: center;
 }
+
+/* Responsive */
+
+/* Medium devices (tablets, 768px and up)*/
+@media screen and (min-width: 768px) {}
