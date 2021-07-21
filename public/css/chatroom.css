@@ -86,6 +86,10 @@ main {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+#form {
+    display: flex;
+    align-items: center;
+}
 .input-msg input {
     border: none;
     background-color: inherit;
