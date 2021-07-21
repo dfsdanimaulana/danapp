@@ -40,7 +40,7 @@ app.use(expressLayouts)
 require('./routes')(app)
 
 // socket io
-const socketConnect = require('./core/io.connect')
+const socketConnect = require('./core/io.server')
 io.on('connection', socket => socketConnect(socket, io))
 
 // error page
