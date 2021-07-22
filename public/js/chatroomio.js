@@ -7,6 +7,9 @@ const input = document.getElementById('inp')
 const chatRoomBody = document.querySelector('.chat-room-body')
 
 const username = getName()
+
+document.querySelector('.information p').innerHTML = `${username} welcome to chat`
+
 // user join chat
 socket.emit('join', username)
 socket.on('join', (obj) => {
@@ -14,11 +17,8 @@ socket.on('join', (obj) => {
   chatRoomBody.scrollTop = chatRoomBody.scrollHeight
 })
 
-// // user left chat
-// socket.emit('dc', username)
-socket.on('leave', (obj) => greetMsg(obj))
-
-// socket.on('join', name => greetMsg(name) )
+// user left chat
+// socket.on('leave', (obj) => greetMsg(obj))
 
 // menerima data dari server
 socket.on('message', (msg) => {
@@ -50,13 +50,18 @@ form.addEventListener('submit', function (e) {
   }
 })
 
+// Methods
+
 function outputMsg(msg) {
-  chatRoomBody.innerHTML += `  <div class="msg msg-${msg.pos}">
+    if (msg.name !== username) {
+        msg.pos = 'left'
+    }
+  chatRoomBody.innerHTML += `<div class="msg msg-${msg.pos}">
         <span>${msg.name}</span>
         <p>${msg.content}</p>
         <span>
             <i class="bi bi-check"></i>
-        <!--<i class="bi bi-check-all"></i>  -->
+        <!--<i class="bi bi-check-all"></i>-->
             ${msg.timeSend}
         </span>
      </div>`
@@ -69,9 +74,6 @@ function greetMsg(obj) {
 }
 
 function getName() {
-  let url = window.location.href.toString()
-  url = url.split('/')
-  let name = url[url.length - 1]
-  name = name.replace(/%20/g, ' ')
-  return name
+  let url = window.location.href.toString().split('/')
+  return url[url.length - 1].replace(/%20/g, ' ')
 }

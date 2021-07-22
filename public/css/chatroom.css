@@ -1,13 +1,27 @@
-main {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+header {
+    position: sticky;
+    top: 0;
 }
 
-.grid-item-status,
-.grid-item-chats,
-.button-main {
-    display: none;
+nav {
+    background-color: rgb(2, 84, 140);
+    color: rgb(143, 176, 226);
+    display: grid;
+    font-size: 1.3rem;
+    padding: .2rem;
+    place-items: center;
+    grid-template-columns: 2rem 3rem auto 2rem 2rem;
+}
+nav h1 {
+    justify-self: start;
+    padding-left: .5rem;
+}
+#nav-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .chat-room-container {
@@ -16,8 +30,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5rem;
-    padding-top: 3rem;
+    padding-bottom: 8rem;
     position: fixed;
 }
 
@@ -33,13 +46,15 @@ main {
 }
 
 .information {
-    border-radius: .5rem;
-    background-color: rgb(207, 205, 205);
-    padding: .2rem .5rem;
+    border-radius: .3rem;
+    background-color: #fff;
+    padding: .15rem .5rem;
     max-width: fit-content;
     align-self: center;
     line-height: 1rem;
     margin: 1rem;
+    font-size: .75rem;
+    font-family: Sans-Serif;
 }
 .msg {
     margin: .5rem;
@@ -50,27 +65,25 @@ main {
     color: #000;
     max-width: 20rem;
     padding: .5rem;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    align-items: stretch; */
 }
 .msg span:first-child {
-    font-size: .8rem;
+    font-size: .7rem;
 }
 
 .msg p {
     margin: .5rem 0;
 }
 .msg span:nth-child(3) {
-    text-align: right;
-    font-size: .8rem;
+    font-size: .6rem;
+    align-self: flex-end;
 }
 .msg-left {
     align-self: flex-start;
 }
 .msg-right {
     align-self: flex-end;
-    padding: 5px;
 }
 /* chat room body end */
 
@@ -93,11 +106,10 @@ main {
     justify-content: space-between;
     align-items: center;
     background-color: #3f3f3f;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-    padding: 5px;
-    font-size: 30px;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    border-radius: 1.5rem;
+    padding: .3rem;
     position: relative;
 }
 .input-msg a i.bi-camera {
@@ -111,28 +123,30 @@ main {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+    font-size: 1.5rem;
+    color: #fff;
 }
 #form {
     display: flex;
     align-items: center;
+    width: 100%;
 }
-#form button {
-    border: none;
-    border-radius: 50%;
-    width: 1.7rem;
-    height: 1.7rem;
-}
+
 .input-msg input {
-    border: none;
+    margin-left: .3rem;
+    width: inherit;
     background-color: inherit;
-    font-size: 15px;
+    font-size: .9rem;
     color: #fff;
     outline-style: none;
+    border: none;
 }
 
 .icon-group {
     display: flex;
     font-size: 1.5rem;
+    width: 7.5rem;
+    justify-content: space-between;
 }
 /*  input msg end  */
 

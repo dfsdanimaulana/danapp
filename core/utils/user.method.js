@@ -14,7 +14,7 @@ const u = {
     return {
       name: obj.name,
       content: obj.msg,
-      pos: 'left',
+      pos: 'right',
       timeSend: time,
     }
   },

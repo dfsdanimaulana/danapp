@@ -22,13 +22,13 @@ module.exports = (server) => {
         })
         socket.on('disconnect', () => {
             const user = u.getCurrentUser(socket.id)
-            console.log('this ', user)
-            // socket.broadcast.emit('leave', {
-            //   name: u.getCurrentUser(socket.id).name,
-            //   status: 'left',
-            // })
+            if(user){
+                socket.broadcast.emit('join', {
+                   name: user.name,
+                   status: 'left',
+                })
+            }
         })
-        
     }) 
 }
 
