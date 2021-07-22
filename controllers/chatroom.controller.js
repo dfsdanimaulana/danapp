@@ -19,8 +19,8 @@ const view = (req, res) => {
   })
 }
 const chatRoom = (req,res)=>{
-    const id = req.params.id
-    Profile.findById(id).then(async (list)=>{
+    const name = req.params.name
+    Profile.findById(name).then(async (list)=>{
         const data = await list
         const params = {
             layout: 'layouts/html',

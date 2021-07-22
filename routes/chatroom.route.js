@@ -7,7 +7,7 @@ const { view } = require('../controllers/chatroom.controller')
 
 module.exports = (app) => {
     
-  router.get('/', view)
+  router.get('/:name', view)
 
   app.use('/chatroom', router)
 }
