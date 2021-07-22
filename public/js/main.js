@@ -1,4 +1,4 @@
-const mainBody = document.querySelector('main')
-const mainCss = window.getComputedStyle(mainBody)
-
-const rightPos = mainCss.getPropertyValue('right')
+function openMenu() {
+    const menu = document.querySelector('.btn-container')
+    menu.classList.toggle('open')
+}

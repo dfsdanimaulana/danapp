@@ -31,16 +31,47 @@ a:active {
 }
 
 /* button */
-.button-main {
+.btn-container {
     background-color: var(--primary);
-    padding: 0.8rem;
     position: fixed;
+    bottom: 1.3rem;
+    right: 1.3rem;
+    padding: .8rem;
+    height: 12rem;
+    width: 12rem;
+    /* remove everything around the circle */
+    clip-path: circle(1.8rem at 9.2rem 9.2rem);
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+    border-radius: 0 2.5rem 2.5rem 2.5rem;
+}
+.btn-container.open {
+    clip-path: circle(15rem at 10rem 10rem);
+}
+
+.plus {
+    background-color: var(--primary);
+    font-size: 2.5rem;
+    width: 3.6rem;
+    height: 3.6rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    right: 1rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    position: absolute;
     bottom: 1rem;
-    font-size: 25px;
+    right: 1rem;
+    color: var(--soft);
+}
+.btn-container ul {
+    list-style-type: none;
+}
+
+.btn-list {
+    margin-bottom: 2rem;
+    color: var(--soft);
 }
 /* button end*/
 
