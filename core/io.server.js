@@ -11,17 +11,24 @@ module.exports = (server) => {
     
         // io.emit untuk ke seluruh server
         socket.on('join', (name) => {
-            io.broadcast.emit('join', `${name} join the chat.`)
+            u.userJoin(name, socket.id)
+            socket.broadcast.emit('join', {name, status: 'join'})
         })
+        
         // menerima data dari client
         socket.on('message', obj => {
             // mengirim kembali data ke server
             io.emit('message', u.formatName(obj))
         })
         socket.on('disconnect', () => {
-            console.log('user disconnected')
+            const user = u.getCurrentUser(socket.id)
+            console.log('this ', user)
+            // socket.broadcast.emit('leave', {
+            //   name: u.getCurrentUser(socket.id).name,
+            //   status: 'left',
+            // })
         })
         
-    })
+    }) 
 }
 

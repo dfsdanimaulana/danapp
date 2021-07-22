@@ -3,47 +3,55 @@
 const socket = io()
 
 const form = document.getElementById('form')
-const input = document.getElementById('input')
+const input = document.getElementById('inp')
 const chatRoomBody = document.querySelector('.chat-room-body')
 
-socket.emit('join', getName())
+const username = getName()
+// user join chat
+socket.emit('join', username)
+socket.on('join', (obj) => {
+  greetMsg(obj)
+  chatRoomBody.scrollTop = chatRoomBody.scrollHeight
+})
 
-socket.on('join', name => greetMsg(name) )
+// // user left chat
+// socket.emit('dc', username)
+socket.on('leave', (obj) => greetMsg(obj))
+
+// socket.on('join', name => greetMsg(name) )
 
 // menerima data dari server
-socket.on('message',(msg)=>{
-    outputMsg(msg)
-    
-    // membuat msg selalu fokus di bawah
-    window.scrollTo(0, document.body.scrollHeight)
-      
+socket.on('message', (msg) => {
+  outputMsg(msg)
+
+  // membuat msg selalu fokus di bawah
+  chatRoomBody.scrollTop = chatRoomBody.scrollHeight
 })
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault()
-  
+
   // Get message text
   let msg = input.value
-  
-  if(msg){
-        msg = msg.trim()
-        // Emit message to server
-        
-        socket.emit('message', {
-            msg,
-            name:getName()
-        })
-        
-        // Clear input
-        input.value = ''
-        input.fokus()
-  }
+  //   let msg = e.target.elements.inp.value
 
+  if (msg) {
+    msg = msg.trim()
+    // Emit message to server
+
+    socket.emit('message', {
+      msg,
+      name: username,
+    })
+
+    // Clear input
+    input.value = ''
+    input.fokus()
+  }
 })
-  
+
 function outputMsg(msg) {
-    chatRoomBody.innerHTML += 
-    `  <div class="msg msg-${msg.pos}">
+  chatRoomBody.innerHTML += `  <div class="msg msg-${msg.pos}">
         <span>${msg.name}</span>
         <p>${msg.content}</p>
         <span>
@@ -54,14 +62,16 @@ function outputMsg(msg) {
      </div>`
 }
 
-function greetMsg(name) {
-    chatRoomBody.innerHTML += ``
+function greetMsg(obj) {
+  chatRoomBody.innerHTML += `<div class="information">
+      <p>${obj.name} ${obj.status} the chat</p>
+    </div>`
 }
 
 function getName() {
-    let url = window.location.href.toString()
-    url = url.split('/')
-    let name = url[url.length-1]
-    name = name.replace(/%20/g,' ')
-    return name
+  let url = window.location.href.toString()
+  url = url.split('/')
+  let name = url[url.length - 1]
+  name = name.replace(/%20/g, ' ')
+  return name
 }
