@@ -5,6 +5,7 @@ const { Profile } = require('../models/profile.model')
 
 const view = (req, res) => {
   const id = req.params.id
+  if(!id) res.redirect('/')
   Profile.findById(id).then(async (list)=>{
         const data = await list
         const params = {
@@ -16,8 +17,10 @@ const view = (req, res) => {
       }
     res.render('profile', params)
   }).catch(err=>{
-    console.log(err)
-    res.send(err)
+    if (err) {
+        console.log(err)
+        res.redirect('/')
+      }
   })
   
 }

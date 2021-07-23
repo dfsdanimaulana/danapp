@@ -12,31 +12,30 @@ const app = express()
 const server = http.createServer(app)
 const port = process.env.PORT || 8000
 
-
 // database connection
 require('./core/db.connect')()
 
 //access public folder
-app.use(express.static(path.join(__dirname,'/public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({ extended: true }))
-    
+
 // method-override
 app.use(methodOverride('_method'))
-    
+
 // view engine
 app.set('view engine', 'ejs')
-    
+
 // layouts
 app.use(expressLayouts)
-    
+
 // router
 require('./routes')(app)
 
 // page not found handlers
 app.use('/', (req, res) => {
-   res.send(req.body)
+  res.render('404', {layout:'layouts/404'})
 })
 
 // socket io
