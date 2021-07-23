@@ -18,7 +18,7 @@ const cekUser = (req, res)=> {
   Profile.findOne({ email })
     .then((user) => {
       if (user.password === password) {
-        res.redirect(301, '/chat')
+        res.redirect('/chat')
       } else {
         res.render('login', {
           layout: 'layouts/html',
@@ -29,7 +29,8 @@ const cekUser = (req, res)=> {
         })
       }
     })
-    .catch((err) =>
+    .catch((err) => {
+    console.error(err)
       res.render('login', {
         layout: 'layouts/html',
         title: 'login Page',
@@ -37,7 +38,7 @@ const cekUser = (req, res)=> {
         script: 'login',
         status: 'User not found',
       })
-    )
+     } )
 }
 
 module.exports = { view, cekUser}

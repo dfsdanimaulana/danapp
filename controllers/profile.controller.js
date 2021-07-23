@@ -28,7 +28,7 @@ const view = (req, res) => {
 const addData = (req,res) =>{
     const data = req.body
     if (data.password !== data.password_check) {
-        res.redirect(301,'/signup',{msg:'Wrong check password!'})
+        res.redirect('/signup',{msg:'Wrong check password!'})
     }
     
     const profile = new Profile({
@@ -40,7 +40,7 @@ const addData = (req,res) =>{
     profile.save((err,list)=>{
         if(err) console.error(err)
         console.log(list)
-        res.redirect(301, '/contacts')
+        res.redirect('/contacts')
     })
 }
 

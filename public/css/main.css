@@ -34,8 +34,8 @@ a:active {
 .btn-container {
     background-color: var(--primary);
     position: fixed;
-    bottom: 1.3rem;
-    right: 1.3rem;
+    bottom: 1rem;
+    right: 1rem;
     padding: .8rem;
     height: 12rem;
     width: 12rem;
@@ -51,7 +51,7 @@ a:active {
 
 .plus {
     background-color: var(--primary);
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 3.6rem;
     height: 3.6rem;
     -webkit-border-radius: 50%;
