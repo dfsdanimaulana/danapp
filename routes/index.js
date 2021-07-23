@@ -7,5 +7,6 @@ module.exports = (app) => {
   require('./signup.route')(app)
   require('./profile.route')(app)
   require('./contacts.route')(app)
+  require('./login.route')(app)
   require('./404.route')(app)
 }
