@@ -36,7 +36,7 @@ require('./routes')(app)
 
 // page not found handlers
 app.use('/', (req, res) => {
-   res.redirect(301, '/404')
+   res.send(req.body)
 })
 
 // socket io

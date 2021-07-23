@@ -1,10 +1,23 @@
 <div class="log-container">
     <h1>Login</h1>
-    <form action="" >
+    <div class="err"><%= status %></div>
+    <form action="/login" method="POST">
         <label for="email">Email</label>
-        <input type="email"  name="email" placeholder="email..." id="email">
+        <input type="email"  name="email" placeholder="email..." id="email" required>
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password..." id="password">
+        <input type="password" name="password" placeholder="password..." id="password" required>
         <button type="submit">login</button>
     </form>
+    <div class="others">
+        <h6>or login with :</h6>
+        <ul>
+            <li><a href="#"><i class="bi bi-google"></i></i></a></li>
+            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+            <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
+        </ul>
+    </div>
+    <div class="footer">
+        New user ? signup <a href="/signup">here</a>
+    </div>
 </div>
