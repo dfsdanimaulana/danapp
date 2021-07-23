@@ -1,12 +1,14 @@
 'use strict'
 
 const express = require('express')
+const { isAuth } = require('../core/middleware')
 const router = express.Router()
 
 module.exports = (app) => {
-  const {showData} = require('../controllers/page.controller')
+  const {showData, deleteData} = require('../controllers/page.controller')
 
-  router.get('/', showData)
+  router.get('/', isAuth,showData)
+  router.delete('/', deleteData)
 
   app.use('/page', router)
 }

@@ -4,10 +4,10 @@ const express = require('express')
 const router = express.Router()
 
 module.exports = (app) => {
-  const {view, show} = require('../controllers/signup.controller')
+  const {view, addUser} = require('../controllers/signup.controller')
 
   router.get('/', view)
-  router.post('/', show)
+  router.post('/', addUser)
 
   app.use('/signup', router)
 }

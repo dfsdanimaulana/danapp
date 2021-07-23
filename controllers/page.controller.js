@@ -16,6 +16,14 @@ const showData = (req,res)=>{
     .catch(err => res.send(err))
 }
 
+const deleteData = (req, res) => {
+    const id = req.params.id
+    Profile.findByIdAndDelete({_id:id})
+
+    return res.redirect('/page')
+}
+
 module.exports = {
-    showData
+    showData,
+    deleteData
 }

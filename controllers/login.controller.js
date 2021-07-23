@@ -1,44 +1,39 @@
 'use strict'
 const { Profile } = require('../models/profile.model')
+const bcrypt = require('bcryptjs')
+
+const params = {
+  layout: 'layouts/html',
+  title: 'login Page',
+  style: 'login',
+  script: 'login',
+  status: '',
+}
 
 const view = (req, res) => {
-  const params = {
-    layout: 'layouts/html',
-    title: 'login Page',
-    style: 'login',
-    script: 'login',
-    status: '',
-  }
   res.render('login', params)
 }
 
-const cekUser = (req, res)=> {
+const cekUser = async (req, res) => {
   const { email, password } = req.body
 
-  Profile.findOne({ email })
-    .then((user) => {
-      if (user.password === password) {
-        res.redirect('/chat')
-      } else {
-        res.render('login', {
-          layout: 'layouts/html',
-          title: 'login Page',
-          style: 'login',
-          script: 'login',
-          status: 'Wrong password!',
-        })
-      }
-    })
-    .catch((err) => {
-    console.error(err)
-      res.render('login', {
-        layout: 'layouts/html',
-        title: 'login Page',
-        style: 'login',
-        script: 'login',
-        status: 'User not found',
-      })
-     } )
+  const user = await Profile.findOne({ email })
+
+  if(!user){
+    console.log("user not found")
+    params.status = 'email not registered, please signup first'
+    return res.render('login', params)
+  }
+  const isMatch = await bcrypt.compare(password, user.password)
+
+  if(!isMatch){
+    console.log('incorrect password')
+    params.status = 'incorrect password'
+    return res.render('login', params)
+  }
+  
+  req.session.isAuth = true
+  return res.redirect('/chat')
 }
 
 module.exports = { view, cekUser}

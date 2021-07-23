@@ -25,26 +25,6 @@ const view = (req, res) => {
   
 }
 
-const addData = (req,res) =>{
-    const data = req.body
-    if (data.password !== data.password_check) {
-        res.redirect('/signup',{msg:'Wrong check password!'})
-    }
-    
-    const profile = new Profile({
-        username: data.username,
-        name: data.name,
-        email: data.email,
-        password: data.password
-    })
-    profile.save((err,list)=>{
-        if(err) console.error(err)
-        console.log(list)
-        res.redirect('/contacts')
-    })
-}
-
 module.exports = {
-    view,
-    addData
+    view
 }

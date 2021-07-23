@@ -1,14 +1,13 @@
 'use strict'
 
 const express = require('express')
+const { isAuth } = require('../core/middleware')
 const router = express.Router()
 
 module.exports = (app) => {
-  const {view, addData} = require('../controllers/profile.controller')
+  const {view } = require('../controllers/profile.controller')
 
-  router.get('/:id', view)
-  router.get('/', view)
-  router.post('/', addData)
+  router.get('/:id', isAuth,view)
   
 
   app.use('/profile', router)
