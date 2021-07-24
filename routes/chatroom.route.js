@@ -8,7 +8,7 @@ const { isAuth } = require('../core/middleware')
 
 module.exports = (app) => {
     
-  router.get('/:name', isAuth,view)
+  router.get('/:id/:name',isAuth ,view )
 
   app.use('/chatroom', router)
 }

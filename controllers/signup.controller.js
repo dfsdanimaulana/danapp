@@ -43,7 +43,7 @@ const addUser = async (req, res) => {
     })
   
     profile.save((err, list) => {
-      if (err) console.error(err)
+      if (err) return console.error(err)
       console.log(list)
       res.redirect('/contacts')
     })

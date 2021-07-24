@@ -1,26 +1,21 @@
 'use strict'
 
-const { Profile } = require('../models/profile.model')
+const { getData } = require("../core/utils/db.method")
 
-const view = (req, res) => {
-    
-    Profile.find(async (err, list)=>{
-        
-        if (err) return console.error(err)
-        const data = await list
-        
-        const params = {
-            layout: 'layouts/html',
-            title: 'page not found',
-            style: 'contacts',
-            script: 'chat',
-            data,
-        }
-        
-        res.render('contacts', params)
-    })
+
+const params = {
+  layout: 'layouts/html',
+  title: 'page Contacts',
+  style: 'contacts',
+  script: 'chat',
+}
+
+const view = async (req, res) => {
+  const data = await getData()
+  params.data = data
+  res.render('contacts', params)
 }
 
 module.exports = {
-    view
+  view,
 }

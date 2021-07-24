@@ -1,27 +1,25 @@
-/* eslint-disable no-undef */
 'use strict'
 
-const { Profile } = require('../models/profile.model')
+const { getData } = require("../core/utils/db.method")
 
-const view = (req, res) => {
-  Profile.find((err, data) => {
-    if (err) return console.error(err)
 
-    const params = {
-      layout: 'layouts/main',
-      title: 'page not found',
-      style: 'chat',
-      script: 'chat',
-      data,
-    }
+const view = async (req, res) => {
+  const data = await getData()
+  const params = {
+    layout: 'layouts/main',
+    title: 'page not found',
+    style: 'chat',
+    script: 'chat',
+    data,
+  }
 
-    res.render('chat', params)
-  })
+  res.render('chat', params)
 }
+
 const logout = (req, res) => {
   req.session.destroy((err) => {
     if (err) throw err
-    res.redirect('/login')
+    return res.redirect('/login')
   })
 }
 module.exports = {

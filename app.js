@@ -8,6 +8,7 @@ const path = require('path')
 
 // server connection
 const app = require('./core/server')
+const { authenticationToken } = require('./core/middleware')
 
 // session
 require('./core/session')(app)
@@ -26,6 +27,17 @@ app.set('view engine', 'ejs')
 
 // layouts
 app.use(expressLayouts)
+
+const posts = [
+  {
+    email:'a@g.com',
+    password: '1'
+  }
+]
+
+app.get('/posts', authenticationToken, (req, res) => {
+  res.json(posts.filter(post => post.email === req.body.email))
+})
 
 // router
 require('./routes')(app)

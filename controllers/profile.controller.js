@@ -1,30 +1,22 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const { Profile } = require('../models/profile.model')
+const { getUser } = require('../core/utils/db.method')
 
-const view = (req, res) => {
+const params = {
+  layout: 'layouts/html',
+  title: 'Profile Page',
+  style: 'profile',
+  script: 'page',
+}
+const view = async (req, res) => {
   const id = req.params.id
-  if(!id) res.redirect('/')
-  Profile.findById(id).then(async (list)=>{
-        const data = await list
-        const params = {
-        layout: 'layouts/html',
-        title: 'Profile Page',
-        style: 'profile',
-        script: 'page',
-        data
-      }
-    res.render('profile', params)
-  }).catch(err=>{
-    if (err) {
-        console.log(err)
-        res.redirect('/')
-      }
-  })
-  
+  if (!id) return res.redirect('/')
+  const data = await getUser(id)
+  params.data = data
+  res.render('profile', params)
 }
 
 module.exports = {
-    view
+  view,
 }

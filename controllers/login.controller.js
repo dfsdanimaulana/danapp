@@ -1,6 +1,9 @@
 'use strict'
-const { Profile } = require('../models/profile.model')
+
+require('dotenv').config()
 const bcrypt = require('bcrypt')
+const { createAccessToken, authenticationToken } = require('../core/middleware')
+const { getByEmail } = require('../core/utils/db.method')
 
 const params = {
   layout: 'layouts/html',
@@ -14,32 +17,46 @@ const view = (req, res) => {
   res.render('login', params)
 }
 
+const userJson = async (req, res) => {
+  try {
+    const { email, password } = req.body
+
+    const accessToken = await createAccessToken({ email })
+    console.log('token : ', accessToken)
+
+    req.session.isAuth = true
+
+    res.json({ accessToken })
+  } catch (err) {
+    return console.log(err)
+  }
+}
 const cekUser = async (req, res) => {
   const { email, password } = req.body
 
-  const user = await Profile.findOne({ email })
-
-  if(!user){
-    console.log("user not found")
+  const user = await getByEmail(email)
+  if (!user) {
     params.status = 'email not registered, please signup first'
-    return res.render('login', params)
+    return res.redirect('/login')
   }
 
   try {
-    
     const isMatch = await bcrypt.compare(password, user.password)
-    
-    if(!isMatch){
+
+    if (!isMatch) {
       console.log('incorrect password')
       params.status = 'incorrect password'
-      return res.render('login', params)
+      return res.redirect('/login')
     }
-    
+    // Authentication User & get access token
+    const accessToken = await createAccessToken({ email })
+
     req.session.isAuth = true
-    return res.redirect('/chat')
-  } catch {
-    res.status(500).send()
+    res.redirect('/chat')
+  } catch (err) {
+    console.log('jwt error', err)
+    return res.status(500).send()
   }
 }
 
-module.exports = { view, cekUser}
+module.exports = { view, cekUser, userJson }
