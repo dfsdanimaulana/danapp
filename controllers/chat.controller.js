@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const moment = require('moment')
-
 const { Profile } = require('../models/profile.model')
 
 const view = (req, res) => {

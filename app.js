@@ -7,7 +7,7 @@ const expressLayouts = require('express-ejs-layouts')
 const path = require('path')
 
 // server connection
-const app = require('./server')
+const app = require('./core/server')
 
 // session
 require('./core/session')(app)

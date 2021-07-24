@@ -42,8 +42,12 @@ const ProfileSchema = new Schema({
     default: timeNow,
   },
 })
-console.log(timeNow)
+
 const Profile = mongoose.model('Profile', ProfileSchema)
+
+module.exports = {
+  Profile,
+}
 
 // const data = new Profile({
 //     "img":"images/Dani.jpg",
@@ -57,6 +61,3 @@ const Profile = mongoose.model('Profile', ProfileSchema)
 // });
 // data.save().then(data => console.log(data) )
 
-module.exports = {
-  Profile,
-}

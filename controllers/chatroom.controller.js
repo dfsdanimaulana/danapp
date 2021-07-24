@@ -18,19 +18,19 @@ const view = (req, res) => {
     res.render('chatroom', params)
   })
 }
-const chatRoom = (req,res)=>{
+const chatRoom = async (req,res)=>{
     const name = req.params.name
-    Profile.findById(name).then(async (list)=>{
-        const data = await list
-        const params = {
-            layout: 'layouts/html',
-            title: 'Profile Page',
-            style: 'profile',
-            script: 'page',
-            data
-        }
+    
+      const data = await Profile.findById(name)
+      
+      const params = {
+      layout: 'layouts/mainio',
+      title: 'chat room',
+      style: 'chatroom',
+      script: 'chatroomio',
+      data,
+    }
       res.render('chatroom', params)
-    })
 }
 module.exports = {
   view, chatRoom
