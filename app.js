@@ -8,7 +8,7 @@ const path = require('path')
 
 // server connection
 const app = require('./core/server')
-const { authenticationToken } = require('./core/middleware')
+const { authenticationToken, userAuth } = require('./core/middleware')
 
 // session
 require('./core/session')(app)
@@ -16,6 +16,7 @@ require('./core/session')(app)
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+// app.use(userAuth)
 
 // method-override
 app.use(methodOverride('_method'))

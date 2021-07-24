@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 
 const isAuth = (req, res, next) => {
   if (req.session.isAuth) {
+    console.log(req.session)
     next()
   } else {
     return res.redirect('/login')
@@ -33,4 +34,12 @@ const authenticationToken = (req, res, next) => {
   })
 }
 
-module.exports = { isAuth, createAccessToken, authenticationToken }
+const userAuth = (req, res, next) => {
+  if (!req.body) {
+    return res.redirect('/login')
+  }
+  req.user = req.body
+  next()
+}
+
+module.exports = { isAuth, createAccessToken, authenticationToken, userAuth }

@@ -51,6 +51,7 @@ const cekUser = async (req, res) => {
     const accessToken = await createAccessToken({ email })
 
     req.session.isAuth = true
+    req.session.user = user
     res.redirect('/chat')
   } catch (err) {
     console.log('jwt error', err)
