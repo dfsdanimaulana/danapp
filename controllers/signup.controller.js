@@ -1,7 +1,7 @@
 'use strict'
 
 const { Profile } = require('../models/profile.model')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
 const view = (req, res) => {
   const params = {
@@ -31,20 +31,25 @@ const addUser = async (req, res) => {
   }
 
   // hash the password
-  const hashPassword = await bcrypt.hash(data.password, 12)
-
-  const profile = new Profile({
-    username: data.username,
-    name: data.name,
-    email: data.email,
-    password: hashPassword,
-  })
-
-  profile.save((err, list) => {
-    if (err) console.error(err)
-    console.log(list)
-    res.redirect('/contacts')
-  })
+  try {
+    const salt = await bcrypt.genSalt()
+    const hashedPassword = await bcrypt.hash(data.password, salt)
+  
+    const profile = new Profile({
+      username: data.username,
+      name: data.name,
+      email: data.email,
+      password: hashedPassword,
+    })
+  
+    profile.save((err, list) => {
+      if (err) console.error(err)
+      console.log(list)
+      res.redirect('/contacts')
+    })
+  } catch {
+    res.status(500).send()
+  }
 }
 
 module.exports = {

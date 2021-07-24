@@ -1,3 +1,1 @@
-const m = {}
-
-module.exports = m
+module.exports = {}

@@ -17,8 +17,10 @@ const showData = (req,res)=>{
 }
 
 const deleteData = (req, res) => {
-    const id = req.params.id
+    const id = req.body.id
     Profile.findByIdAndDelete({_id:id})
+    .catch(err=>console.log(err))
+    .then(data=>console.log('Delete sucess...', data))
 
     return res.redirect('/page')
 }

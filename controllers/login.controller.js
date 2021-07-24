@@ -1,6 +1,6 @@
 'use strict'
 const { Profile } = require('../models/profile.model')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
 const params = {
   layout: 'layouts/html',
@@ -24,16 +24,22 @@ const cekUser = async (req, res) => {
     params.status = 'email not registered, please signup first'
     return res.render('login', params)
   }
-  const isMatch = await bcrypt.compare(password, user.password)
 
-  if(!isMatch){
-    console.log('incorrect password')
-    params.status = 'incorrect password'
-    return res.render('login', params)
+  try {
+    
+    const isMatch = await bcrypt.compare(password, user.password)
+    
+    if(!isMatch){
+      console.log('incorrect password')
+      params.status = 'incorrect password'
+      return res.render('login', params)
+    }
+    
+    req.session.isAuth = true
+    return res.redirect('/chat')
+  } catch {
+    res.status(500).send()
   }
-  
-  req.session.isAuth = true
-  return res.redirect('/chat')
 }
 
 module.exports = { view, cekUser}

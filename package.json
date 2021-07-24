@@ -6,7 +6,7 @@
     "scripts": {
         "watch": "nodemon",
         "start": "node app",
-        "commit": "node commit"
+        "commit": "node ./core/utils/commit"
     },
     "nodemonConfig": {
         "delay": 2000,
@@ -17,7 +17,7 @@
         ]
     },
     "dependencies": {
-        "bcryptjs": "^2.4.3",
+        "bcrypt": "^5.0.1",
         "connect-mongodb-session": "^3.0.0",
         "dotenv": "^10.0.0",
         "ejs": "^3.1.6",

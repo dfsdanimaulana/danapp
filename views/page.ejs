@@ -17,8 +17,10 @@
                   <li class="list-group-item">id: <%= list._id %></li>
                </ul>
                <div class="card-body">
-                  <a href="/page/" class="card-link">Delete</a>
-                  <a href="/profile/<%= list._id %>" class="card-link">Profile</a>
+                  <form action="/page?_method=DELETE" method="POST">
+                     <input type="text" value="<%= list._id %>" hidden name="id">
+                     <button class="btn btn-primary" type="submit" onclick="prompt('Are you sure want to delete <%= list.name %>')">Delete</button>
+                  </form>
                </div>
             </div>
             <!-- card end -->

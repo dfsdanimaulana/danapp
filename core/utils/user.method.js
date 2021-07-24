@@ -2,11 +2,11 @@ const moment = require('moment')
 
 const users = []
 
-const u = {
+module.exports = {
   userJoin: (name, id) => users.push({ name, id }),
 
   getCurrentUser: (id) => {
-    return users.find(user => user.id === id)
+    return users.find((user) => user.id === id)
   },
 
   formatName: (obj) => {
@@ -18,7 +18,4 @@ const u = {
       timeSend: time,
     }
   },
-
 }
-
-module.exports = u 
