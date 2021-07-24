@@ -12,6 +12,9 @@ const params = {
 const view = async (req, res) => {
   const id = req.params.id
   const data = await getUser(id)
+  if (!data) {
+    return res.redirect('/')
+  }
   params.data = data
   res.render('chatroom', params)
 }

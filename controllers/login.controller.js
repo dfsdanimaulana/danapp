@@ -44,7 +44,6 @@ const cekUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-      console.log('incorrect password')
       params.status = 'incorrect password'
       return res.redirect('/login')
     }

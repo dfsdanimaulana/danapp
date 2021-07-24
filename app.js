@@ -15,6 +15,7 @@ require('./core/session')(app)
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 // method-override
 app.use(methodOverride('_method'))

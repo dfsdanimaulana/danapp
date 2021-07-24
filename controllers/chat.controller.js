@@ -1,7 +1,6 @@
 'use strict'
 
-const { getData } = require("../core/utils/db.method")
-
+const { getData } = require('../core/utils/db.method')
 
 const view = async (req, res) => {
   const data = await getData()
@@ -12,7 +11,6 @@ const view = async (req, res) => {
     script: 'chat',
     data,
   }
-
   res.render('chat', params)
 }
 

@@ -48,16 +48,3 @@ const Profile = mongoose.model('Profile', ProfileSchema)
 module.exports = {
   Profile,
 }
-
-// const data = new Profile({
-//     "img":"images/Dani.jpg",
-//     "name":"Dani Mulana",
-//     "username": "dnm17_",
-//     "password": "123",
-//     "email": "danimaulana@SpeechGrammarList.com",
-//     "status":"hello world",
-//     "message": "hai guys",
-//     "timeSend": "12:30 AM",
-// });
-// data.save().then(data => console.log(data) )
-

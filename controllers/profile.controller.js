@@ -11,8 +11,10 @@ const params = {
 }
 const view = async (req, res) => {
   const id = req.params.id
-  if (!id) return res.redirect('/')
   const data = await getUser(id)
+  if (!data) {
+    return res.redirect('/')
+  }
   params.data = data
   res.render('profile', params)
 }

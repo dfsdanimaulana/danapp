@@ -3,40 +3,25 @@
 const { Profile } = require("../../models/profile.model")
 
 const getData = () => {
-    const data = Profile.find()
-    if(!data){
-        console.log('Cant get data from database')
-        return false
-    } else {
-        return data
-    }
+    return Profile.find()
+      .then((data) => data)
+      .catch((err) => console.log('Data not found!', err))
 }
 const getUser = (id) => {
-    const data = Profile.findById(id)
-    if (!data) {
-      console.log('Cant get user from database')
-      return false
-    } else {
-      return data
-    }
+    return Profile.findById(id)
+      .then((data) => data)
+      .catch((err) => console.log('User not found', err))
 } 
 const deleteUser = (id) => {
-    const data = Profile.findByIdAndDelete(id)
-    if (!data) {
-      console.log('Delete failed!')
-      return false
-    } else {
-      return data
-    }
+    return Profile.findByIdAndDelete(id)
+    .then(data=> console.log(data))
+    .catch(err => console.log('Delete failed!', err))
+    
 } 
 const getByEmail = (email) => {
-    const data = Profile.findOne({email})
-    if (!data) {
-      console.log('Email not registered!')
-      return false
-    } else {
-      return data
-    }
+    return Profile.findOne({ email })
+      .then((data) => data)
+      .catch((err) => console.log('Email not found!', err))
 } 
 
 module.exports = { getData, getUser, deleteUser, getByEmail }
