@@ -10,15 +10,12 @@ const username = getName()
 
 document.querySelector('.information p').innerHTML = `${username} welcome to chat`
 
-// user join chat
+// user join/leave chat
 socket.emit('join', username)
 socket.on('join', (obj) => {
   greetMsg(obj)
   chatRoomBody.scrollTop = chatRoomBody.scrollHeight
 })
-
-// user left chat
-// socket.on('leave', (obj) => greetMsg(obj))
 
 // menerima data dari server
 socket.on('message', (msg) => {
@@ -33,12 +30,12 @@ form.addEventListener('submit', function (e) {
 
   // Get message text
   let msg = input.value
-  //   let msg = e.target.elements.inp.value
+  // let msg = e.target.elements.inp.value
 
   if (msg) {
     msg = msg.trim()
+    
     // Emit message to server
-
     socket.emit('message', {
       msg,
       name: username,
