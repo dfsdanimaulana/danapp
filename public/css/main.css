@@ -17,6 +17,7 @@ main {
     bottom: 0;
     /*  border: .3px solid var(--primary); */
     position: relative;
+    overflow: hidden;
 }
 
 a,
@@ -29,6 +30,29 @@ a:active {
     outline: none;
     text-decoration: none;
 }
+
+/* Navbar button */
+.nav-btn-container {
+    position: relative;
+    border: 1px solid #fff;
+    height: 100%;
+    width: 100%;
+}
+.nav-btn {
+    background-color: var(--secondary);
+    position: absolute;
+    padding: 1rem;
+    width: 12.8rem;
+    height: 15rem;
+    left: -10rem;
+    top: -0.5rem;
+    z-index: 9999;
+    border-radius: .5rem;
+
+
+
+}
+/* Navbar button end */
 
 /* button */
 .btn-container {
@@ -73,6 +97,13 @@ a:active {
     margin-bottom: 2rem;
     color: var(--soft);
 }
+.btn-list button {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-size: inherit;
+    color: inherit;
+}
 /* button end*/
 
 /* header */
@@ -98,6 +129,7 @@ a:active {
     place-items: center;
     padding: 0.7rem;
     font-size: 25px;
+    position: relative;
 }
 .grid-item-chats {
     grid-area: chats;

@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 'use strict'
 
+const path = require('path')
 const express = require('express')
 const methodOverride = require('method-override')
 const expressLayouts = require('express-ejs-layouts')
-const path = require('path')
-
+const cookieParser = require('cookie-parser')
 // server connection
 const app = require('./core/server')
 const { authenticationToken, userAuth } = require('./core/middleware')
@@ -13,10 +13,13 @@ const { authenticationToken, userAuth } = require('./core/middleware')
 // session
 require('./core/session')(app)
 
+// cookies
+app.use(cookieParser())
+
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-// app.use(userAuth)
+
 
 // method-override
 app.use(methodOverride('_method'))
@@ -46,5 +49,5 @@ require('./routes')(app)
 
 // page not found handlers
 app.use('/', (req, res) => {
-  res.render('404', { layout: 'layouts/404' })
+  res.render('404', { layout: false })
 })
