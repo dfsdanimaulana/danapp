@@ -1,7 +1,7 @@
 'use strict'
 
 require('dotenv').config()
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const { createAccessToken, authenticationToken } = require('../core/middleware')
 const { getByEmail } = require('../core/utils/db.method')
 
@@ -49,10 +49,11 @@ const cekUser = async (req, res) => {
     }
     // Authentication User & get access token
     const accessToken = await createAccessToken({ email })
-
+    console.log(accessToken)
     req.session.isAuth = true
     req.session.user = user
     res.redirect('/chat')
+    
   } catch (err) {
     console.log('jwt error', err)
     return res.status(500).send()

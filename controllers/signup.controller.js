@@ -1,7 +1,7 @@
 'use strict'
 
 const { Profile } = require('../models/profile.model')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const view = (req, res) => {
   const params = {
