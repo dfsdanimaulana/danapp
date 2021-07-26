@@ -2,7 +2,7 @@
 
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
-const { createAccessToken, authenticationToken } = require('../core/middleware')
+// const { createAccessToken, authenticationToken } = require('../core/middleware')
 const { getByEmail } = require('../core/utils/db.method')
 
 const params = {
@@ -17,20 +17,20 @@ const view = (req, res) => {
   res.render('login', params)
 }
 
-const userJson = async (req, res) => {
-  try {
-    const { email, password } = req.body
+// const userJson = async (req, res) => {
+//   try {
+//     const { email, password } = req.body
 
-    const accessToken = await createAccessToken({ email })
-    console.log('token : ', accessToken)
+//     const accessToken = await createAccessToken({ email })
+//     console.log('token : ', accessToken)
 
-    req.session.isAuth = true
+//     req.session.isAuth = true
 
-    res.json({ accessToken })
-  } catch (err) {
-    return console.log(err)
-  }
-}
+//     res.json({ accessToken })
+//   } catch (err) {
+//     return console.log(err)
+//   }
+// }
 const cekUser = async (req, res) => {
   const { email, password } = req.body
 
@@ -48,8 +48,8 @@ const cekUser = async (req, res) => {
       return res.redirect('/login')
     }
     // Authentication User & get access token
-    const accessToken = await createAccessToken({ email })
-    console.log(accessToken)
+    // const accessToken = await createAccessToken({ email })
+    // console.log(accessToken)
     req.session.isAuth = true
     req.session.user = user
     res.redirect('/chat')
@@ -60,4 +60,4 @@ const cekUser = async (req, res) => {
   }
 }
 
-module.exports = { view, cekUser, userJson }
+module.exports = { view, cekUser}

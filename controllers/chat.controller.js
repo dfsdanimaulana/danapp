@@ -6,7 +6,7 @@ const view = async (req, res) => {
   const data = await getData()
   const params = {
     layout: 'layouts/main',
-    title: 'page not found',
+    title: 'Chat page',
     style: 'chat',
     script: 'chat',
     data,
