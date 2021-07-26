@@ -2,25 +2,26 @@
 
 const { Profile } = require('../models/profile.model')
 const bcrypt = require('bcryptjs')
-
+const schema = require('../core/utils/userAuth')
 const view = (req, res) => {
   const params = {
     layout: 'layouts/html',
     title: 'Signup Page',
     style: 'signup',
     script: 'page',
+    status:''
   }
   res.render('signup', params)
 }
 
 const addUser = async (req, res) => {
-  const data = req.body
-
-  if (data.password !== data.password_check) {
-    console.log('password is not match')
-    return res.redirect('/signup')
+  const { error, value } = await schema.validate(req.body)
+  if (error) {
+      console.log(error)
+      return res.redirect('/signup')
   }
-
+  const data = value
+  
   const user = await Profile.findOne({ email: data.email })
 
   // cek if user alredy exists
@@ -32,8 +33,12 @@ const addUser = async (req, res) => {
 
   // hash the password
   try {
+      
     const salt = await bcrypt.genSalt()
     const hashedPassword = await bcrypt.hash(data.password, salt)
+  } catch (e) {
+      return res.send(e)
+  }
   
     const profile = new Profile({
       username: data.username,
@@ -47,9 +52,6 @@ const addUser = async (req, res) => {
       console.log(list)
       res.redirect('/contacts')
     })
-  } catch {
-    res.status(500).send()
-  }
 }
 
 module.exports = {
