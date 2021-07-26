@@ -9,6 +9,7 @@ const view = async (req, res) => {
     title: 'Chat page',
     style: 'chat',
     script: 'chat',
+    currentUser: req.session.user._id,
     data,
   }
   res.render('chat', params)

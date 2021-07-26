@@ -14,6 +14,9 @@ const params = {
 }
 
 const view = (req, res) => {
+  if(req.session.isAuth){
+    return res.redirect('/chat')
+  }
   res.render('login', params)
 }
 
@@ -52,7 +55,7 @@ const cekUser = async (req, res) => {
     // console.log(accessToken)
     req.session.isAuth = true
     req.session.user = user
-    res.redirect('/chat')
+    return res.redirect('/chat')
     
   } catch (err) {
     console.log('jwt error', err)
