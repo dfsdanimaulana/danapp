@@ -2,11 +2,13 @@
 
 const express = require('express')
 const router = express.Router()
+const { hasCookie } = require('../core/middleware')
+
 
 module.exports = (app) => {
-  const { view, cekUser , userJson}= require('../controllers/login.controller')
+  const { view, cekUser }= require('../controllers/login.controller')
 
-  router.get('/', view)
+  router.get('/',hasCookie, view)
   router.post('/', cekUser)
   app.use('/login', router)
 }

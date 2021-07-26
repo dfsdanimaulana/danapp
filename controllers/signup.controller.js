@@ -11,6 +11,9 @@ const view = (req, res) => {
     script: 'page',
     status:''
   }
+  if(req.session.isAuth){
+    return res.redirect('/chat')
+  }
   res.render('signup', params)
 }
 

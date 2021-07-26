@@ -14,6 +14,7 @@ const params = {
 }
 
 const view = (req, res) => {
+    
   if(req.session.isAuth){
     return res.redirect('/chat')
   }
@@ -35,7 +36,8 @@ const view = (req, res) => {
 //   }
 // }
 const cekUser = async (req, res) => {
-  const { email, password } = req.body
+    
+  const { email, password, checkbox } = req.body
 
   const user = await getByEmail(email)
   if (!user) {
@@ -54,6 +56,12 @@ const cekUser = async (req, res) => {
     // const accessToken = await createAccessToken({ email })
     // console.log(accessToken)
     req.session.isAuth = true
+
+    if (checkbox) {
+        const salt = await bcrypt.genSalt()
+        req.cookie.id = user._id
+        req.cookie.login = await bcrypt.hash(user.username, salt)
+    }
     req.session.user = user
     return res.redirect('/chat')
     

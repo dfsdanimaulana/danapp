@@ -3,6 +3,8 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const joi = require('joi')
+const bcrypt = require('bcryptjs')
+const { getUser } = require('./utils/db.method')
 
 const isAuth = (req, res, next) => {
   if (req.session.isAuth) {
@@ -10,6 +12,22 @@ const isAuth = (req, res, next) => {
   } else {
     return res.redirect('/login')
   }
+}
+
+const hasCookie = (req, res, next) => {
+    if(req.cookie.id && req.cookie.login){
+        try {
+            
+        const name = getUser(req.cookie.id).username
+        const isset = bcrypt.compare(name, req.cookie.login)
+        } catch (e) {
+            console.log(e)
+        }
+        if(isset){
+            req.session.isAuth = true
+        }
+    }
+    next()
 }
 
 const createAccessToken = (obj) => {
@@ -35,4 +53,4 @@ const authenticationToken = (req, res, next) => {
   })
 }
 
-module.exports = { isAuth, createAccessToken, authenticationToken }
+module.exports = { isAuth, createAccessToken, authenticationToken, hasCookie }
