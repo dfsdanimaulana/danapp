@@ -1,5 +1,5 @@
 'use strict'
-const { getData, deleteUser } = require('../core/utils/db.method')
+const { getData, deleteUser } = require('../utils/db.method')
 
 const params = {
   layout: 'layouts/html',

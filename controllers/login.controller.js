@@ -3,7 +3,7 @@
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
 // const { createAccessToken, authenticationToken } = require('../core/middleware')
-const { getByEmail } = require('../core/utils/db.method')
+const { getByEmail } = require('../utils/db.method')
 
 const params = {
   layout: 'layouts/html',

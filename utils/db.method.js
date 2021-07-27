@@ -1,6 +1,6 @@
 'use strict'
 
-const { Profile } = require("../../models/profile.model")
+const { Profile } = require("../models/profile.model")
 
 const getData = () => {
     return Profile.find()

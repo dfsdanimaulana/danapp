@@ -3,7 +3,7 @@
 const socketio = require('socket.io')
 
 // const {} = require('./utils/message.method')
-const { getCurrentUser, userJoin, formatName } = require('./utils/user.method')
+const { getCurrentUser, userJoin, formatName } = require('../utils/user.method')
 
 module.exports = (server) => {
   const io = socketio(server)

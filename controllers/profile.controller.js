@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const { getUser } = require('../core/utils/db.method')
+const { getUser } = require('../utils/db.method')
 
 const params = {
   layout: 'layouts/html',

@@ -1,6 +1,6 @@
 'use strict'
 
-const { getData } = require("../core/utils/db.method")
+const { getData } = require("../utils/db.method")
 
 
 const params = {
