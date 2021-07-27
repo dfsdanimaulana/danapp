@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const { isAuth } = require('../core/middleware')
+const { isAuth } = require('../utils/middleware')
 const router = express.Router()
 
 module.exports = (app) => {

@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const { hasCookie } = require('../core/middleware')
+const { hasCookie } = require('../utils/middleware')
 
 
 module.exports = (app) => {

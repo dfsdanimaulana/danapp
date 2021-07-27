@@ -4,7 +4,7 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const joi = require('joi')
 const bcrypt = require('bcryptjs')
-const { getUser } = require('../utils/db.method')
+const { getUser } = require('./db.method')
 
 const isAuth = (req, res, next) => {
   if (req.session.isAuth && req.session.user) {

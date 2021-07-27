@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const { view } = require('../controllers/chatroom.controller')
-const { isAuth } = require('../core/middleware')
+const { isAuth } = require('../utils/middleware')
 
 module.exports = (app) => {
     

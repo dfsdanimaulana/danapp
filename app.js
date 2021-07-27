@@ -8,10 +8,10 @@ const expressLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
 // server connection
 const app = require('./core/server')
-const { authenticationToken, userAuth } = require('./core/middleware')
+const { authenticationToken ,isAuth } = require('./utils/middleware')
 
 // session
-require('./core/session')(app)
+require('./utils/session')(app)
 
 // cookies
 app.use(cookieParser())
@@ -48,6 +48,6 @@ app.get('/posts', authenticationToken, (req, res) => {
 require('./routes')(app)
 
 // page not found handlers
-app.use('/', (req, res) => {
+app.use('/', isAuth , (req, res) => {
   res.render('404', { layout: false })
 })
