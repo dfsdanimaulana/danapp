@@ -59,8 +59,13 @@ const cekUser = async (req, res) => {
 
     if (checkbox) {
         const salt = await bcrypt.genSalt()
-        req.cookie.id = user._id
-        req.cookie.login = await bcrypt.hash(user.username, salt)
+        const hashedCookie = await bcrypt.hash(user.username, salt)
+        res.cookie('id', user._id, {
+          expires: new Date(Date.now + 5000)
+        })
+        res.cookie('login', hashedCookie, {
+          expires: new Date(Date.now + 5000),
+        })
     }
     req.session.user = user
     return res.redirect('/chat')

@@ -7,27 +7,29 @@ const bcrypt = require('bcryptjs')
 const { getUser } = require('./utils/db.method')
 
 const isAuth = (req, res, next) => {
-  if (req.session.isAuth) {
+  if (req.session.isAuth && req.session.user) {
     next()
   } else {
     return res.redirect('/login')
   }
 }
 
-const hasCookie = (req, res, next) => {
-    if(req.cookie.id && req.cookie.login){
-        try {
-            
-        const name = getUser(req.cookie.id).username
-        const isset = bcrypt.compare(name, req.cookie.login)
-        } catch (e) {
-            console.log(e)
-        }
-        if(isset){
-            req.session.isAuth = true
-        }
+const hasCookie = async (req, res, next) => {
+  
+  const cookie = req.cookies
+  if (cookie.id && cookie.login) {
+    try {
+      const name = await getUser(cookie.id)
+      const cekCookie = await bcrypt.compare(name.username, cookie.login)
+      if (cekCookie) {
+        req.session.isAuth = true
+        req.session.user = name
+      }
+    } catch (e) {
+      console.log(e)
     }
-    next()
+  }
+  next()
 }
 
 const createAccessToken = (obj) => {

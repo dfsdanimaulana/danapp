@@ -8,7 +8,7 @@ const { hasCookie } = require('../core/middleware')
 module.exports = (app) => {
   const { view, cekUser }= require('../controllers/login.controller')
 
-  router.get('/',hasCookie, view)
+  router.get('/',hasCookie , view)
   router.post('/', cekUser)
   app.use('/login', router)
 }
