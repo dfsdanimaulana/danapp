@@ -6,6 +6,7 @@ const express = require('express')
 const methodOverride = require('method-override')
 const expressLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
+const flash = require('connect-flash')
 // server connection
 const app = require('./core/server')
 const { authenticationToken ,isAuth } = require('./utils/middleware')
@@ -15,6 +16,9 @@ require('./utils/session')(app)
 
 // cookies
 app.use(cookieParser())
+
+// flash message
+app.use(flash())
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({ extended: true }))

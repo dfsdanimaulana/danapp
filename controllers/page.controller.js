@@ -1,5 +1,5 @@
 'use strict'
-const { getData, deleteUser } = require('../utils/db.method')
+const { getData, deleteById } = require('../utils/db.method')
 
 const params = {
   layout: 'layouts/html',
@@ -16,7 +16,7 @@ const showData = async (req, res) => {
 
 const deleteData = async (req, res) => {
   const id = req.body.id
-  deleteUser(id)
+  deleteById(id)
   res.redirect('/page')
 }
 

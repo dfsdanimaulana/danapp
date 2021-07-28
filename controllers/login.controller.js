@@ -10,7 +10,9 @@ const params = {
   title: 'login Page',
   style: 'login',
   script: 'login',
-  status: '',
+  status: null,
+  email_error: 'email not valid or already exist',
+  password_error: 'password wrong'
 }
 
 const view = (req, res) => {
@@ -21,20 +23,6 @@ const view = (req, res) => {
   res.render('login', params)
 }
 
-// const userJson = async (req, res) => {
-//   try {
-//     const { email, password } = req.body
-
-//     const accessToken = await createAccessToken({ email })
-//     console.log('token : ', accessToken)
-
-//     req.session.isAuth = true
-
-//     res.json({ accessToken })
-//   } catch (err) {
-//     return console.log(err)
-//   }
-// }
 const cekUser = async (req, res) => {
     
   const { email, password, checkbox } = req.body
@@ -52,9 +40,7 @@ const cekUser = async (req, res) => {
       params.status = 'incorrect password'
       return res.redirect('/login')
     }
-    // Authentication User & get access token
-    // const accessToken = await createAccessToken({ email })
-    // console.log(accessToken)
+
     req.session.isAuth = true
 
     if (checkbox) {
@@ -77,3 +63,22 @@ const cekUser = async (req, res) => {
 }
 
 module.exports = { view, cekUser}
+
+
+// const userJson = async (req, res) => {
+//   try {
+//     const { email, password } = req.body
+
+//     const accessToken = await createAccessToken({ email })
+//     console.log('token : ', accessToken)
+
+//     req.session.isAuth = true
+
+//     res.json({ accessToken })
+//   } catch (err) {
+//     return console.log(err)
+//   }
+// }
+    // Authentication User & get access token
+    // const accessToken = await createAccessToken({ email })
+    // console.log(accessToken)

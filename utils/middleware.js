@@ -6,6 +6,7 @@ const joi = require('joi')
 const bcrypt = require('bcryptjs')
 const { getUser } = require('./db.method')
 
+// cek if session is already set or not
 const isAuth = (req, res, next) => {
   if (req.session.isAuth && req.session.user) {
     next()
@@ -14,6 +15,7 @@ const isAuth = (req, res, next) => {
   }
 }
 
+// cek if cookie is already set or not
 const hasCookie = async (req, res, next) => {
   
   const cookie = req.cookies
