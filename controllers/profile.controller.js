@@ -7,7 +7,7 @@ const params = {
   layout: 'layouts/html',
   title: 'Profile Page',
   style: 'profile',
-  script: 'page',
+  script: 'profile',
 }
 const view = async (req, res) => {
   const id = req.params.id
