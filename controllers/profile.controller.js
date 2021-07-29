@@ -22,14 +22,45 @@ const view = async (req, res) => {
 
 const updateData = async (req, res) => {
   const data = req.body
-  const query = {
-    $set: {
-      target: data.dataValue,
-    }
-  }
-  await updateById(data.id,query).then(result=> res.send(result)).catch(err => res.send(err))
+  let query
 
+  switch (data.updater) {
+    case 'username':
+      query = {
+        $set: {
+          username: data.dataValue,
+        },
+      }
+      break
+    case 'name':
+      query = {
+        $set: {
+          name: data.dataValue,
+        },
+      }
+      break
+    case 'email':
+      query = {
+        $set: {
+          email: data.dataValue,
+        },
+      }
+      break
+    
+    default:
+       query = {
+         $set: {
+           status: data.dataValue,
+         },
+       }
+      break
+  }
+
+  await updateById(data.id, query)
+    .then((result) => res.send(result))
+    .catch((err) => res.send(err))
 }
 module.exports = {
-  view,updateData
+  view,
+  updateData,
 }
