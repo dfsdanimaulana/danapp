@@ -19,7 +19,7 @@ const getByEmail = (email) => {
 } 
 
 const updateById = (id,query) => {
-    return Profile.findByIdAndUpdate(id,query)
+    return Profile.findByIdAndUpdate(id,query, {new:true})
 }
 
 module.exports = { getData, getUser, deleteById, getByEmail, updateById }

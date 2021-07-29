@@ -10,7 +10,7 @@ mongoose.connect(process.env.DB_ATLAS,
         useCreateIndex: true
     }
 );
-
+mongoose.set('returnOriginal', false)
 
 module.exports = () => {
     mongoose.connection

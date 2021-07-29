@@ -13,40 +13,43 @@
     </a>
     <div class="box">
         <i class="bi bi-person-circle"></i>
-        <p class="desc">@<%= data.username %></p>
+        <p class="desc" >@<%= data.username %></p>
         <a href="#">
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil-square" data-headername="username" data-value="<%= data.username %>"></i>
         </a>
     </div>
     <div class="box">
         <i class="bi bi-person-circle"></i>
-        <p class="desc"><%= data.name %></p>
+        <p class="desc" ><%= data.name %></p>
         <a href="#">
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil-square" data-headername="name" data-value="<%= data.name %>"></i>
         </a>
     </div>
     <div class="box">
         <i class="bi bi-at"></i>
-        <p class="desc"><%= data.email %> </p>
+        <p class="desc" ><%= data.email %> </p>
         <a href="#">  
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil-square" data-headername="email" data-value="<%= data.email %>"></i>
          </a>
     </div>
     <div class="box">
         <i class="bi bi-stickies"></i>
-        <p class="desc"><%= data.status %> </p>
+        <p class="desc" ><%= data.status %> </p>
         <a href="#">
-            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-pencil-square" data-headername="status" data-value="<%= data.status %>"></i>
         </a>
     </div>
     <div class="modal-container">
         <div class="modal">
             <div class="modal-header">
-                <h3>name</h3>
-                <span class="close">X</span>
+                <h3></h3>
+                <button class="close">X</button>
             </div>
-            <form action="">
-                <input type="text" class="modal-input" value="name">
+            <form action="/profile?_method=PUT" method="POST">
+                <input type="text" hidden name="id_user" value="<%= currentUser %>">
+                <input type="text" hidden name="id" value="<%= data._id %>">
+                <input type="text" class="updater" hidden name="updater" value="">
+                <input type="text" class="modal-input" name="dataValue" autocomplete="off" autofocus="true">
                 <button type="submit">update</button>
             </form>
         </div>
