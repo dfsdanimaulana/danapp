@@ -21,7 +21,7 @@ const addUser = async (req, res) => {
   const { error, value } = await schema.validate(req.body)
   if (error) {
       console.log(error)
-      return res.redirect('/signup')
+      return res.send(error)
   }
   const data = value
   
@@ -30,7 +30,7 @@ const addUser = async (req, res) => {
   // cek if user alredy exists
 
   if (user) {
-    console.log('user is alredy exists')
+    req.flash('email_error','User already exists')
     return res.redirect('/signup')
   }
 
