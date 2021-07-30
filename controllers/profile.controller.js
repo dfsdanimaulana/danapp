@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const { getUser, updateById } = require('../utils/db.method')
+const { getUser, updateById, getData } = require('../utils/db.method')
 
 const params = {
   layout: 'layouts/html',
@@ -17,11 +17,12 @@ const view = async (req, res) => {
   }
   params.data = data
   params.currentUser = req.session.user._id
-  res.render('profile', params)
+  res.render('profile',params)
 }
 
-const updateData = async (req, res) => {
+const updateData = (req, res) => {
   const data = req.body
+  params.currentUser = req.session.user._id
   let query
 
   switch (data.updater) {
@@ -56,11 +57,25 @@ const updateData = async (req, res) => {
       break
   }
 
-  await updateById(data.id, query)
-    .then((result) => res.send(result))
+  updateById(data.id, query)
+    .then((result) => {
+        params.data = result
+        params.currentUser = req.session.user._id
+        res.render('profile',params)
+    })
     .catch((err) => res.send(err))
+}
+
+const getUsers = async (req,res) => {
+    try {
+    const user = await getData()
+    res.json(user)
+    } catch (e) {
+    res.send(e)
+    }
 }
 module.exports = {
   view,
   updateData,
+  getUsers
 }
