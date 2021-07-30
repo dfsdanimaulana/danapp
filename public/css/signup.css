@@ -1,106 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 
-:root {
-    --dark: rgb(1, 43, 65);
-    --primary: rgb(2, 84, 140);
-    --secondary: rgb(63, 119, 188);
-    --soft: rgb(143, 176, 226);
-    --light: rgb(204, 212, 233);
-}
-main {
-    border: 1px solid var(--secondary);
-    background: var(--secondary)url('../images/Mina-full.jpg') no-repeat fixed;
-}
+@import url('./main.css');
 
 body {
-    margin: 0 auto;
-    background-size: 100%;
+  width: 100vw;
+  background-color: var(--light);
 }
 
 h1 {
-    font-size: 1.5rem;
-    font-family: 'Dancing Script', cursive;
-    padding: 1rem auto;
-
+  font-size: 1.5rem;
+  font-family: 'Dancing Script', cursive;
+  padding: 1rem auto;
 }
 .flex-container {
-    color: rgba(2, 84, 140);
-    opacity: .8;
-    padding: 1rem;
-    background-color: var(--light);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    -webkit-border-radius: 7;
-    -moz-border-radius: 7;
-    border-radius: 7px;
-    margin: 1.5rem;
-    width: max-width(440px);
-    box-shadow: 2px 2px 2px var(--primary);
-
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  width: max-width(550px);
 }
-
-.flex-container form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 2rem;
-    height: 15rem;
-    width: 90%;
-
+form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  height: 15rem;
 }
 .name {
-    display: flex;
+  display: flex;
 }
-.inp {
-    font-size: 1rem;
-    border: none;
-    border-bottom: 0.5px solid var(--secondary);
-    background-color: inherit;
-    padding: 1rem auto;
-    width: 90%;
-    font-family: 'Playfair Display', serif;
-    outline: none
-}
-
-.btn {
-    background: #bbd5e6;
-    background-image: -webkit-linear-gradient(top, #bbd5e6, #2980b9);
-    background-image: -moz-linear-gradient(top, #bbd5e6, #2980b9);
-    background-image: -ms-linear-gradient(top, #bbd5e6, #2980b9);
-    background-image: -o-linear-gradient(top, #bbd5e6, #2980b9);
-    background-image: linear-gradient(tobottom,#bbd5e6, #2980b9);
-    -webkit-border-radius: 7;
-    -moz-border-radius: 7;
-    border-radius: 7px;
-    font-family: Georgia;
-    color: #ffffff;
-    font-size: 17px;
-    padding: 5px;
-    text-decoration: none;
-    border: none;
-    align-self: stretch;
+input {
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 0.5px solid var(--secondary);
+  background-color: inherit;
+  width: 90%;
+  outline: none;
+  margin: 0.7rem;
 }
 
-.btn:hover {
-    background: #3cb0fd;
-    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-    background-image: linear-gradient(tobottom,#3cb0fd, #3498db);
-    text-decoration: none;
+button {
+  background: #bbd5e6;
+  background-image: -webkit-linear-gradient(top, #bbd5e6, #2980b9);
+  background-image: -moz-linear-gradient(top, #bbd5e6, #2980b9);
+  background-image: -ms-linear-gradient(top, #bbd5e6, #2980b9);
+  background-image: -o-linear-gradient(top, #bbd5e6, #2980b9);
+  background-image: linear-gradient(tobottom, #bbd5e6, #2980b9);
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 5px;
+  text-decoration: none;
+  border: none;
+  align-self: center;
+  width: 50%;
+  margin: 1rem;
+}
+
+button:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(tobottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }
 
 .footer {
-    font-size: .8rem;
-    padding: 1rem;
+  font-size: 0.8rem;
+  padding: 1rem;
 }
 
 /* Responsive */
 
 /* Medium devices (tablets, 768px and up)*/
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+}

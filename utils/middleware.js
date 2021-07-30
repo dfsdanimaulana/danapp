@@ -17,7 +17,6 @@ const isAuth = (req, res, next) => {
 
 // cek if cookie is already set or not
 const hasCookie = async (req, res, next) => {
-  
   const cookie = req.cookies
   if (cookie.id && cookie.login) {
     try {

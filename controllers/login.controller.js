@@ -10,26 +10,24 @@ const params = {
   title: 'login Page',
   style: 'login',
   script: 'login',
-  status: null,
-  email_error: 'email not valid or already exist',
-  password_error: 'password wrong'
 }
 
 const view = (req, res) => {
-    
-  if(req.session.isAuth){
+  if (req.session.isAuth) {
     return res.redirect('/chat')
   }
+  params.email_error = req.flash && req.flash('email_error')
+  params.password_error = req.flash && req.flash('password_error')
+
   res.render('login', params)
 }
 
 const cekUser = async (req, res) => {
-    
   const { email, password, checkbox } = req.body
 
   const user = await getByEmail(email)
   if (!user) {
-    params.status = 'email not registered, please signup first'
+    req.flash('email_error', 'Email not found, please register first')
     return res.redirect('/login')
   }
 
@@ -37,33 +35,31 @@ const cekUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-      params.status = 'incorrect password'
+    req.flash('password_error', 'Incorrect password')
       return res.redirect('/login')
     }
 
     req.session.isAuth = true
 
     if (checkbox) {
-        const salt = await bcrypt.genSalt()
-        const hashedCookie = await bcrypt.hash(user.username, salt)
-        res.cookie('id', user._id, {
-          expires: new Date(Date.now + 5000)
-        })
-        res.cookie('login', hashedCookie, {
-          expires: new Date(Date.now + 5000),
-        })
+      const salt = await bcrypt.genSalt()
+      const hashedCookie = await bcrypt.hash(user.username, salt)
+      res.cookie('id', user._id, {
+        expires: new Date(Date.now + 150000),
+      })
+      res.cookie('login', hashedCookie, {
+        expires: new Date(Date.now + 150000),
+      })
     }
     req.session.user = user
     return res.redirect('/chat')
-    
   } catch (err) {
     console.log('jwt error', err)
     return res.status(500).send()
   }
 }
 
-module.exports = { view, cekUser}
-
+module.exports = { view, cekUser }
 
 // const userJson = async (req, res) => {
 //   try {
@@ -79,6 +75,6 @@ module.exports = { view, cekUser}
 //     return console.log(err)
 //   }
 // }
-    // Authentication User & get access token
-    // const accessToken = await createAccessToken({ email })
-    // console.log(accessToken)
+// Authentication User & get access token
+// const accessToken = await createAccessToken({ email })
+// console.log(accessToken)

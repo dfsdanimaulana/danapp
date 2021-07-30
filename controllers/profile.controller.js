@@ -17,7 +17,7 @@ const view = async (req, res) => {
   }
   params.data = data
   params.currentUser = req.session.user._id
-  res.render('profile',params)
+  res.render('profile', params)
 }
 
 const updateData = (req, res) => {
@@ -27,6 +27,7 @@ const updateData = (req, res) => {
 
   switch (data.updater) {
     case 'username':
+      data.dataValue = data.dataValue.replace(/ /g, '_')
       query = {
         $set: {
           username: data.dataValue,
@@ -47,35 +48,35 @@ const updateData = (req, res) => {
         },
       }
       break
-    
+
     default:
-       query = {
-         $set: {
-           status: data.dataValue,
-         },
-       }
+      query = {
+        $set: {
+          status: data.dataValue,
+        },
+      }
       break
   }
 
   updateById(data.id, query)
     .then((result) => {
-        params.data = result
-        params.currentUser = req.session.user._id
-        res.render('profile',params)
+      params.data = result
+      params.currentUser = req.session.user._id
+      res.render('profile', params)
     })
     .catch((err) => res.send(err))
 }
 
-const getUsers = async (req,res) => {
-    try {
+const getUsers = async (req, res) => {
+  try {
     const user = await getData()
     res.json(user)
-    } catch (e) {
+  } catch (e) {
     res.send(e)
-    }
+  }
 }
 module.exports = {
   view,
   updateData,
-  getUsers
+  getUsers,
 }

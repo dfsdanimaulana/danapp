@@ -16,6 +16,10 @@ const view = async (req, res) => {
 }
 
 const logout = (req, res) => {
+  if(req.cookies){
+    res.clearCookie('login')
+    res.clearCookie('id')
+  }
   req.session.destroy((err) => {
     if (err) throw err
     return res.redirect('/login')
