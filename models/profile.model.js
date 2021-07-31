@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose')
 const moment = require('moment')
-const timeNow = moment().format('hh:mm A')
 
 const { Schema } = mongoose
 
@@ -43,7 +42,7 @@ const ProfileSchema = new Schema({
   },
   timeSend: {
     type: String,
-    default: timeNow,
+    default: moment().format('hh:mm A'),
   },
 })
 

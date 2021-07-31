@@ -1,4 +1,3 @@
-
 const btn = document.querySelector('.plus')
 const menu = document.querySelectorAll('.btn-list')
 
@@ -6,13 +5,13 @@ const nav_btn_icon = document.querySelector('.nav-btn-icon')
 const nav_btn = document.querySelector('.nav-btn')
 
 btn.addEventListener('click', () => {
-   menu.forEach(v => v.classList.toggle('open'))
+  menu.forEach((v) => v.classList.toggle('open'))
   nav_btn.classList.remove('nav-open')
 })
 
 nav_btn_icon.addEventListener('click', () => {
   nav_btn.classList.toggle('nav-open')
-  menu.classList.remove('open')
+  menu.forEach((v) => v.classList.remove('open'))
 })
 
 // add two or more event listener in a single element
@@ -33,6 +32,6 @@ evenListener.forEach((ev) => {
       clickedElement = clickedElement.parentNode
     } while (clickedElement)
     nav_btn.classList.remove('nav-open')
-    menu.classList.remove('open')
+    menu.forEach((v) => v.classList.remove('open'))
   })
 })

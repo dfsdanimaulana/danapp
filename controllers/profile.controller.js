@@ -17,6 +17,8 @@ const view = async (req, res) => {
   }
   params.data = data
   params.currentUser = req.session.user._id
+  console.log(req.flash)
+  params.error = req.flash && req.flash('duplicate_username')
   res.render('profile', params)
 }
 
@@ -64,7 +66,13 @@ const updateData = (req, res) => {
       params.currentUser = req.session.user._id
       res.render('profile', params)
     })
-    .catch((err) => res.send(err))
+    .catch((err) => {
+      if(err.codeName === 'DuplicateKey'){
+        req.flash('duplicate_username','Username is already exists')
+        res.redirect(`/profile/${ req.session.user._id }`)
+      }
+      res.send(err)
+    })
 }
 
 const getUsers = async (req, res) => {

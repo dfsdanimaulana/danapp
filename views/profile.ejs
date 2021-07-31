@@ -11,6 +11,9 @@
     <a href="#">
         <img src=/<%= data.img %> alt="not found"></img>
     </a>
+    <% if (error) { %>
+     <p>User name is already exists</p>
+    <% } %>
     <div class="box">
         <i class="bi bi-person-circle"></i>
         <p class="desc" >@<%= data.username %></p>
@@ -43,14 +46,14 @@
         <div class="modal">
             <div class="modal-header">
                 <h3></h3>
-                <button class="close">X</button>
+                <button class="close"><i class="bi bi-x"></i></button>
             </div>
             <form action="/profile?_method=PUT" method="POST">
                 <input type="text" hidden name="id_user" value="<%= currentUser %>">
                 <input type="text" hidden name="id" value="<%= data._id %>">
                 <input type="text" class="updater" hidden name="updater" value="">
                 <input type="text" class="modal-input" name="dataValue" autocomplete="off" autofocus="true">
-                <button type="submit">update</button>
+                <button class="btn-sm btn-info" type="submit">update</button>
             </form>
         </div>
     </div>
