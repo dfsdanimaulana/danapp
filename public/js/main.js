@@ -1,11 +1,12 @@
+
 const btn = document.querySelector('.plus')
-const menu = document.querySelector('.btn-container')
+const menu = document.querySelectorAll('.btn-list')
 
 const nav_btn_icon = document.querySelector('.nav-btn-icon')
 const nav_btn = document.querySelector('.nav-btn')
 
 btn.addEventListener('click', () => {
-  menu.classList.toggle('open')
+   menu.forEach(v => v.classList.toggle('open'))
   nav_btn.classList.remove('nav-open')
 })
 

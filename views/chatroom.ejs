@@ -1,4 +1,9 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head') %>
+<body>
+   <main>
+     <header>
     <nav>
         <a href="/chat"><i class="bi bi-arrow-left"></i></a>
         <a><img id="nav-img" src="/<%= data.img %>"></img></a>
@@ -33,3 +38,7 @@
     </div>
   </div>
 </div>
+   </main>
+   <script src="/socket.io/socket.io.js"></script>
+   </body>
+</html>

@@ -20,10 +20,7 @@
             <input name="input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off" autofocus="on">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <ul class="list-group">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">An item</li>
-        </ul>
+        <ul class="list-group"></ul>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -36,12 +33,12 @@
             fetch('http://localhost:3000/profile/api')
             .then(res => res.json())
             .then(res => {
-                const targetName = res.filter(v =>{
-                    v.username
-                })
-                list[0].innerHTML = res[0].username
+                res
+            .forEach(v =>{
+                ul.innerHTML += `<li class="list-group-item">${v.name}</li>`
             })
-            .catch(e => alert('err',e))
+            })
+            .catch(e => alert(e))
         })
     </script>
 </body>

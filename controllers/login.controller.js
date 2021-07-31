@@ -24,7 +24,14 @@ const view = (req, res) => {
 
 const cekUser = async (req, res) => {
   const { email, password, checkbox } = req.body
+  const { guest } = req.body
+  if (guest) {
+  const user = await getByEmail('a@g.com')
+  req.session.isAuth = true
+  req.session.user = user
 
+  return res.redirect('/chat')
+  }
   const user = await getByEmail(email)
   if (!user) {
     req.flash('email_error', 'Email not found, please register first')

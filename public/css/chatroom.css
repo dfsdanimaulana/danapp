@@ -1,3 +1,5 @@
+@import url('./main.css');
+
 header {
     position: sticky;
     top: 0;
@@ -11,6 +13,8 @@ nav {
     padding: .2rem;
     place-items: center;
     grid-template-columns: 2rem 3rem auto 2rem 2rem;
+
+
 }
 nav h1 {
     justify-self: start;

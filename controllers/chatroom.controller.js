@@ -3,8 +3,8 @@
 const { getUser } = require('../utils/db.method')
 
 const params = {
-  layout: 'layouts/mainio',
-  title: 'chat room',
+  layout: false,
+  title: 'Room Chat',
   style: 'chatroom',
   script: 'chatroomio',
 }
