@@ -12,6 +12,7 @@
     padding: 0.5rem;
     border-bottom: 1px solid rgb(143, 176, 226);
     place-items: center;
+    width: 100vw;
 }
 
 

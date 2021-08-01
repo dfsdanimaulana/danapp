@@ -1,11 +1,11 @@
 <div class="flex-container">
     <h1>Create Account</h1>
     <form action="/signup" method="post">
-        <input type="text" placeholder="Username" id="username" name="username" required minlength="3"/>
-        <input type="text" placeholder="Name" id="name" name="name" minlength="3" required/>
-        <input type="email" placeholder="Email" id="email" name="email" required />
-        <input type="password" placeholder="Password" id="password" name="password" minlength="6" required />
-        <input type="password" placeholder="Repeat Your Password" id="password_check" name="password_check" required />
+        <input type="text" placeholder="Username" id="username" name="username" required minlength="3" autofocus autocomplete="off"/>
+        <input type="text" placeholder="Name" id="name" name="name" minlength="3" required autofocus autocomplete="off"/>
+        <input type="email" placeholder="Email" id="email" name="email" required autofocus autocomplete="off"/>
+        <input type="password" placeholder="Password" id="password" name="password" minlength="6" required autofocus/>
+        <input type="password" placeholder="Repeat Your Password" id="password_check" name="password_check" required autofocus/>
         <button type="submit">Submit</button>
     </form>
     <div class="footer">

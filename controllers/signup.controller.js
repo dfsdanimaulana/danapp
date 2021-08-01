@@ -18,6 +18,7 @@ const view = (req, res) => {
 }
 
 const addUser = async (req, res) => {
+ try {
   const { error, value } = await schema.validate(req.body)
   if (error) {
     console.log(error)
@@ -35,7 +36,7 @@ const addUser = async (req, res) => {
   }
 
   // hash the password
-  try {
+  
     const salt = await bcrypt.genSalt()
     const hashedPassword = await bcrypt.hash(data.password, salt)
 

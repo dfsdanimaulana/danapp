@@ -29,6 +29,11 @@ evenListener.forEach((ev) => {
       if (clickedElement == btn) {
         return
       }
+      for (let i = 0; i < menu.length; i++) {
+        if (clickedElement == menu[i]) {
+            return
+        }
+      }
       clickedElement = clickedElement.parentNode
     } while (clickedElement)
     nav_btn.classList.remove('nav-open')

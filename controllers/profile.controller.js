@@ -64,12 +64,14 @@ const updateData = (req, res) => {
     .then((result) => {
       params.data = result
       params.currentUser = req.session.user._id
-      res.render('profile', params)
+      return res.render('profile', params)
     })
     .catch((err) => {
-      if(err.codeName === 'DuplicateKey'){
-        req.flash('duplicate_username','Username is already exists')
-        res.redirect(`/profile/${ req.session.user._id }`)
+      if(err){
+        if(err.codeName === 'DuplicateKey'){
+            req.flash('duplicate_username','Username is already exists')
+            return res.redirect(`/profile/${ req.session.user._id }`)
+        }
       }
       res.send(err)
     })
