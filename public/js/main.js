@@ -40,3 +40,23 @@ evenListener.forEach((ev) => {
     menu.forEach((v) => v.classList.remove('open'))
   })
 })
+
+// sticky header
+// on scroll page
+window.onscroll = () => stickyTop()
+
+const mainHeader = document.querySelector('.main-header')
+// get the offset position of the navbar
+const sticky = mainHeader.offsetTop
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyTop() {
+  if(window.pageXOffset >= sticky){
+    mainHeader.classList.add('sticky')
+  }else {
+    mainHeader.classList.remove('sticky')
+  }
+}
+const navHeader = document.querySelector('.grid-container')
+const headerHeight = navHeader.offsetHeight.toString()
+document.querySelector('#chats').style.marginTop = headerHeight+'px'
+document.querySelector('#status').style.marginTop = headerHeight+'px'
