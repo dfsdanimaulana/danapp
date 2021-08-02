@@ -2,9 +2,6 @@
 
 .chat-profile {
     display: grid;
-    /*
-    grid-template-columns: 1.5fr .5fr 5fr auto auto;
-    */
     grid-template-columns: 4rem 2rem auto 2rem 2.5rem;
     grid-template-areas:
     'img name name tops tops'

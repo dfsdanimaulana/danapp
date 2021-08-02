@@ -8,6 +8,7 @@
 
 body {
     background-color: var(--light);
+    scroll-behavior: smooth;
 }
 
 main {
@@ -173,11 +174,12 @@ section {
 /* button end*/
 
 header {
-    position: sticky;
-    top: 0;
+    position: relative;
 }
 
 .grid-container {
+    position: sticky;
+    top: 0;
     display: grid;
     grid-template-areas:
     'navbar navbar'
