@@ -4,7 +4,7 @@ const { getData } = require("../utils/db.method")
 
 
 const params = {
-  layout: 'layouts/html',
+  layout: false,
   title: 'page Contacts',
   style: 'contacts',
   script: 'chat',

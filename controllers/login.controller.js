@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 const { getByEmail } = require('../utils/db.method')
 
 const params = {
-  layout: 'layouts/html',
+  layout: false,
   title: 'login Page',
   style: 'login',
   script: 'login',

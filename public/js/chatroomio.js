@@ -8,7 +8,9 @@ const chatRoomBody = document.querySelector('.chat-room-body')
 
 const username = getName()
 
-document.querySelector('.information p').innerHTML = `${username} welcome to chat`
+document.querySelector(
+  '.information p'
+).innerHTML = `${username} welcome to chat`
 
 // user join/leave chat
 socket.emit('join', username)
@@ -34,7 +36,7 @@ form.addEventListener('submit', function (e) {
 
   if (msg) {
     msg = msg.trim()
-    
+
     // Emit message to server
     socket.emit('message', {
       msg,
@@ -50,9 +52,9 @@ form.addEventListener('submit', function (e) {
 // Methods
 
 function outputMsg(msg) {
-    if (msg.name !== username) {
-        msg.pos = 'left'
-    }
+  if (msg.name !== username) {
+    msg.pos = 'left'
+  }
   chatRoomBody.innerHTML += `<div class="msg msg-${msg.pos}">
         <span>${msg.name}</span>
         <p>${msg.content}</p>

@@ -1,3 +1,5 @@
+@import url('./main.css');
+
 .contacts-container {
     display: grid;
     background-color: var(--primary);

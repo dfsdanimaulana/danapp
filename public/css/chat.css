@@ -1,87 +1,85 @@
 /* chat profile */
 
 .chat-profile {
-    display: grid;
-    grid-template-columns: 4rem 2rem auto 2rem 2.5rem;
-    grid-template-areas:
+  display: grid;
+  grid-template-columns: 4rem 2rem auto 2rem 2.5rem;
+  grid-template-areas:
     'img name name tops tops'
     'img ceklis msg mute count';
-    padding: 0.5rem;
-    border-bottom: 1px solid rgb(143, 176, 226);
-    place-items: center;
-    width: 100vw;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(143, 176, 226);
+  place-items: center;
+  width: 100vw;
 }
-
-
 
 /* desktop */
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
-
+@media (min-width: 768px) {
+}
 
 .chat-profile a {
-    grid-area: img;
-
+  grid-area: img;
 }
 .chat-profile a img {
-    width: 3.3rem;
-    height: 3.3rem;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+  width: 3.3rem;
+  height: 3.3rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .chat-profile p:nth-child(2) {
-    grid-area: name;
-    font-size: 1.05rem;
-    place-self: start;
-    padding-left: 0.4rem;
-    color: rgba(0, 0, 0, 0.8);
+  grid-area: name;
+  font-size: 1.05rem;
+  place-self: start;
+  padding-left: 0.4rem;
+  color: rgba(0, 0, 0, 0.8);
 }
 .chat-profile i:nth-child(3) {
-    grid-area: ceklis;
-    font-size: 1.4rem;
-    color: rgba(0, 0, 0, 0.5);
+  grid-area: ceklis;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.5);
 }
 .chat-profile p:nth-child(4) {
-    justify-self: start;
-    font-size: 0.9rem;
-    grid-area: msg;
-    color: rgba(0, 0, 0, 0.5);
+  justify-self: start;
+  font-size: 0.9rem;
+  grid-area: msg;
+  color: rgba(0, 0, 0, 0.5);
 }
 .chat-profile p:nth-child(5) {
-    grid-area: tops;
-    font-size: 0.8rem;
+  grid-area: tops;
+  font-size: 0.8rem;
 }
 .chat-profile i:nth-child(6) {
-    grid-area: mute;
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.6);
+  grid-area: mute;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
 }
 .chat-profile p:nth-child(7) {
-    grid-area: count;
-    font-size: 0.75rem;
-    width: 1.6rem;
-    height: 1.6rem;
-    background-color: #00c531;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+  grid-area: count;
+  font-size: 0.75rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #00c531;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
 }
 
 /* chat profile end */
 
 /* contacts page */
 .chat-profile i:nth-child(7) {
-    color: rgba(0, 0, 0, 0.6);
-    grid-area: count;
-    font-size: 1.5rem;
-    display: grid;
-    place-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  grid-area: count;
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
 }
 
 /* Responsive */
 
 /* Medium devices (tablets, 768px and up)*/
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+}

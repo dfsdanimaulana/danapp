@@ -1,32 +1,48 @@
-<!-- header -->
-<div class="contacts-container">
-    <div class="contacts-item-navbar">
-        <a href="/chat"><i class="bi bi-arrow-left"></i></a>
-        <h1>Select Contact</h1>
-        <a href="#"><i class="bi bi-search"></i></a>
-        <a href="/signup"><i class="bi bi-three-dots-vertical"></i></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('layouts/cdn') %>
+    <link rel="stylesheet" href="/css/contacts.css" type="text/css" media="all" />
+    <script src="/js/contacts.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Contacts</title>
+</head>
+<body>
+    <!-- header -->
+    <div class="contacts-container">
+        <div class="contacts-item-navbar">
+            <a href="/chat"><i class="bi bi-arrow-left"></i></a>
+            <h1>Select Contact</h1>
+            <a href="#"><i class="bi bi-search"></i></a>
+            <a href="/signup"><i class="bi bi-three-dots-vertical"></i></a>
+        </div>
     </div>
-</div>
-<!-- header end -->
+    <!-- header end -->
+    <% data.forEach(list => { %>
+        <div class="contact-profile">
+            <a href="/profile/<%= list._id %>">
+                <img src="/<%= list.img %>" alt="not found"></img>
+            </a>
+            <p>
+                <%= list.name %>
+            </p>
+            <i class="bi bi-dot"></i>
+            <p>
+                <%= list.status %>
+            </p>
+            <p>
+                <%= list.timeSend %>
+            </p>
+            <a href="/chatroom/<%= list._id %>/<%= list.name %>">
+                <i class="bi bi-chat"></i>
+            </a>
+            <i class="bi bi-pencil-square"></i>
+        </div>
+    <% }) %>
+</body>
+</html>
 
-<% data.forEach(list => { %>
-    <div class="contact-profile">
-        <a href="/profile/<%= list._id %>">
-            <img src="/<%= list.img %>" alt="not found"></img>
-        </a>
-    <p>
-        <%= list.name %>
-    </p>
-    <i class="bi bi-dot"></i>
-    <p>
-        <%= list.status %>
-    </p>
-    <p>
-        <%= list.timeSend %>
-    </p>
-    <a href="/chatroom/<%= list._id %>/<%= list.name %>">
-        <i class="bi bi-chat"></i>
-    </a>
-    <i class="bi bi-pencil-square"></i>
-    </div>
-<% }) %>
+
+

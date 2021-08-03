@@ -5,7 +5,7 @@ const { getData } = require('../utils/db.method')
 const view = async (req, res) => {
   const data = await getData()
   const params = {
-    layout: 'layouts/main',
+    layout: false,
     title: 'Chat page',
     style: 'chat',
     script: 'chat',

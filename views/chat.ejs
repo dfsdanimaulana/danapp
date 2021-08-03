@@ -5,109 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%- include('layouts/cdn') %>
-    <link rel="stylesheet" href="chat.css" type="text/css" media="all" />
-    <script src="chat.js" type="text/javascript" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/chat.css" type="text/css" media="all" />
+    <script src="/js/chat.js" type="text/javascript" charset="utf-8" defer></script>
     <title>Chat</title>
 </head>
 <body>
     <main>
         <header class="main-header">
-  <div class="grid-container">
-    <div class="grid-item-navbar">
-      <h1>DanApp</h1>
-      <a href="#"><i class="bi bi-search"></i></a>
-      <div class="nav-btn-container">
-        <div class="nav-btn shdw">
-          <div class="nav-btn-icon">
-            <i class="bi bi-list"></i>
-          </div>
-          <ul>
-            <li class="nav-btn-list">
-              <a href="/profile/<%= currentUser %>">Profile</a>
-            </li>
-            <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
-            <li class="nav-btn-list"><a href="/page">Page</a></li>
-            <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
-            <li class="nav-btn-list">
-              <form action="/chat" method="POST">
-                <a><i></i><button id="nav-btn-list">logout</button></a>
-              </form>
-            </li>
-          </ul>
+            <div class="grid-container">
+                <div class="grid-item-navbar">
+                    <h1>DanApp</h1>
+                    <a href="#"><i class="bi bi-search"></i></a>
+                    <div class="nav-btn-container">
+                        <div class="nav-btn shdw">
+                            <div class="nav-btn-icon">
+                                <i class="bi bi-list"></i>
+                            </div>
+                            <ul>
+                                <li class="nav-btn-list"><a href="/profile/<%= currentUser %>">Profile</a></li>
+                                <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
+                                <li class="nav-btn-list"><a href="/page">Page</a></li>
+                                <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
+                                <li class="nav-btn-list">
+                                    <form action="/chat" method="POST">
+                                        <button id="nav-btn-list">logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-chats">
+                    <a href="#chats">CHATS</a>
+                </div>
+                <div class="grid-item-status">
+                    <a href="#status">STATUS</a>
+                </div>
+            </div>
+        </header>
+        <div class="scroll-container">
+            <section id="chats">
+                <% data.forEach(list => { %>
+                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                        <a href="/profile/<%= list._id %>">
+                            <img src="/<%= list.img %>" alt="not found"></img>
+                        </a>
+                        <p>
+                            <%= list.name %>
+                        </p>
+                        <i class="bi bi-check"></i>
+                        <!--<i class="bi bi-check-all"></i>  -->
+                        <p>
+                            <%= list.message %>
+                        </p>
+                        <p>
+                            <%= list.timeSend %>
+                        </p>
+                        <i class="bi bi-volume-mute"></i>
+                        <p>
+                            15
+                        </p>
+                    </div>
+                <% }) %>
+            </section>
+            <section id="status">
+                <% data.forEach(list => { %>
+                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                        <a href="/profile/<%= list._id %>">
+                            <img src="/<%= list.img %>" alt="not found"></img>
+                        </a>
+                        <p>
+                            <%= list.name %>
+                        </p>
+                        <i class="bi bi-check"></i>
+                        <!--<i class="bi bi-check-all"></i>  -->
+                        <p>
+                            <%= list.message %>
+                        </p>
+                        <p>
+                            <%= list.timeSend %>
+                        </p>
+                        <i class="bi bi-volume-mute"></i>
+                        <p>
+                            15
+                        </p>
+                    </div>
+                <% }) %>
+            </section>
         </div>
-      </div>
-    </div>
-    <div class="grid-item-chats">
-      <a href="#chats">CHATS</a>
-    </div>
-    <div class="grid-item-status">
-      <a href="#status">STATUS</a>
-    </div>
-  </div>
-</header>
-<div class="scroll-container">
-    <section id="chats">
-        <% data.forEach(list => { %>
-            <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
-                <a href="/profile/<%= list._id %>">
-                    <img src="/<%= list.img %>" alt="not found"></img>
-                </a>
-                <p>
-                    <%= list.name %>
-                </p>
-                <i class="bi bi-check"></i>
-                <!--<i class="bi bi-check-all"></i>  -->
-                <p>
-                    <%= list.message %>
-                </p>
-                <p>
-                    <%= list.timeSend %>
-                </p>
-                <i class="bi bi-volume-mute"></i>
-                <p>
-                    15
-                </p>
+        <div class="btn-container">
+            <div class="plus">
+                <i class="bi bi-layers"></i>
             </div>
-        <% }) %>
-    </section>
-    <section id="status">
-        <% data.forEach(list => { %>
-            <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
-                <a href="/profile/<%= list._id %>">
-                    <img src="/<%= list.img %>" alt="not found"></img>
-                </a>
-                <p>
-                    <%= list.name %>
-                </p>
-                <i class="bi bi-check"></i>
-                <!--<i class="bi bi-check-all"></i>  -->
-                <p>
-                    <%= list.message %>
-                </p>
-                <p>
-                    <%= list.timeSend %>
-                </p>
-                <i class="bi bi-volume-mute"></i>
-                <p>
-                    15
-                </p>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-layers"></i></a>
             </div>
-            <% }) %>
-    </section>
-</div>
-<div class="btn-container">
-  <div class="plus"><i class="bi bi-layers"></i></div>
-    <div class="btn-list shdw">
-      <a href="/contacts"><i class="bi bi-layers"></i></a>
-    </div>
-    <div class="btn-list shdw">
-      <a href="/contacts"><i class="bi bi-layers"></i></a>
-    </div>
-    <div class="btn-list shdw">
-      <a href="/contacts"><i class="bi bi-chat"></i></a>
-    </div>
-</div>
-
-</main>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-layers"></i></a>
+            </div>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-chat"></i></a>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
