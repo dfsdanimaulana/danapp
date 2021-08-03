@@ -4,7 +4,6 @@
 const path = require('path')
 const express = require('express')
 const methodOverride = require('method-override')
-const expressLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 // server connection
@@ -33,9 +32,6 @@ app.use(express.static(path.join(__dirname, '/public')))
 // view engine
 app.set('view engine', 'ejs')
 
-// layouts
-app.use(expressLayouts)
-
 const posts = [
   {
     email: 'a@g.com',
@@ -52,5 +48,5 @@ require('./routes')(app)
 
 // page not found handlers
 app.use('/', isAuth, (req, res) => {
-  res.render('404', { layout: false })
+  res.render('404')
 })

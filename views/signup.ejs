@@ -1,14 +1,28 @@
-<div class="flex-container">
-    <h1>Create Account</h1>
-    <form action="/signup" method="post">
-        <input type="text" placeholder="Username" id="username" name="username" required minlength="3" autofocus autocomplete="off"/>
-        <input type="text" placeholder="Name" id="name" name="name" minlength="3" required autofocus autocomplete="off"/>
-        <input type="email" placeholder="Email" id="email" name="email" required autofocus autocomplete="off"/>
-        <input type="password" placeholder="Password" id="password" name="password" minlength="6" required autofocus/>
-        <input type="password" placeholder="Repeat Your Password" id="password_check" name="password_check" required autofocus/>
-        <button type="submit">Submit</button>
-    </form>
-    <div class="footer">
-        Already have an Account? <a href="/login">Login here</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('layouts/cdn') %>
+    <link rel="stylesheet" href="/css/signup.css" type="text/css" media="all" />
+    <script src="/js/signup.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Profile</title>
+</head>
+<body>
+    <div class="flex-container">
+        <h1>Create Account</h1>
+        <form action="/signup" method="post">
+            <input type="text" placeholder="Username" id="username" name="username" required minlength="3" autofocus autocomplete="off" />
+            <input type="text" placeholder="Name" id="name" name="name" minlength="3" required autofocus autocomplete="off" />
+            <input type="email" placeholder="Email" id="email" name="email" required autofocus autocomplete="off" />
+            <input type="password" placeholder="Password" id="password" name="password" minlength="6" required autofocus />
+            <input type="password" placeholder="Repeat Your Password" id="password_check" name="password_check" required autofocus />
+            <button type="submit">Submit</button>
+        </form>
+        <div class="footer">
+            Already have an Account? <a href="/login">Login here</a>
+        </div>
     </div>
-</div>
+</body>
+</html>

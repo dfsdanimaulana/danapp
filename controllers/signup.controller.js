@@ -4,13 +4,7 @@ const { Profile } = require('../models/profile.model')
 const bcrypt = require('bcryptjs')
 const schema = require('../utils/userAuth')
 const view = (req, res) => {
-  const params = {
-    layout: 'layouts/html',
-    title: 'Signup Page',
-    style: 'signup',
-    script: 'page',
-    status: '',
-  }
+  const params = {}
   if (req.session.isAuth && req.session.user) {
     return res.redirect('/chat')
   }

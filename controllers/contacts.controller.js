@@ -3,12 +3,7 @@
 const { getData } = require("../utils/db.method")
 
 
-const params = {
-  layout: false,
-  title: 'page Contacts',
-  style: 'contacts',
-  script: 'chat',
-}
+const params = {}
 
 const view = async (req, res) => {
   const data = await getData()

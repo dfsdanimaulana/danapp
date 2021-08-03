@@ -1,12 +1,7 @@
 'use strict'
 const { getData, deleteById } = require('../utils/db.method')
 
-const params = {
-  layout: 'layouts/html',
-  title: 'All data in DataBase',
-  style: 'page',
-  script: 'page',
-}
+const params = {}
 
 const showData = async (req, res) => {
   const data = await getData()

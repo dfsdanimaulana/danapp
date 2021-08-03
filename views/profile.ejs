@@ -1,43 +1,67 @@
-<div class="profile-container">
-    <div class="header">
-        <a href="/chat">
-            <i class="bi bi-arrow-left"></i>
-        </a>
-        <h1>Profile</h1>
-        <a href="/page">
-            <i class="bi bi-three-dots-vertical"></i>
-        </a>
-    </div>
-    <a href="#">
-        <img src=/<%= data.img %> alt="not found"></img>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('layouts/cdn') %>
+    <link rel="stylesheet" href="/css/profile.css" type="text/css" media="all" />
+    <script src="/js/profile.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Profile</title>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="header">
+            <a href="/chat">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <h1>Profile</h1>
+            <a href="/page">
+                <i class="bi bi-three-dots-vertical"></i>
+            </a>
+        </div>
+        <a href="#">
+            <img src=/<%= data.img %> alt="not found"></img>
     </a>
-    <% if (error) { %>
-     <p><%= error %></p>
-    <% } %>
+    <% if (error) {
+        %>
+        <p>
+            <%= error %>
+        </p>
+        <%
+    } %>
     <div class="box">
         <i class="bi bi-person-circle"></i>
-        <p class="desc" >@<%= data.username %></p>
+        <p class="desc">
+            @<%= data.username %>
+        </p>
         <a href="#">
             <i class="bi bi-pencil-square" data-headername="username" data-value="<%= data.username %>"></i>
         </a>
     </div>
     <div class="box">
         <i class="bi bi-person-circle"></i>
-        <p class="desc" ><%= data.name %></p>
+        <p class="desc">
+            <%= data.name %>
+        </p>
         <a href="#">
             <i class="bi bi-pencil-square" data-headername="name" data-value="<%= data.name %>"></i>
         </a>
     </div>
     <div class="box">
         <i class="bi bi-at"></i>
-        <p class="desc" ><%= data.email %> </p>
-        <a href="#">  
+        <p class="desc">
+            <%= data.email %>
+        </p>
+        <a href="#">
             <i class="bi bi-pencil-square" data-headername="email" data-value="<%= data.email %>"></i>
-         </a>
+        </a>
     </div>
     <div class="box">
         <i class="bi bi-stickies"></i>
-        <p class="desc" ><%= data.status %> </p>
+        <p class="desc">
+            <%= data.status %>
+        </p>
         <a href="#">
             <i class="bi bi-pencil-square" data-headername="status" data-value="<%= data.status %>"></i>
         </a>
@@ -58,3 +82,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>

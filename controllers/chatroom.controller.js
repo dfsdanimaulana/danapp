@@ -2,12 +2,7 @@
 
 const { getUser } = require('../utils/db.method')
 
-const params = {
-  layout: false,
-  title: 'Room Chat',
-  style: 'chatroom',
-  script: 'chatroomio',
-}
+const params = {}
 
 const view = async (req, res) => {
   const id = req.params.id

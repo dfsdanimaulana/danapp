@@ -5,12 +5,7 @@ const bcrypt = require('bcryptjs')
 // const { createAccessToken, authenticationToken } = require('../core/middleware')
 const { getByEmail } = require('../utils/db.method')
 
-const params = {
-  layout: false,
-  title: 'login Page',
-  style: 'login',
-  script: 'login',
-}
+const params = {}
 
 const view = (req, res) => {
   if (req.session.isAuth) {
