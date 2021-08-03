@@ -11,14 +11,6 @@ body {
   scroll-behavior: smooth;
 }
 
-main {
-  width: 100vw;
-  margin: 0 auto;
-  bottom: 0;
-  position: relative;
-  overflow: hidden;
-}
-
 a,
 a:link,
 a:visited,
@@ -51,10 +43,7 @@ section {
 /* header start  */
 
 header {
-  position: relative;
-}
-.sticky {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
 }

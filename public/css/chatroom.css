@@ -27,7 +27,26 @@ nav h1 {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+/* nav menu */
+.nav-menu {
+    display: none;
+}
+.nav-menu.open {
+    background-color: var(--primary);
+    width: 7rem;
+    margin: 0.3rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: var(--soft);
+    font-size: .9rem;
+    z-index: 999;
+}
 
+.nav-menu-list {
+    margin: 1rem 0.5rem;
+}
+/* nav menu end */
 .chat-room-container {
     width: 100%;
     height: 100%;
@@ -36,6 +55,7 @@ nav h1 {
     align-items: center;
     padding-bottom: 8rem;
     position: fixed;
+    z-index: -1;
 }
 
 /* chat room body start */

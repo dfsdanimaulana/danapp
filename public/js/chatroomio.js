@@ -74,3 +74,10 @@ function getName() {
   let url = window.location.href.toString().split('/')
   return url[url.length - 1].replace(/%20/g, ' ')
 }
+
+// dom area
+
+const navbtn = document.querySelector('.bi.bi-three-dots-vertical')
+navbtn.onclick = () => {
+  document.querySelector('.nav-menu').classList.add('open')
+}

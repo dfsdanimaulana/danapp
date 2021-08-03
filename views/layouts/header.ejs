@@ -1,32 +1,34 @@
 <header class="main-header">
-<div class="grid-container">
+  <div class="grid-container">
     <div class="grid-item-navbar">
-        <h1>DanApp</h1>
-        <a href="#"><i class="bi bi-search"></i></a>
-        <div class="nav-btn-container">
+      <h1>DanApp</h1>
+      <a href="#"><i class="bi bi-search"></i></a>
+      <div class="nav-btn-container">
         <div class="nav-btn shdw">
-            <div class="nav-btn-icon">
-                <i class="bi bi-list"></i>
-            </div>
-            <ul>
-                <li class="nav-btn-list"><a href="/profile/<%= currentUser %>">Profile</a></li>
-                <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
-                <li class="nav-btn-list"><a href="/page">Page</a></li>
-                <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
-                <li class="nav-btn-list">
-                    <form action="/chat" method="POST">
-                        <a><i></i><button id="nav-btn-list">logout</button></a>
-                    </form>
-                </li>
-            </ul>
+          <div class="nav-btn-icon">
+            <i class="bi bi-list"></i>
+          </div>
+          <ul>
+            <li class="nav-btn-list">
+              <a href="/profile/<%= currentUser %>">Profile</a>
+            </li>
+            <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
+            <li class="nav-btn-list"><a href="/page">Page</a></li>
+            <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
+            <li class="nav-btn-list">
+              <form action="/chat" method="POST">
+                <a><i></i><button id="nav-btn-list">logout</button></a>
+              </form>
+            </li>
+          </ul>
         </div>
-        </div>
+      </div>
     </div>
     <div class="grid-item-chats">
-        <a href="#chats">CHATS</a>
+      <a href="#chats">CHATS</a>
     </div>
     <div class="grid-item-status">
-        <a href="#status">STATUS</a>
+      <a href="#status">STATUS</a>
     </div>
-</div>
+  </div>
 </header>
