@@ -41,6 +41,7 @@ evenListener.forEach((ev) => {
   })
 })
 
+/*
 // sticky header
 // on scroll page
 window.onscroll = () => stickyTop()
@@ -58,5 +59,5 @@ function stickyTop() {
 }
 const navHeader = document.querySelector('.grid-container')
 const headerHeight = navHeader.offsetHeight.toString()
-document.querySelector('#chats').style.marginTop = headerHeight+'px'
-document.querySelector('#status').style.marginTop = headerHeight+'px'
+
+*/
