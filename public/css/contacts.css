@@ -31,7 +31,7 @@
     'img name name tops tops'
     'img ceklis msg mute count';
     padding: 0.5rem;
-    border-bottom: 1px solid rgb(143, 176, 226);
+    border-bottom: 1px solid var(--soft);
     place-items: center;
 }
 .contact-profile a {

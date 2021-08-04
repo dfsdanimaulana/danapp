@@ -7,8 +7,6 @@ const { view } = require('../controllers/chatroom.controller')
 const { isAuth } = require('../utils/middleware')
 
 module.exports = (app) => {
-    
-  router.get('/:id/:name',view )
-
+  router.get('/:id/:name', isAuth, view)
   app.use('/chatroom', router)
 }

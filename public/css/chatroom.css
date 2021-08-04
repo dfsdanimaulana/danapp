@@ -6,13 +6,13 @@ header {
 }
 
 nav {
-    background-color: rgb(2, 84, 140);
-    color: rgb(143, 176, 226);
+    background-color: var(--primary);
+    color: var(--soft);
     display: grid;
     font-size: 1.5rem;
     padding: .2rem;
     place-items: center;
-    grid-template-columns: 2rem 3rem auto 2rem 2rem;
+    grid-template-columns: 2rem 3rem auto 2.5rem 2.5rem;
 
 
 }

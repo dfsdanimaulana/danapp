@@ -7,8 +7,11 @@ const { saveMessage } = require('../utils/db.method')
 const { getCurrentUser, userJoin, formatName } = require('../utils/user.method')
 
 module.exports = (server) => {
+
   const io = socketio(server)
+
   io.on('connection', (socket) => {
+    
     // io.emit untuk ke seluruh server
     socket.on('join', (name) => {
       userJoin(name, socket.id)
@@ -22,7 +25,7 @@ module.exports = (server) => {
       
       // menyimpan ke database
       try {
-        saveMessage(obj)
+        saveMessage(obj.data)
       } catch (e) {
           console.log(e)
       }

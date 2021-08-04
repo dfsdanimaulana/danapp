@@ -23,6 +23,13 @@ const updateById = (id,query) => {
     return Profile.findByIdAndUpdate(id,query, {new:true})
 }
 
+const saveUser = (data) => {
+    const user = new Profile(data)
+    user.save((err, result)=>{
+        if(err) throw err
+        console.log(result)
+    })
+}
 const saveMessage = (data) => {
     const message = new Message(data)
     message.save((err, result)=>{
@@ -30,4 +37,4 @@ const saveMessage = (data) => {
         console.log(result)
     })
 }
-module.exports = { saveMessage, getData, getUser, deleteById, getByEmail, updateById }
+module.exports = { saveMessage, getData, getUser, deleteById, getByEmail, updateById ,saveUser}

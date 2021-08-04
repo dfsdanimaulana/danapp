@@ -41,13 +41,18 @@
             <div class="input-msg">
                 <a href="#"><i class="bi bi-camera"></i></a>
                 <form id="form">
+                    <input type="text" name="username" value="<%= data.username %>" hidden>
+                    <input type="text" name="sender" value="<%= currentUser %>" hidden>
                     <input
                     id="inp"
                     type="text"
                     placeholder="Message..."
                     autofocus="true"
                     autocomplete="off"
+                    name="message"
                     />
+                    <input type="submit" hidden>
+                    
                 </form>
                 <div class="icon-group">
                     <a href="#"><i class="bi bi-mic"></i></a>

@@ -10,6 +10,7 @@ const view = async (req, res) => {
   if (!data) {
     return res.redirect('/')
   }
+  params.currentUser = req.session.user.username
   params.data = data
   res.render('chatroom', params)
 }

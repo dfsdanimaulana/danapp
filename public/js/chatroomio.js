@@ -37,15 +37,22 @@ form.addEventListener('submit', function (e) {
   if (msg) {
     msg = msg.trim()
 
+    // get form data
+    const data = {
+      username: document.querySelector('#form input:first-child').value,
+      sender: document.querySelector('#form input:nth-child(2)').value,
+      message: document.querySelector('#form input:nth-child(3)').value,
+    }
+
     // Emit message to server
     socket.emit('message', {
       msg,
       name: username,
+      data
     })
 
     // Clear input
     input.value = ''
-    input.fokus()
   }
 })
 
@@ -83,9 +90,7 @@ const navbtn = document.querySelector('.bi.bi-three-dots-vertical')
 const navMenu = document.querySelector('.nav-menu')
 
 navbtn.addEventListener('click', () => {
-    
-    navMenu.classList.toggle('open')
- 
+  navMenu.classList.toggle('open')
 })
 
 // add two or more event listener in a single element

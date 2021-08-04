@@ -5,10 +5,19 @@ const { Schema } = mongoose;
 const moment = require('moment')
 
 const msgSchema = new Schema({
-    usernama:String,
-    message:String,
-    sender:String,
-    timeSend: {
+  username: {
+    required: true,
+    type: String,
+  },
+  sender: {
+    required: true,
+    type: String,
+  },
+  message: {
+    required: true,
+    type: String,
+  },
+  timeSend: {
     type: String,
     default: moment().format('hh:mm A'),
   },
