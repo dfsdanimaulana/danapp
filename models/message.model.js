@@ -5,11 +5,11 @@ const { Schema } = mongoose;
 const moment = require('moment')
 
 const msgSchema = new Schema({
-  username: {
+  sender: {
     required: true,
     type: String,
   },
-  sender: {
+  reciver: {
     required: true,
     type: String,
   },

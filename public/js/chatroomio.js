@@ -39,7 +39,7 @@ form.addEventListener('submit', function (e) {
 
     // get form data
     const data = {
-      username: document.querySelector('#form input:first-child').value,
+      reciver: document.querySelector('#form input:first-child').value,
       sender: document.querySelector('#form input:nth-child(2)').value,
       message: document.querySelector('#form input:nth-child(3)').value,
     }

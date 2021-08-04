@@ -42,68 +42,72 @@
         </header>
         <div class="scroll-container">
             <section id="chats">
-                <% data.forEach(list => { %>
+                <% data.forEach(list => {
+                    %>
                     <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
                         <a href="/profile/<%= list._id %>">
                             <img src="/<%= list.img %>" alt="not found"></img>
-                        </a>
-                        <p>
-                            <%= list.name %>
-                        </p>
-                        <i class="bi bi-check"></i>
-                        <!--<i class="bi bi-check-all"></i>  -->
-                        <p>
-                            <%= list.message %>
-                        </p>
-                        <p>
-                            <%= list.timeSend %>
-                        </p>
-                        <i class="bi bi-volume-mute"></i>
-                        <p>
-                            15
-                        </p>
-                    </div>
-                <% }) %>
-            </section>
-            <section id="status">
-                <% data.forEach(list => { %>
-                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
-                        <a href="/profile/<%= list._id %>">
-                            <img src="/<%= list.img %>" alt="not found"></img>
-                        </a>
-                        <p>
-                            <%= list.name %>
-                        </p>
-                        <i class="bi bi-check"></i>
-                        <!--<i class="bi bi-check-all"></i>  -->
-                        <p>
-                            <%= list.message %>
-                        </p>
-                        <p>
-                            <%= list.timeSend %>
-                        </p>
-                        <i class="bi bi-volume-mute"></i>
-                        <p>
-                            15
-                        </p>
-                    </div>
-                <% }) %>
-            </section>
-        </div>
-        <div class="btn-container">
-            <div class="plus">
-                <i class="bi bi-layers"></i>
+                    </a>
+                    <p>
+                        <%= list.name %>
+                    </p>
+                    <i class="bi bi-check"></i>
+                    <!--<i class="bi bi-check-all"></i>  -->
+                    <p>
+                        <%= list.message %>
+                    </p>
+                    <p>
+                        <%= list.timeSend %>
+                    </p>
+                    <i class="bi bi-volume-mute"></i>
+                    <p>
+                        15
+                    </p>
+                </div>
+                    <%
+                }) %>
+        </section>
+        <section id="status">
+            <% data.forEach(list => {
+                %>
+                <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>/<%= %>'">
+                    <a href="/profile/<%= list._id %>">
+                        <img src="/<%= list.img %>" alt="not found"></img>
+                </a>
+                <p>
+                    <%= list.name %>
+                </p>
+                <i class="bi bi-check"></i>
+                <!--<i class="bi bi-check-all"></i>  -->
+                <p>
+                    <%= list.message %>
+                </p>
+                <p>
+                    <%= list.timeSend %>
+                </p>
+                <i class="bi bi-volume-mute"></i>
+                <p>
+                    15
+                </p>
             </div>
-            <div class="btn-list shdw">
-                <a href="/contacts"><i class="bi bi-layers"></i></a>
-            </div>
-            <div class="btn-list shdw">
-                <a href="/contacts"><i class="bi bi-layers"></i></a>
-            </div>
-            <div class="btn-list shdw">
-                <a href="/contacts"><i class="bi bi-chat"></i></a>
-            </div>
-        </div>
-    </main>
+                <%
+            }) %>
+    </section>
+</div>
+<div class="btn-container">
+    <div class="plus">
+        <i class="bi bi-layers"></i>
+    </div>
+    <div class="btn-list shdw">
+        <a href="/contacts"><i class="bi bi-layers"></i></a>
+    </div>
+    <div class="btn-list shdw">
+        <a href="/contacts"><i class="bi bi-layers"></i></a>
+    </div>
+    <div class="btn-list shdw">
+        <a href="/contacts"><i class="bi bi-chat"></i></a>
+    </div>
+</div>
+</main>
 </body>
 </html>

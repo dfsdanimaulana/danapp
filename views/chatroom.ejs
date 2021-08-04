@@ -36,23 +36,47 @@
             <div class="information">
                 <p></p>
             </div>
+            <% if (msg) {
+                %>
+                <% msg.forEach(list => {
+                    %>
+                    <% if (list.username === data.username) {
+                        list.sender = 'you'
+                        list.pos = 'left'
+                    } else {
+                        list.pos = 'right'
+                    }%>
+                    <div class="msg msg-<%= list.pos %>">
+                        <span><%= list.sender %></span>
+                        <p>
+                            <%= list.message %>
+                        </p>
+                        <span>
+                            <i class="bi bi-check"></i>
+                            <!--<i class="bi bi-check-all"></i>-->
+                            <%= list.timeSend %>
+                        </span>
+                    </div>
+                    <%
+                })%>
+                <%
+            } %>
         </div>
         <div class="input-msg-container">
             <div class="input-msg">
                 <a href="#"><i class="bi bi-camera"></i></a>
                 <form id="form">
-                    <input type="text" name="username" value="<%= data.username %>" hidden>
+                    <input type="text" name="reciver" value="<%= data.username %>" hidden>
                     <input type="text" name="sender" value="<%= currentUser %>" hidden>
                     <input
                     id="inp"
                     type="text"
                     placeholder="Message..."
-                    autofocus="true"
+                    autofocus
                     autocomplete="off"
                     name="message"
                     />
                     <input type="submit" hidden>
-                    
                 </form>
                 <div class="icon-group">
                     <a href="#"><i class="bi bi-mic"></i></a>
