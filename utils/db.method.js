@@ -1,6 +1,7 @@
 'use strict'
 
 const { Profile } = require("../models/profile.model")
+const { Message } = require("../models/message.model")
 
 const getData = () => {
     return Profile.find()
@@ -22,4 +23,11 @@ const updateById = (id,query) => {
     return Profile.findByIdAndUpdate(id,query, {new:true})
 }
 
-module.exports = { getData, getUser, deleteById, getByEmail, updateById }
+const saveMessage = (data) => {
+    const message = new Message(data)
+    message.save((err, result)=>{
+        if(err) throw err
+        console.log(result)
+    })
+}
+module.exports = { saveMessage, getData, getUser, deleteById, getByEmail, updateById }

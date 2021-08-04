@@ -80,6 +80,32 @@ function getName() {
 // dom area
 
 const navbtn = document.querySelector('.bi.bi-three-dots-vertical')
-navbtn.onclick = () => {
-  document.querySelector('.nav-menu').classList.add('open')
-}
+const navMenu = document.querySelector('.nav-menu')
+
+navbtn.addEventListener('click', () => {
+    
+    navMenu.classList.toggle('open')
+ 
+})
+
+// add two or more event listener in a single element
+const evenListener = ['click', 'scroll']
+
+evenListener.forEach((ev) => {
+  // outside click detect
+  document.addEventListener(ev, (out) => {
+    let clickedElement = out.target
+    do {
+      if (clickedElement == navMenu) {
+        // this is inside click. do nothing just return
+        return
+      }
+      if (clickedElement == navbtn) {
+        // this is inside click. do nothing just return
+        return
+      }
+      clickedElement = clickedElement.parentNode
+    } while (clickedElement)
+    navMenu.classList.remove('open')
+  })
+})

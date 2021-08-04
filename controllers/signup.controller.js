@@ -33,13 +33,8 @@ const addUser = async (req, res) => {
   
     const salt = await bcrypt.genSalt()
     const hashedPassword = await bcrypt.hash(data.password, salt)
-
-    const profile = new Profile({
-      username: data.username,
-      name: data.name,
-      email: data.email,
-      password: hashedPassword,
-    })
+    data.password = hashedPassword
+    const profile = new Profile(data)
 
     profile.save((err, list) => {
       if (err) return console.error(err)

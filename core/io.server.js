@@ -1,6 +1,7 @@
 'use strict'
 
 const socketio = require('socket.io')
+const { saveMessage } = require('../utils/db.method')
 
 // const {} = require('./utils/message.method')
 const { getCurrentUser, userJoin, formatName } = require('../utils/user.method')
@@ -18,6 +19,14 @@ module.exports = (server) => {
     socket.on('message', (obj) => {
       // mengirim kembali data ke server
       io.emit('message', formatName(obj))
+      
+      // menyimpan ke database
+      try {
+        saveMessage(obj)
+      } catch (e) {
+          console.log(e)
+      }
+      
     })
     socket.on('disconnect', () => {
       const user = getCurrentUser(socket.id)

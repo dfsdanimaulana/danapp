@@ -9,7 +9,7 @@ nav {
     background-color: rgb(2, 84, 140);
     color: rgb(143, 176, 226);
     display: grid;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     padding: .2rem;
     place-items: center;
     grid-template-columns: 2rem 3rem auto 2rem 2rem;
@@ -19,6 +19,7 @@ nav {
 nav h1 {
     justify-self: start;
     padding-left: .5rem;
+    font-size: 1.3rem;
 }
 #nav-img {
     width: 2.5rem;
@@ -28,23 +29,28 @@ nav h1 {
     border-radius: 50%;
 }
 /* nav menu */
+
 .nav-menu {
-    display: none;
-}
-.nav-menu.open {
     background-color: var(--primary);
-    width: 7rem;
+    width: 10rem;
     margin: 0.3rem;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -10.5rem;
     color: var(--soft);
-    font-size: .9rem;
+    font-size: 1rem;
     z-index: 999;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 4px -1px var(--dark);
+    -webkit-box-shadow: 0 0 4px -1px var(--dark);
+    -moz-box-shadow: 0 0 4px -1px var(--dark);
 }
 
 .nav-menu-list {
-    margin: 1rem 0.5rem;
+    margin: 1.5rem 1rem;
+}
+.nav-menu.open {
+    right: 0;
 }
 /* nav menu end */
 .chat-room-container {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,50 +8,56 @@
     <link rel="stylesheet" href="/css/chatroom.css" type="text/css" media="all" />
     <script src="/js/chatroomio.js" type="text/javascript" charset="utf-8" defer></script>
     <title>Chatroom</title>
-  </head>
-  <body>
+</head>
+<body>
     <main>
-      <header>
-        <nav>
-          <a href="/chat"><i class="bi bi-arrow-left"></i></a>
-          <a><img id="nav-img" src="/<%= data.img %>"></img></a>
-          <h1><%= data.name %></h1>
-          <i class="bi bi-search"></i>
-          <i class="bi bi-three-dots-vertical"></i>
+        <header>
+            <nav>
+                <a href="/chat"><i class="bi bi-arrow-left"></i></a>
+                <a><img id="nav-img" src="/<%= data.img %>"></img></a>
+            <h1><%= data.name %></h1>
+            <i class="bi bi-search"></i>
+            <i class="bi bi-three-dots-vertical"></i>
         </nav>
-        <div class="nav-menu shdw">
-          <div class="nav-menu-list">clear chat</div>
-          <div class="nav-menu-list">list 2</div>
-          <div class="nav-menu-list">list 3</div>
+        <div class="nav-menu">
+            <div class="nav-menu-list">
+                clear chat
+            </div>
+            <div class="nav-menu-list">
+                list 2
+            </div>
+            <div class="nav-menu-list">
+                list 3
+            </div>
         </div>
-      </header>
-      <div class="chat-room-container">
+    </header>
+    <div class="chat-room-container">
         <div class="chat-room-body">
-          <div class="information">
-            <p></p>
-          </div>
+            <div class="information">
+                <p></p>
+            </div>
         </div>
         <div class="input-msg-container">
-          <div class="input-msg">
-            <a href="#"><i class="bi bi-camera"></i></a>
-            <form id="form">
-              <input
-                id="inp"
-                type="text"
-                placeholder="Message..."
-                autofocus="true"
-                autocomplete="off"
-              />
-            </form>
-            <div class="icon-group">
-              <a href="#"><i class="bi bi-mic"></i></a>
-              <a href="#"><i class="bi bi-images"></i></a>
-              <a href="#"><i class="bi bi-emoji-smile"></i></a>
+            <div class="input-msg">
+                <a href="#"><i class="bi bi-camera"></i></a>
+                <form id="form">
+                    <input
+                    id="inp"
+                    type="text"
+                    placeholder="Message..."
+                    autofocus="true"
+                    autocomplete="off"
+                    />
+                </form>
+                <div class="icon-group">
+                    <a href="#"><i class="bi bi-mic"></i></a>
+                    <a href="#"><i class="bi bi-images"></i></a>
+                    <a href="#"><i class="bi bi-emoji-smile"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </main>
-    <script src="/socket.io/socket.io.js"></script>
-  </body>
+    </div>
+</main>
+<script src="/socket.io/socket.io.js"></script>
+</body>
 </html>
