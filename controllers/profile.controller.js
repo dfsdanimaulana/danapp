@@ -1,7 +1,12 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const { getUser, updateById, getData } = require('../utils/db.method')
+const {
+  getUser,
+  updateById,
+  getData,
+  deleteById,
+} = require('../utils/db.method')
 
 const params = {}
 const view = async (req, res) => {
@@ -62,10 +67,10 @@ const updateData = (req, res) => {
       return res.render('profile', params)
     })
     .catch((err) => {
-      if(err){
-        if(err.codeName === 'DuplicateKey'){
-            req.flash('duplicate_username','Username is already exists')
-            return res.redirect(`/profile/${ req.session.user._id }`)
+      if (err) {
+        if (err.codeName === 'DuplicateKey') {
+          req.flash('duplicate_username', 'Username is already exists')
+          return res.redirect(`/profile/${req.session.user._id}`)
         }
       }
       res.send(err)
@@ -80,8 +85,20 @@ const getUsers = async (req, res) => {
     res.send(e)
   }
 }
+
+const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id
+    await deleteById(id)
+    res.redirect('/chat/logout')
+  } catch (e) {
+    res.send(e)
+  }
+}
+
 module.exports = {
   view,
   updateData,
   getUsers,
+  deleteUser,
 }

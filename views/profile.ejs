@@ -16,20 +16,18 @@
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h1>Profile</h1>
-            <a href="/page">
-                <i class="bi bi-three-dots-vertical"></i>
-            </a>
+            <i class="bi bi-three-dots-vertical"></i>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="/page">More info</a></li>
+                <li><a href="#">Edit profile</a></li>
+                <li><a href="/profile/d/<%= data._id %>" onclick="prompt('Are you sure want to delete this user?')">Delete profile</a></li>
+            </ul>
         </div>
         <a href="#">
             <img src=/<%= data.img %> alt="not found"></img>
     </a>
-    <% if (error) {
-        %>
-        <p>
-            <%= error %>
-        </p>
-        <%
-    } %>
     <div class="box">
         <i class="bi bi-person-circle"></i>
         <p class="desc">

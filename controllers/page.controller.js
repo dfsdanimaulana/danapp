@@ -11,7 +11,7 @@ const showData = async (req, res) => {
 
 const deleteData = async (req, res) => {
   const id = req.body.id
-  deleteById(id)
+  await deleteById(id)
   res.redirect('/page')
 }
 

@@ -48,7 +48,7 @@ form.addEventListener('submit', function (e) {
     socket.emit('message', {
       msg,
       name: username,
-      data
+      data,
     })
 
     // Clear input
@@ -61,6 +61,8 @@ form.addEventListener('submit', function (e) {
 function outputMsg(msg) {
   if (msg.name !== username) {
     msg.pos = 'left'
+  } else {
+    msg.name = 'you'
   }
   chatRoomBody.innerHTML += `<div class="msg msg-${msg.pos}">
         <span>${msg.name}</span>

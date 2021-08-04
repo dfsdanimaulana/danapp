@@ -7,7 +7,7 @@ mongoose.connect(process.env.DB_ATLAS, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify:true,
+  useFindAndModify: false,
 })
 mongoose.set('returnOriginal', false)
 

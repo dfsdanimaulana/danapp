@@ -6,8 +6,8 @@ const { view, logout } = require('../controllers/chat.controller')
 const { isAuth, hasCookie } = require('../utils/middleware')
 
 module.exports = (app) => {
+  router.get('/logout', logout)
   router.get('/' ,hasCookie , isAuth, view)
-  router.post('/', logout)
 
   app.use('/chat', router)
 }

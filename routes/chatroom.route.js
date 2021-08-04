@@ -3,10 +3,13 @@
 const express = require('express')
 const router = express.Router()
 
-const { view } = require('../controllers/chatroom.controller')
+const { view, showMessage } = require('../controllers/chatroom.controller')
 const { isAuth } = require('../utils/middleware')
 
+
 module.exports = (app) => {
+  router.get('/api', showMessage)
+  router.get('/delete')
   router.get('/:id/:name', isAuth, view)
   app.use('/chatroom', router)
 }

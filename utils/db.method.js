@@ -1,40 +1,55 @@
 'use strict'
 
-const { Profile } = require("../models/profile.model")
-const { Message } = require("../models/message.model")
+const { Profile } = require('../models/profile.model')
 
 const getData = () => {
-    return Profile.find()
+  return Profile.find()
 }
 
 const getUser = (id) => {
-    return Profile.findById(id)
-} 
+  return Profile.findById(id)
+}
 
 const deleteById = (id) => {
-    return Profile.findByIdAndDelete(id)
-} 
+  return Profile.findOneAndDelete({ _id: id })
+}
 
 const getByEmail = (email) => {
-    return Profile.findOne({ email })
-} 
+  return Profile.findOne({ email })
+}
 
-const updateById = (id,query) => {
-    return Profile.findByIdAndUpdate(id,query, {new:true})
+const updateById = (id, query) => {
+  return Profile.findByIdAndUpdate(id, query, { new: true })
 }
 
 const saveUser = (data) => {
-    const user = new Profile(data)
-    user.save((err, result)=>{
-        if(err) throw err
-        console.log(result)
-    })
+  const user = new Profile(data)
+  user.save((err, result) => {
+    if (err) throw err
+    console.log(result)
+  })
 }
+
+const { Message } = require('../models/message.model')
+
 const saveMessage = (data) => {
-    const message = new Message(data)
-    message.save((err, result)=>{
-        if(err) throw err
-        console.log(result)
-    })
+  const message = new Message(data)
+  message.save((err, result) => {
+    if (err) throw err
+    console.log(result)
+  })
 }
-module.exports = { saveMessage, getData, getUser, deleteById, getByEmail, updateById ,saveUser}
+
+const getAllMessage = () => {
+  return Message.find()
+}
+module.exports = {
+  getAllMessage,
+  saveMessage,
+  getData,
+  getUser,
+  deleteById,
+  getByEmail,
+  updateById,
+  saveUser,
+}

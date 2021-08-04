@@ -1,6 +1,6 @@
 'use strict'
 
-const { getUser } = require('../utils/db.method')
+const { getUser, getAllMessage } = require('../utils/db.method')
 
 const params = {}
 
@@ -15,6 +15,18 @@ const view = async (req, res) => {
   res.render('chatroom', params)
 }
 
+const showMessage = async (req, res) => {
+  try {
+    const data = await getAllMessage()
+    if (!data) {
+      return res.send('data not found')
+    }
+    res.json(data)
+  } catch (e) {
+    res.send(e)
+  }
+}
 module.exports = {
   view,
+  showMessage,
 }

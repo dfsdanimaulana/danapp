@@ -37,7 +37,7 @@ const addUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(data.password, salt)
     data.password = hashedPassword
 
-    saveUser(data)
+    await saveUser(data)
 
     res.redirect('/contacts')
   } catch (e) {
