@@ -42,9 +42,43 @@
         </header>
         <div class="scroll-container">
             <section id="chats">
-                <% data.forEach(list => {
+                <% if (msg) {
                     %>
-                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                    <% data.forEach(list => {
+                        %>
+                        <% const messages = msg.filter(v => v.reciver === list.username) %>
+                        <% const len = messages.length%>
+                        <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                            <a href="/profile/<%= list._id %>">
+                                <img src="/<%= list.img %>" alt="not found"></img>
+                        </a>
+                        <p>
+                            <%= list.name %>
+                        </p>
+                        <i class="bi bi-check"></i>
+                        <!--<i class="bi bi-check-all"></i>  -->
+                        <p>
+                            <%= messages[len-1].message %>
+                        </p>
+                        <p>
+                            <%= messages[len-1].timeSend %>
+                        </p>
+                        <i class="bi bi-volume-mute"></i>
+                        <p>
+                            <%= len %>
+                        </p>
+                    </div>
+                        <%
+                    }) %>
+                <%
+            } %>
+        </section>
+        <section id="status">
+            <% if (status) {
+                %>
+                <% status.forEach(list => {
+                    %>
+                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>/<%= %>'">
                         <a href="/profile/<%= list._id %>">
                             <img src="/<%= list.img %>" alt="not found"></img>
                     </a>
@@ -66,32 +100,8 @@
                 </div>
                     <%
                 }) %>
-        </section>
-        <section id="status">
-            <% data.forEach(list => {
-                %>
-                <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>/<%= %>'">
-                    <a href="/profile/<%= list._id %>">
-                        <img src="/<%= list.img %>" alt="not found"></img>
-                </a>
-                <p>
-                    <%= list.name %>
-                </p>
-                <i class="bi bi-check"></i>
-                <!--<i class="bi bi-check-all"></i>  -->
-                <p>
-                    <%= list.message %>
-                </p>
-                <p>
-                    <%= list.timeSend %>
-                </p>
-                <i class="bi bi-volume-mute"></i>
-                <p>
-                    15
-                </p>
-            </div>
-                <%
-            }) %>
+            <%
+        } %>
     </section>
 </div>
 <div class="btn-container">

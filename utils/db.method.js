@@ -10,13 +10,19 @@ const {
 module.exports = {
 
     getData: () => {
-        return Profile.find()
+        return Profile.find().sort({
+            name: 1
+        })
     },
 
     getUser: (id) => {
         return Profile.findById(id)
     },
-
+    getByUsername: (username) => {
+        return Profile.findOne({
+            username
+        })
+    },
     deleteById: (id) => {
         return Profile.findOneAndDelete({
             _id: id
@@ -56,11 +62,15 @@ module.exports = {
     },
 
     getMessageBySender: async (sender,
-        reciver) => {
+        reciver = 'someone') => {
+
         const  data = await Message.find({
             sender
         })
+        if (reciver === 'someone') return data
         return data.filter(msg => msg.reciver === reciver)
     },
-
+    getSomeUserByValue: (query) => {
+        return Profile.find(query)
+    }
 }

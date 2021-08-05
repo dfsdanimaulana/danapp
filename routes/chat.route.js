@@ -2,12 +2,19 @@
 
 const express = require('express')
 const router = express.Router()
-const { view, logout } = require('../controllers/chat.controller')
-const { isAuth, hasCookie } = require('../utils/middleware')
+const {
+    view,
+    logout,
+    displaySavedMessage
+} = require('../controllers/chat.controller')
+const {
+    isAuth,
+    hasCookie
+} = require('../utils/middleware')
 
 module.exports = (app) => {
-  router.get('/logout', logout)
-  router.get('/' ,hasCookie , isAuth, view)
+    router.get('/logout', logout)
+    router.get('/', hasCookie, isAuth, displaySavedMessage)
 
-  app.use('/chat', router)
+    app.use('/chat', router)
 }
