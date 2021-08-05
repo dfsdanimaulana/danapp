@@ -16,5 +16,5 @@ mongoose.set('returnOriginal', false)
 module.exports = () => {
     mongoose.connection
     .on('error', console.error.bind(console, 'Connection Error!'))
-    .once('open', () => console.log(chalk.italic.green('Database Connected!')))
+    .once('open', () => console.log(chalk.italic.blue('Database Connected!')))
 } 
