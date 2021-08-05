@@ -23,5 +23,5 @@ module.exports = {
             if (err) throw err
             return res.redirect('/login')
         })
-    },
+    }
 }

@@ -7,10 +7,11 @@ const {
     saveUser
 } = require('../utils/db.method')
 
+const params = {}
+
 module.exports = {
 
     view: (req, res) => {
-        const params = {}
         if (req.session.isAuth && req.session.user) {
             return res.redirect('/chat')
         }

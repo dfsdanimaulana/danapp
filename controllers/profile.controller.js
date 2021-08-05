@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 'use strict'
 
 const {
@@ -31,6 +30,7 @@ module.exports = {
         let query
 
         switch (data.updater) {
+
             case 'username':
                 data.dataValue = data.dataValue.replace(/ /g, '_')
                 query = {
@@ -39,6 +39,7 @@ module.exports = {
                     },
                 }
                 break
+
             case 'name':
                 query = {
                     $set: {
@@ -46,6 +47,7 @@ module.exports = {
                     },
                 }
                 break
+
             case 'email':
                 query = {
                     $set: {
@@ -100,5 +102,4 @@ module.exports = {
             res.send(e)
         }
     }
-
 }
