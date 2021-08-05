@@ -6,6 +6,7 @@ const express = require('express')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+
 // server connection
 const app = require('./core/server')
 const { authenticationToken, isAuth } = require('./utils/middleware')

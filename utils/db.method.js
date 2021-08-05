@@ -46,8 +46,6 @@ const getAllMessage = () => {
 
 const getMessageBySender = async (sender, reciver) => {
     const data = await Message.find({sender})
-    console.log(data)
-    console.log('reciver',reciver)
     return data.filter(msg => msg.reciver === reciver)
     
 }

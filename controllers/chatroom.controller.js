@@ -18,7 +18,6 @@ const view = async (req, res) => {
     if(!msg) {
         console.log('message not found')
     } else {
-        console.log('message ',msg)
         params.msg = msg
     }
     
