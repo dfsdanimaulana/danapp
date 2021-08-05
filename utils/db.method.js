@@ -1,63 +1,66 @@
 'use strict'
 
-const { Profile } = require('../models/profile.model')
-
-const getData = () => {
-  return Profile.find()
-}
-
-const getUser = (id) => {
-  return Profile.findById(id)
-}
-
-const deleteById = (id) => {
-  return Profile.findOneAndDelete({ _id: id })
-}
-
-const getByEmail = (email) => {
-  return Profile.findOne({ email })
-}
-
-const updateById = (id, query) => {
-  return Profile.findByIdAndUpdate(id, query, { new: true })
-}
-
-const saveUser = (data) => {
-  const user = new Profile(data)
-  user.save((err, result) => {
-    if (err) throw err
-    console.log(result)
-  })
-}
-
-const { Message } = require('../models/message.model')
-
-const saveMessage = (data) => {
-  const message = new Message(data)
-  message.save((err, result) => {
-    if (err) throw err
-    console.log(result)
-  })
-}
-
-const getAllMessage = () => {
-  return Message.find()
-}
-
-const getMessageBySender = async (sender, reciver) => {
-    const data = await Message.find({sender})
-    return data.filter(msg => msg.reciver === reciver)
-    
-}
+const {
+    Profile
+} = require('../models/profile.model')
+const {
+    Message
+} = require('../models/message.model')
 
 module.exports = {
-  getMessageBySender,
-  getAllMessage,
-  saveMessage,
-  getData,
-  getUser,
-  deleteById,
-  getByEmail,
-  updateById,
-  saveUser,
+
+    getData: () => {
+        return Profile.find()
+    },
+
+    getUser: (id) => {
+        return Profile.findById(id)
+    },
+
+    deleteById: (id) => {
+        return Profile.findOneAndDelete({
+            _id: id
+        })
+    },
+
+    getByEmail: (email) => {
+        return Profile.findOne({
+            email
+        })
+    },
+
+    updateById: (id, query) => {
+        return Profile.findByIdAndUpdate(id, query, {
+            new: true
+        })
+    },
+
+    saveUser: (data) => {
+        const user = new Profile(data)
+        user.save((err, result) => {
+            if (err) throw err
+            console.log(result)
+        })
+    },
+
+    saveMessage: (data) => {
+        const  message = new Message(data)
+        message.save((err, result) => {
+            if (err) throw err
+            console.log(result)
+        })
+    },
+
+    getAllMessage: () => {
+        return Message.find()
+    },
+
+    getMessageBySender: async (sender,
+        reciver) => {
+        const  data = await Message.find({
+            sender
+        })
+        return data.filter(msg => msg.reciver === reciver)
+    },
+
 }

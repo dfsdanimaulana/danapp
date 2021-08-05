@@ -3,65 +3,73 @@
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
 // const { createAccessToken, authenticationToken } = require('../core/middleware')
-const { getByEmail } = require('../utils/db.method')
+const {
+    getByEmail
+} = require('../utils/db.method')
 
 const params = {}
 
-const view = (req, res) => {
-  if (req.session.isAuth) {
-    return res.redirect('/chat')
-  }
-  params.email_error = req.flash && req.flash('email_error')
-  params.password_error = req.flash && req.flash('password_error')
+module.exports = {
+    view: (req, res) => {
+        if (req.session.isAuth) {
+            return res.redirect('/chat')
+        }
+        params.email_error = req.flash && req.flash('email_error')
+        params.password_error = req.flash && req.flash('password_error')
 
-  res.render('login', params)
-}
+        res.render('login', params)
+    },
 
-const cekUser = async (req, res) => {
-  const { email, password, checkbox } = req.body
-  const { guest } = req.body
-  if (guest) {
-  const user = await getByEmail('a@g.com')
-  req.session.isAuth = true
-  req.session.user = user
+    cekUser: async (req, res) => {
+        const {
+            email,
+            password,
+            checkbox
+        } = req.body
+        const {
+            guest
+        } = req.body
+        if (guest) {
+            const user = await getByEmail('a@g.com')
+            req.session.isAuth = true
+            req.session.user = user
 
-  return res.redirect('/chat')
-  }
-  const user = await getByEmail(email)
-  if (!user) {
-    req.flash('email_error', 'Email not found, please register first')
-    return res.redirect('/login')
-  }
+            return res.redirect('/chat')
+        }
+        const user = await getByEmail(email)
+        if (!user) {
+            req.flash('email_error', 'Email not found, please register first')
+            return res.redirect('/login')
+        }
 
-  try {
-    const isMatch = await bcrypt.compare(password, user.password)
+        try {
+            const isMatch = await bcrypt.compare(password, user.password)
 
-    if (!isMatch) {
-    req.flash('password_error', 'Incorrect password')
-      return res.redirect('/login')
+            if (!isMatch) {
+                req.flash('password_error', 'Incorrect password')
+                return res.redirect('/login')
+            }
+
+            req.session.isAuth = true
+
+            if (checkbox) {
+                const salt = await bcrypt.genSalt()
+                const hashedCookie = await bcrypt.hash(user.username, salt)
+                res.cookie('id', user._id, {
+                    expires: new Date(Date.now + 150000),
+                })
+                res.cookie('login', hashedCookie, {
+                    expires: new Date(Date.now + 150000),
+                })
+            }
+            req.session.user = user
+            return res.redirect('/chat')
+        } catch (err) {
+            console.log('jwt error', err)
+            return res.status(500).send()
+        }
     }
-
-    req.session.isAuth = true
-
-    if (checkbox) {
-      const salt = await bcrypt.genSalt()
-      const hashedCookie = await bcrypt.hash(user.username, salt)
-      res.cookie('id', user._id, {
-        expires: new Date(Date.now + 150000),
-      })
-      res.cookie('login', hashedCookie, {
-        expires: new Date(Date.now + 150000),
-      })
-    }
-    req.session.user = user
-    return res.redirect('/chat')
-  } catch (err) {
-    console.log('jwt error', err)
-    return res.status(500).send()
-  }
 }
-
-module.exports = { view, cekUser }
 
 // const userJson = async (req, res) => {
 //   try {

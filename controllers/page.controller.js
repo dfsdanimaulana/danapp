@@ -1,21 +1,23 @@
 'use strict'
-const { getData, deleteById } = require('../utils/db.method')
+const {
+    getData,
+    deleteById
+} = require('../utils/db.method')
 
 const params = {}
 
-const showData = async (req, res) => {
-  const data = await getData()
-  params.data = data
-  res.render('page', params)
-}
-
-const deleteData = async (req, res) => {
-  const id = req.body.id
-  await deleteById(id)
-  res.redirect('/page')
-}
-
 module.exports = {
-  showData,
-  deleteData,
+
+    showData: async (req, res) => {
+        const data = await getData()
+        params.data = data
+        res.render('page', params)
+    },
+
+    deleteData: async (req, res) => {
+        const id = req.body.id
+        await deleteById(id)
+        res.redirect('/page')
+    }
+
 }
