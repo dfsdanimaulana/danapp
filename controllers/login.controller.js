@@ -2,7 +2,7 @@
 
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
-// const { createAccessToken, authenticationToken } = require('../core/middleware')
+
 const {
     getByEmail
 } = require('../utils/db.method')
@@ -65,26 +65,7 @@ module.exports = {
             req.session.user = user
             return res.redirect('/chat')
         } catch (err) {
-            console.log('jwt error', err)
-            return res.status(500).send()
+            return res.status(500).send(err)
         }
     }
 }
-
-// const userJson = async (req, res) => {
-//   try {
-//     const { email, password } = req.body
-
-//     const accessToken = await createAccessToken({ email })
-//     console.log('token : ', accessToken)
-
-//     req.session.isAuth = true
-
-//     res.json({ accessToken })
-//   } catch (err) {
-//     return console.log(err)
-//   }
-// }
-// Authentication User & get access token
-// const accessToken = await createAccessToken({ email })
-// console.log(accessToken)

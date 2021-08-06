@@ -1,6 +1,6 @@
 'use strict'
 
-const routes = 
+const routes =
 [
     'chatroom',
     'page',

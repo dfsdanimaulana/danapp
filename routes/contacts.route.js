@@ -1,13 +1,17 @@
 'use strict'
 
 const express = require('express')
-const { isAuth } = require('../utils/middleware')
+const {
+    isAuth
+} = require('../utils/middleware')
 const router = express.Router()
 
 module.exports = (app) => {
-  const { view }= require('../controllers/contacts.controller')
+    const {
+        view
+    } = require('../controllers/contacts.controller')
 
-  router.get('/',isAuth, view)
+    router.get('/', isAuth, view)
 
-  app.use('/contacts', router)
+    app.use('/contacts', router)
 }
