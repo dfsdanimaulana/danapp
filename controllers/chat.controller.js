@@ -16,42 +16,32 @@ module.exports = {
         if (!data) return res.send('Data not found')
         params.currentUser = req.session.user._id
         params.data = data
-
         res.render('chat', params)
     },
 
     displaySavedMessage: async (req, res) => {
-
         params.currentUser = req.session.user._id
         const sender = req.session.user.username
-
         const msg = await getMessageBySender(sender) // aray of object
-        console.log('msg : ', msg)
         if (msg) {
             params.msg = msg
-
             // remove duplicate reciver
             const reciver = msg.map(v => v.reciver)
             .filter((v, i, arr) => arr.indexOf(v) === i)
-
             // get user by reciver
             let query = {
                 username: {
                     $in: reciver
                 }
             }
-            const data = await getSomeUserByValue(query)
-
-            console.log('data :', data)
-            params.data = data
-
-            return res.render('chat',
-                params)
+            params.data = await getSomeUserByValue(query)
+            return res.render('chat', params)
         } else {
             console.log('msg not found')
         }
         res.render('chat', params)
     },
+
     logout: (req, res) => {
         if (req.cookies) {
             res.clearCookie('login')

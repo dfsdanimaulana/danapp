@@ -5,6 +5,7 @@ const {
     updateById,
     getData,
     deleteById,
+    updateSender
 } = require('../utils/db.method')
 
 const params = {}
@@ -27,6 +28,7 @@ module.exports = {
     updateData: (req, res) => {
         const data = req.body
         params.currentUser = req.session.user._id
+        const oldName = req.session.user.username
         let query
 
         switch (data.updater) {
@@ -38,6 +40,8 @@ module.exports = {
                         username: data.dataValue,
                     },
                 }
+                updateSender(data.dataValue, oldName)
+                .catch(e=>console.log(e))
                 break
 
             case 'name':

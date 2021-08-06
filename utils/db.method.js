@@ -61,6 +61,17 @@ module.exports = {
         return Message.find()
     },
 
+    updateSender: async (newName,
+        oldName) => {
+        console.log(` newName: ${newName}, oldName: ${oldName}`)
+        return Message.updateMany({
+            sender: oldName
+        },
+            {
+                sender: newName
+            })
+    },
+
     getMessageBySender: async (sender,
         reciver = 'someone') => {
 
