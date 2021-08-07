@@ -2,15 +2,11 @@
 
 const bcrypt = require('bcryptjs')
 const schema = require('../utils/userAuth')
-const {
-    getByEmail,
-    saveUser
-} = require('../utils/db.method')
+const { getByEmail, saveUser } = require('../utils/db.method')
 
 const params = {}
 
 module.exports = {
-
     view: (req, res) => {
         if (req.session.isAuth && req.session.user) {
             return res.redirect('/chat')
@@ -20,10 +16,7 @@ module.exports = {
 
     addUser: async (req, res) => {
         try {
-            const {
-                error,
-                value
-            } = await schema.validate(req.body)
+            const { error, value } = await schema.validate(req.body)
             if (error) {
                 console.log(error)
                 return res.send(error)
@@ -52,6 +45,5 @@ module.exports = {
         } catch (e) {
             return res.send(e)
         }
-    }
-
+    },
 }

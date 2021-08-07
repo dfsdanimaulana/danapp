@@ -3,12 +3,11 @@
 const {
     getData,
     getMessageBySender,
-    getByUsername,
-    getSomeUserByValue
+    getSomeUserByValue,
 } = require('../utils/db.method')
 
 const params = {
-    status: false
+    status: false,
 }
 module.exports = {
     view: async (req, res) => {
@@ -22,17 +21,18 @@ module.exports = {
     displaySavedMessage: async (req, res) => {
         params.currentUser = req.session.user._id
         const sender = req.session.user.username
-        const msg = await getMessageBySender(sender) // aray of object
+        const msg = await getMessageBySender(sender) // array of object
         if (msg) {
             params.msg = msg
             // remove duplicate reciver
-            const reciver = msg.map(v => v.reciver)
-            .filter((v, i, arr) => arr.indexOf(v) === i)
+            const reciver = msg
+                .map((v) => v.reciver)
+                .filter((v, i, arr) => arr.indexOf(v) === i)
             // get user by reciver
             let query = {
                 username: {
-                    $in: reciver
-                }
+                    $in: reciver,
+                },
             }
             params.data = await getSomeUserByValue(query)
             return res.render('chat', params)
@@ -51,5 +51,5 @@ module.exports = {
             if (err) throw err
             return res.redirect('/login')
         })
-    }
+    },
 }
