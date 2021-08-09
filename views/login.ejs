@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,25 +14,33 @@
         <h1>Login</h1>
         <form action="/login" method="POST">
             <div class="input-container">
-                <label id="el" for="email">Email</label>
-                <input type="email"  name="email" placeholder="email..." id="email" required>           
-                <% if(email_error){ %> 
+                <label id="el" for="username">Username</label>
+                <input type="text" name="username" placeholder="username..." id="username" required>
+                <% if (email_error) {
+                    %>
                     <div class="flash e">
-                        <p><%= email_error %></p>
+                        <p>
+                            <%= email_error %>
+                        </p>
                     </div>
-                <% } %>
+                    <%
+                } %>
             </div>
             <div class="input-container">
                 <label id="pl" for="password">Password</label>
-                <input type="password" name="password" placeholder="password..." id="password" required>               
-                <% if(password_error){ %> 
+                <input type="password" name="password" placeholder="password..." id="password" required>
+                <% if (password_error) {
+                    %>
                     <div class="flash p">
-                        <p><%= password_error %></p>
+                        <p>
+                            <%= password_error %>
+                        </p>
                     </div>
-                <% } %>
+                    <%
+                } %>
             </div>
             <label id="check" for="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox" />
+                <input type="checkbox" name="checkbox" id="checkbox" />
                 Remember me
             </label>
             <button type="submit">login</button>
@@ -41,19 +49,19 @@
             <h6>Login as guest :</h6>
             <form method="POST" action="/login">
                 <input name="guest" value="true" hidden></input>
-                <button type="submit" id="guest">guest</button>
-            </form>
-            <h6>or login with :</h6>
-            <ul>
-                <li><a href="#"><i class="bi bi-google"></i></i></a></li>
-                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-                <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
-            </ul>
-        </div>
-        <div class="footer">
-            New user ? signup <a href="/signup">here</a>
-        </div>
-    </div>     
+            <button type="submit" id="guest">guest</button>
+        </form>
+        <h6>or login with :</h6>
+        <ul>
+            <li><a href="#"><i class="bi bi-google"></i></i></a></li>
+        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+        <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
+    </ul>
+</div>
+<div class="footer">
+    New user ? signup <a href="/signup">here</a>
+</div>
+</div>
 </body>
 </html>

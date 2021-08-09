@@ -3,7 +3,9 @@
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
 
-const { getByEmail } = require('../utils/db.method')
+const {
+    getByUsername
+} = require('../utils/db.method')
 
 const params = {}
 
@@ -19,8 +21,14 @@ module.exports = {
     },
 
     cekUser: async (req, res) => {
-        const { email, password, checkbox } = req.body
-        const { guest } = req.body
+        const {
+            username,
+            password,
+            checkbox
+        } = req.body
+        const {
+            guest
+        } = req.body
         if (guest) {
             const user = await getByEmail('a@g.com')
             req.session.isAuth = true
@@ -28,9 +36,9 @@ module.exports = {
 
             return res.redirect('/chat')
         }
-        const user = await getByEmail(email)
+        const user = await getByUsername(username)
         if (!user) {
-            req.flash('email_error', 'Email not found, please register first')
+            req.flash('email_error', 'Username not found, please register first')
             return res.redirect('/login')
         }
 
