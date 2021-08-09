@@ -30,7 +30,7 @@ module.exports = {
             guest
         } = req.body
         if (guest) {
-            const user = await getByEmail('a@g.com')
+            const user = await getByUsername('dnm17')
             req.session.isAuth = true
             req.session.user = user
 

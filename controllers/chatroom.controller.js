@@ -33,7 +33,9 @@ module.exports = {
             if (!data) {
                 return res.send('data not found')
             }
-            res.json(data)
+            console.log(data)
+            params.data = data
+            res.render('chatsfile', params)
         } catch (e) {
             res.send(e)
         }

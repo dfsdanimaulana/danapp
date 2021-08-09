@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('layouts/cdn') %>
+    <link rel="stylesheet" href="/css/chatroom.css" type="text/css" media="all" />
+    <script src="/js/chatroomio.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Chat Api</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr style="color:#3ca6ff;">
+                        <th scope="col">timeSend</th>
+                        <th scope="col">sender</th>
+                        <th scope="col">reciver</th>
+                        <th scope="col">message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(v => {
+                        %>
+                        <tr>
+                            <th scope="row"><%= v.timeSend %></th>
+                            <td><%= v.sender %></td>
+                            <td><%= v.reciver %></td>
+                            <td><%= v.message %></td>
+                        </tr>
+                        <%
+                    }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
