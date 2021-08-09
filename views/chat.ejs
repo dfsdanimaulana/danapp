@@ -78,26 +78,12 @@
                 %>
                 <% status.forEach(list => {
                     %>
-                    <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>/<%= %>'">
-                        <a href="/profile/<%= list._id %>">
-                            <img src="/<%= list.img %>" alt="not found"></img>
-                    </a>
-                    <p>
-                        <%= list.name %>
-                    </p>
-                    <i class="bi bi-check"></i>
-                    <!--<i class="bi bi-check-all"></i>  -->
-                    <p>
-                        <%= list.message %>
-                    </p>
-                    <p>
-                        <%= list.timeSend %>
-                    </p>
-                    <i class="bi bi-volume-mute"></i>
-                    <p>
-                        15
-                    </p>
-                </div>
+                  <div class="status-container">
+                    <img src="/images/Dani.jpg" alt="not found">
+                    <p>My status</p>
+                    <p>5 minutes ago</p>
+
+                    </div>
                     <%
                 }) %>
             <%

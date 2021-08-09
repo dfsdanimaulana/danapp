@@ -24,13 +24,13 @@ module.exports = {
         const {
             username,
             password,
-            checkbox
-        } = req.body
-        const {
+            checkbox,
             guest
         } = req.body
+       
         if (guest) {
             const user = await getByUsername('dnm17')
+            if(!user) return res.send('User not found!')
             req.session.isAuth = true
             req.session.user = user
 

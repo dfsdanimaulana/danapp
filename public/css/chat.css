@@ -261,6 +261,42 @@ header {
 
 /* button end*/
 
+/* status start */
+.status-container {
+    display: grid;
+    grid-template-areas: 
+    "img username"
+    "img time";
+    grid-template-columns: 4rem auto;
+    grid-template-rows: auto auto;
+    width: 100vw;
+    margin: 0.5rem;
+    place-items: center;
+    
+
+}
+.status-container img {
+    grid-area: img;
+     width: 3.3rem;
+    height: 3.3rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 0.5rem;
+    border: 1px solid black;
+    
+}
+.status-container p:nth-child(2) {
+    border: 1px solid black;
+    grid-area: username;
+    align-self: start;
+}
+.status-container p:last-child {
+    border: 1px solid black;
+    align-self: start;
+    grid-area: time;
+}
+
 /* Responsive */
 
 /* Medium devices (tablets, 768px and up)*/

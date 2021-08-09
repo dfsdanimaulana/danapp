@@ -7,7 +7,7 @@ const {
 } = require('../utils/db.method')
 
 const params = {
-    status: false,
+    status: [1, 2, 3],
 }
 module.exports = {
     view: async (req, res) => {
