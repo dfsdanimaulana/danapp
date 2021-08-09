@@ -5,7 +5,6 @@ const express = require('express')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
-const morgan = require('morgan')
 
 const {
     isAuth
@@ -23,9 +22,6 @@ app.use(express.json())
 
 // method-override
 app.use(methodOverride('_method'))
-
-// morgan logger
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 // session
 require('./utils/session')(app)

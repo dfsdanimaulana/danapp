@@ -6,7 +6,6 @@ const {
     getData,
     deleteById,
     updateSender,
-    getByUsername,
 } = require('../utils/db.method')
 
 const params = {}
@@ -20,7 +19,6 @@ module.exports = {
         }
         params.data = data
         params.currentUser = req.session.user._id
-        console.log(req.flash)
         params.error = req.flash && req.flash('duplicate_username')
         res.render('profile', params)
     },
