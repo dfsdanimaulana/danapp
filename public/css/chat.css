@@ -262,39 +262,49 @@ header {
 /* button end*/
 
 /* status start */
+#status {
+    box-sizing: border-box;
+}
+#status .status-container:first-child img::after {
+    content: 'hello world';
+}
 .status-container {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "img username"
     "img time";
     grid-template-columns: 4rem auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
     width: 100vw;
+    height: max-content;
     margin: 0.5rem;
-    place-items: center;
-    
-
 }
 .status-container img {
+    place-items: center;
     grid-area: img;
-     width: 3.3rem;
+    width: 3.3rem;
     height: 3.3rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     margin: 0.5rem;
-    border: 1px solid black;
-    
+
 }
 .status-container p:nth-child(2) {
-    border: 1px solid black;
+
+    font-size: 1rem;
     grid-area: username;
-    align-self: start;
+    justify-self: start;
+    align-self: center;
+    margin-left: 1rem;
 }
 .status-container p:last-child {
-    border: 1px solid black;
-    align-self: start;
-    grid-area: time;
+    margin-left: 1rem;
+
+    place-self: start;
+    font-size: .8rem;
+    justify-self: start;
+    align-self: center;
 }
 
 /* Responsive */

@@ -15,9 +15,8 @@ module.exports = {
         })
     },
 
-    getUser: (id) => {
-        return Profile.findById(id)
-    },
+    getUser: (id) =>  Profile.findById(id),
+
     getByUsername: (username) => {
         return Profile.findOne({
             username
@@ -57,13 +56,10 @@ module.exports = {
         })
     },
 
-    getAllMessage: () => {
-        return Message.find()
-    },
+    getAllMessage: () => Message.find(),
 
     updateSender: async (newName,
         oldName) => {
-        console.log(` newName: ${newName}, oldName: ${oldName}`)
         return Message.updateMany({
             sender: oldName
         },
@@ -73,15 +69,13 @@ module.exports = {
     },
 
     getMessageBySender: async (sender,
-        reciver = 'someone') => {
+        reciver) => {
 
         const  data = await Message.find({
             sender
         })
-        if (reciver === 'someone') return data
-        return data.filter(msg => msg.reciver === reciver)
+        if (reciver) return data.filter(msg => msg.reciver === reciver)
+        return data
     },
-    getSomeUserByValue: (query) => {
-        return Profile.find(query)
-    }
+    getSomeUserByValue: (query) => Profile.find(query)
 }
