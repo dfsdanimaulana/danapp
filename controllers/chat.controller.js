@@ -7,7 +7,9 @@ const {
 } = require('../utils/db.method')
 
 const params = {
-    status: [1, 2, 3],
+    status: [1,
+        2,
+        3],
 }
 module.exports = {
     view: async (req, res) => {
@@ -19,27 +21,32 @@ module.exports = {
     },
 
     displaySavedMessage: async (req, res) => {
-        params.currentUser = req.session.user._id
-        const sender = req.session.user.username
-        const msg = await getMessageBySender(sender) // array of object
-        if (msg) {
-            params.msg = msg
-            // remove duplicate reciver
-            const reciver = msg
+        try {
+            params.currentUser = req.session.user._id
+            const sender = req.session.user.username
+            const msg = await getMessageBySender(sender) // array of object
+            if (msg) {
+                params.msg = msg
+                // remove duplicate reciver
+                const reciver = msg
                 .map((v) => v.reciver)
                 .filter((v, i, arr) => arr.indexOf(v) === i)
-            // get user by reciver
-            let query = {
-                username: {
-                    $in: reciver,
-                },
+                // get user by reciver
+                let query = {
+                    username: {
+                        $in: reciver,
+                    },
+                }
+                params.data = await getSomeUserByValue(query)
+
+                return res.render('chat', params)
+            } else {
+                console.log('msg not found')
             }
-            params.data = await getSomeUserByValue(query)
-            return res.render('chat', params)
-        } else {
-            console.log('msg not found')
+            res.render('chat', params)
+        } catch (e) {
+            res.send(e)
         }
-        res.render('chat', params)
     },
 
     logout: (req, res) => {

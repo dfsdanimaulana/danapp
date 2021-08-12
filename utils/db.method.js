@@ -15,13 +15,16 @@ module.exports = {
         })
     },
 
-    getUser: (id) =>  Profile.findById(id),
+    getUser: (id) => {
+        return Profile.findById(id)
+    },
 
     getByUsername: (username) => {
         return Profile.findOne({
             username
         })
     },
+
     deleteById: (id) => {
         return Profile.findOneAndDelete({
             _id: id
@@ -56,11 +59,15 @@ module.exports = {
         })
     },
 
-    getAllMessage: () => Message.find(),
+    getAllMessage: () => {
+        return Message.find().sort({
+            sender: 1
+        })
+    },
 
-    updateSender: async (newName,
+    updateSender: (newName,
         oldName) => {
-        return Message.updateMany({
+        Message.updateMany({
             sender: oldName
         },
             {
@@ -77,5 +84,13 @@ module.exports = {
         if (reciver) return data.filter(msg => msg.reciver === reciver)
         return data
     },
-    getSomeUserByValue: (query) => Profile.find(query)
+
+    getSomeUserByValue: (query) => {
+        return Profile.find(query)
+    },
+
+    deleteMessage: () => {
+        Message.collection.drop()
+    }
+
 }

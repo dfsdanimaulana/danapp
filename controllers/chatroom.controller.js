@@ -4,6 +4,7 @@ const {
     getUser,
     getAllMessage,
     getMessageBySender,
+    deleteMessage
 } = require('../utils/db.method')
 
 const params = {}
@@ -33,11 +34,19 @@ module.exports = {
             if (!data) {
                 return res.send('data not found')
             }
-            console.log(data)
             params.data = data
             res.render('chatsfile', params)
         } catch (e) {
             res.send(e)
         }
     },
+    deleteAllMessage: async (req, res) => {
+        try {
+            const result = await deleteMessage()
+            console.log(result)
+            res.redirect('/chat')
+        } catch (e) {
+            res.send(e)
+        }
+    }
 }

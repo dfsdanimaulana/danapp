@@ -5,7 +5,8 @@ const router = express.Router()
 
 const {
     view,
-    showMessage
+    showMessage,
+    deleteAllMessage
 } = require('../controllers/chatroom.controller')
 const {
     isAuth
@@ -13,8 +14,8 @@ const {
 
 
 module.exports = (app) => {
+    router.delete('/', deleteAllMessage)
     router.get('/api', showMessage)
-    router.get('/delete')
     router.get('/:id/:name', isAuth, view)
     app.use('/chatroom', router)
 }

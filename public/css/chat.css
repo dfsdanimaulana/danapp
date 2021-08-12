@@ -16,6 +16,13 @@
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {}
 
+.no-msg {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: max-content;
+    color: var(--primary)
+}
 .chat-profile a {
     grid-area: img;
 }

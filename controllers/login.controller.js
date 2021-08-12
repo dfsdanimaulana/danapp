@@ -3,6 +3,7 @@
 require('dotenv').config()
 const bcrypt = require('bcryptjs')
 
+
 const {
     getByUsername
 } = require('../utils/db.method')
@@ -21,19 +22,19 @@ module.exports = {
     },
 
     cekUser: async (req, res) => {
+
         const {
             username,
             password,
             checkbox,
             guest
         } = req.body
-       
+
         if (guest) {
             const user = await getByUsername('dnm17')
-            if(!user) return res.send('User not found!')
+            if (!user) return res.send('User not found!')
             req.session.isAuth = true
             req.session.user = user
-
             return res.redirect('/chat')
         }
         const user = await getByUsername(username)
@@ -53,8 +54,8 @@ module.exports = {
             req.session.isAuth = true
 
             if (checkbox) {
-                const salt = await bcrypt.genSalt()
-                const hashedCookie = await bcrypt.hash(user.username, salt)
+                const salt = bcrypt.genSalt()
+                const hashedCookie = bcrypt.hash(user.username, salt)
                 res.cookie('id', user._id, {
                     expires: new Date(Date.now + 150000),
                 })
