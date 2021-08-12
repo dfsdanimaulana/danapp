@@ -8,10 +8,10 @@ const flash = require('connect-flash')
 
 const {
     isAuth
-} = require('./utils/middleware')
+} = require('./src/utils/middleware')
 
 // server connection
-const app = require('./core/server')
+const app = require('./src/core/server')
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({
@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-require('./utils/session')(app)
+require('./src/utils/session')(app)
 
 // cookies
 app.use(cookieParser())
@@ -39,7 +39,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, '/public')))
 
 // router
-require('./routes')(app)
+require('./src/routes')(app)
 
 // page not found handlers
 app.use('/', isAuth, (req, res) => {
