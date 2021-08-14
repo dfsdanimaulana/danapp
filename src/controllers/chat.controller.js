@@ -41,7 +41,7 @@ module.exports = {
 
                 return res.render('chat', params)
             } else {
-                console.log('msg not found')
+                res.send('msg not found')
             }
             res.render('chat', params)
         } catch (e) {

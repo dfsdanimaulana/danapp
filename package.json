@@ -25,6 +25,7 @@
         "express": "^4.16.1",
         "express-session": "^1.17.2",
         "joi": "^17.4.1",
+        "validator":"^13.6.0",
         "method-override": "^3.0.0",
         "moment": "^2.29.1",
         "mongoose": "^5.13.2",

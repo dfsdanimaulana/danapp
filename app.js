@@ -27,9 +27,11 @@ app.use(methodOverride('_method'))
 require('./src/utils/session')(app)
 
 // cookies
-app.use(cookieParser())
+app.use(cookieParser('secret string', {
+    expires: new Date(Date.now + 150000),
+}))
 
-// flash message
+// flash message : only can use once so it will disappear when already used
 app.use(flash())
 
 // view engine
@@ -43,5 +45,5 @@ require('./src/routes')(app)
 
 // page not found handlers
 app.use('/', isAuth, (req, res) => {
-    res.render('404')
+    res.status(404).render('404')
 })

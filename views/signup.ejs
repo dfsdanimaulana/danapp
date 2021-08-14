@@ -13,11 +13,55 @@
     <div class="flex-container">
         <h1>Create Account</h1>
         <form action="/signup" method="post">
-            <input type="text" placeholder="Username" id="username" name="username" required minlength="3" autofocus autocomplete="off" />
-            <input type="text" placeholder="Name" id="name" name="name" minlength="3" required autofocus autocomplete="off" />
-            <input type="email" placeholder="Email" id="email" name="email" required autofocus autocomplete="off" />
-            <input type="password" placeholder="Password" id="password" name="password" minlength="6" required autofocus />
-            <input type="password" placeholder="Repeat Your Password" id="password_check" name="password_check" required autofocus />
+            <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            minlength="3"
+            maxlength="10"
+            required
+            autofocus
+            autocomplete="off" />
+
+            <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            minlength="3"
+            maxlength="15"
+            required
+            autofocus
+            autocomplete="off" />
+
+            <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            autofocus
+            autocomplete="off" />
+
+            <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            minlength="6"
+            maxlength="20"
+            required
+            autofocus />
+
+            <input
+            id="password_check"
+            name="password_check"
+            type="password"
+            placeholder="Repeat Your Password"
+            required
+            autofocus />
+
             <button type="submit">Submit</button>
         </form>
         <div class="footer">

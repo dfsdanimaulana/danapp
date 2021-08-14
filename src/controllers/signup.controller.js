@@ -1,8 +1,14 @@
 'use strict'
 
 const bcrypt = require('bcryptjs')
-const schema = require('../utils/userAuth')
-const { getByEmail, saveUser } = require('../utils/db.method')
+const {
+    schema,
+    validate
+} = require('../utils/userAuth')
+const {
+    getByEmail,
+    saveUser
+} = require('../utils/db.method')
 
 const params = {}
 
@@ -15,8 +21,12 @@ module.exports = {
     },
 
     addUser: async (req, res) => {
+        // if (req.body) return res.send(validate(req.body))
         try {
-            const { error, value } = await schema.validate(req.body)
+            const {
+                error,
+                value
+            } = await schema.validate(req.body)
             if (error) {
                 console.log(error)
                 return res.send(error)
