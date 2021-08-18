@@ -14,7 +14,7 @@ const {
 
 module.exports = (app) => {
     router.get('/logout', logout)
+    router.get('/backup', view)
     router.get('/', hasCookie, isAuth, displaySavedMessage)
-
     app.use('/chat', router)
 }

@@ -1,0 +1,16 @@
+@import url('main.css');
+
+#floating-nav-menu {
+    z-index: 2000 !important;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
