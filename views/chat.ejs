@@ -42,7 +42,6 @@
         </header>
         <div class="scroll-container">
             <section id="chats">
-                <% display = '' %>
                 <% if (msg) {
                     %>
                     <% data.forEach(list => {
@@ -73,11 +72,6 @@
                     }) %>
                 <%
             } %>
-            <div class="no-msg">
-                <p>
-                    There is no message yet
-                </p>
-            </div>
         </section>
         <section id="status">
             <% if (status) {
