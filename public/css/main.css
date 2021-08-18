@@ -5,10 +5,18 @@
     --soft: rgb(143, 176, 226);
     --light: rgb(204, 212, 233);
 }
-
+/*
+:root {
+    --dark: #8fff00;
+    --primary: #22222b;
+    --secondary: #2b2b31;
+    --soft: #ff922f;
+    --light: #f8f8fa;
+}
+*/
 body {
-    background-color: var(--light);
     scroll-behavior: smooth;
+    background-color: #f8f8fa;
 }
 
 a,

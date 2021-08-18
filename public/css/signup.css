@@ -3,16 +3,11 @@
 
 @import url('./main.css');
 
-body {
-  width: 100vw;
-  background-color: var(--light);
-}
-
 h1 {
-  font-size: 1.5rem;
-  font-family: 'Dancing Script', cursive;
-  padding: 1rem auto;
+    font-family: 'Dancing Script', cursive;
+
 }
+/*
 .flex-container {
   padding: 1rem;
   display: flex;
@@ -79,9 +74,9 @@ button:hover {
   font-size: 0.8rem;
   padding: 1rem;
 }
-
+*/
 /* Responsive */
 
+
 /* Medium devices (tablets, 768px and up)*/
-@media screen and (min-width: 768px) {
-}
+@media screen and (min-width: 768px) {}

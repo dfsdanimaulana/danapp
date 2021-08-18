@@ -1,12 +1,14 @@
 'use strict'
 
 const bcrypt = require('bcryptjs')
-const { getUser } = require('./db.method')
+const {
+    getUser
+} = require('./db.method')
 
 module.exports = {
     // cek if session is already set or not
     isAuth: (req, res, next) => {
-        req.session.isAuth && req.session.user ? next() : res.redirect('/login')
+        req.session.isAuth && req.session.user ? next(): res.redirect('/login')
     },
 
     // cek if cookie is already set or not

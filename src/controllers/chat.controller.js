@@ -9,44 +9,43 @@ const {
 const params = {
     status: [1,
         2,
-        3],
+        3]
 }
+
 module.exports = {
     view: async (req, res) => {
-        const data = await getData()
-        if (!data) return res.send('Data not found')
-        params.currentUser = req.session.user._id
-        params.data = data
         res.render('chat', params)
     },
 
     displaySavedMessage: async (req, res) => {
-        try {
-            params.currentUser = req.session.user._id
-            const sender = req.session.user.username
-            const msg = await getMessageBySender(sender) // array of object
-            if (msg) {
-                params.msg = msg
-                // remove duplicate reciver
-                const reciver = msg
-                .map((v) => v.reciver)
-                .filter((v, i, arr) => arr.indexOf(v) === i)
-                // get user by reciver
-                let query = {
-                    username: {
-                        $in: reciver,
-                    },
-                }
-                params.data = await getSomeUserByValue(query)
 
-                return res.render('chat', params)
-            } else {
-                res.send('msg not found')
+        // get logged user by session
+        params.currentUser = req.session.user._id
+
+        // query user message in database by sender
+        const sender = req.session.user.username
+        const msg = await getMessageBySender(sender) // array of object
+        if (msg) {
+            params.msg = msg
+            // remove duplicate reciver
+            const reciver = msg
+            .map((v) => v.reciver)
+            .filter((v, i, arr) => arr.indexOf(v) === i)
+            // get and display user by reciver
+            let query = {
+                username: {
+                    $in: reciver,
+                },
             }
-            res.render('chat', params)
-        } catch (e) {
-            res.send(e)
+            const data = await getSomeUserByValue(query)
+            if (!data) return res.send('Can not display user reciver')
+            params.data = data
+            return res.render('chat', params)
+        } else {
+            res.send('msg not found')
         }
+        res.render('chat', params)
+
     },
 
     logout: (req, res) => {

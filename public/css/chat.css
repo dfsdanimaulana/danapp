@@ -2,76 +2,50 @@
 
 .chat-profile {
     display: grid;
-    grid-template-columns: 4rem 2rem auto 2rem 2.5rem;
+    grid-template-columns: 4rem auto 4rem;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-    'img name name tops tops'
-    'img ceklis msg mute count';
-    padding: 0.5rem;
+    'img name tops'
+    'img msg icons';
+    box-sizing: border-box;
     border-bottom: 1px solid rgb(143, 176, 226);
-    place-items: center;
+
     width: 100vw;
+    max-height: 5rem;
 }
 
-/* desktop */
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
-
-.no-msg {
-    display: grid;
-    place-items: center;
-    width: 100vw;
-    height: max-content;
-    color: var(--primary)
-}
 .chat-profile a {
     grid-area: img;
+    place-self: center;
+    border: 1px solid black;
 }
 .chat-profile a img {
     width: 3.3rem;
     height: 3.3rem;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
 .chat-profile p:nth-child(2) {
     grid-area: name;
-    font-size: 1.05rem;
-    place-self: start;
-    padding-left: 0.4rem;
-    color: rgba(0, 0, 0, 0.8);
+    border: 1px solid black;
 }
-.chat-profile i:nth-child(3) {
-    grid-area: ceklis;
-    font-size: 1.4rem;
-    color: rgba(0, 0, 0, 0.5);
+.chat-profile div:nth-child(3) {
+    border: 1px solid black;
+    grid-area: msg;
+    display: flex;
 }
 .chat-profile p:nth-child(4) {
-    justify-self: start;
-    font-size: 0.9rem;
-    grid-area: msg;
-    color: rgba(0, 0, 0, 0.5);
-}
-.chat-profile p:nth-child(5) {
+    border: 1px solid black;
     grid-area: tops;
-    font-size: 0.8rem;
+    font-size: .8rem;
 }
-.chat-profile i:nth-child(6) {
-    grid-area: mute;
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.6);
+.chat-profile div:nth-child(5) {
+    border: 1px solid black;
+    grid-area: icons;
+    display: flex;
+    align-items: center;
 }
-.chat-profile p:nth-child(7) {
-    grid-area: count;
-    font-size: 0.75rem;
-    width: 1.6rem;
-    height: 1.6rem;
-    background-color: #00c531;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-}
+
 
 /* chat profile end */
 
@@ -318,3 +292,6 @@ header {
 
 /* Medium devices (tablets, 768px and up)*/
 @media screen and (min-width: 768px) {}
+/* desktop */
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {}

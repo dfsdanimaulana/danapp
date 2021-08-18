@@ -10,58 +10,70 @@
     <title>DanApp | Login Page</title>
 </head>
 <body>
-    <div class="log-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <div class="input-container">
-                <label id="el" for="username">Username</label>
-                <input type="text" name="username" placeholder="username..." id="username" required autofocus>
-                <% if (email_error) {
-                    %>
-                    <div class="flash e">
-                        <p>
-                            <%= email_error %>
-                        </p>
-                    </div>
-                    <%
-                } %>
+
+    <!-- start -->
+    <div class="container d-flex flex-column align-items-center p-5">
+        <h1 class="mb-5">Login</h1>
+
+        <form class="d-flex flex-column mb-5" action="/login" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Email or Username</label>
+                <input
+                name="username"
+                required
+                autofocus
+                autocomplete="off"
+                type="text"
+                class="form-control shadow-sm"
+                id="username"
+                aria-describedby="userErrorBlock">
+                <div id="userErrorBlock" class="form-text text-danger text-center">
+                    User not found!
+                </div>
             </div>
-            <div class="input-container">
-                <label id="pl" for="password">Password</label>
-                <input type="password" name="password" placeholder="password..." id="password" required autofocus>
-                <% if (password_error) {
-                    %>
-                    <div class="flash p">
-                        <p>
-                            <%= password_error %>
-                        </p>
-                    </div>
-                    <%
-                } %>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                name="password"
+                required
+                autofocus
+                autocomplete="off"
+                type="password"
+                class="form-control shadow-sm"
+                id="password"
+                aria-describedby="passwordErrorBlock">
+                <div id="passwordErrorBlock" class="form-text text-danger text-center">
+                    Incorrect password!
+                </div>
             </div>
-            <label id="check" for="checkbox">
-                <input type="checkbox" name="checkbox" id="checkbox" />
-                Remember me
-            </label>
-            <button type="submit">login</button>
+
+            <div class="mb-4 form-check">
+                <input name="checkbox" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <button type="submit" class="btn-sm shadow-sm btn-primary justify-self-center">Submit</button>
         </form>
-        <div class="others">
+        <!-- end -->
+
+        <div class="others m-3 text-center">
             <h6>Login as guest :</h6>
-            <form method="POST" action="/login">
-                <input name="guest" value="true" hidden></input>
-            <button type="submit" id="guest">guest</button>
-        </form>
-        <h6>or login with :</h6>
-        <ul>
-            <li><a href="#"><i class="bi bi-google"></i></i></a></li>
-        <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-        <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-        <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
-    </ul>
-</div>
-<div class="footer">
-    New user ? signup <a href="/signup">here</a>
-</div>
-</div>
+
+            <form class="mb-3" method="POST" action="/login">
+                <input name="guest" value="true" hidden>
+                <button type="submit" class="btn-sm shadow-sm btn-info text-light m-3">Guest</button>
+            </form>
+
+            <h6 class="mb-3">Or login with :</h6>
+            <div class="d-flex justify-content-around fs-1">
+                <a href="#"><i class="bi bi-google"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
+            </div>
+        </div>
+        <div class="footer">
+            New user ? signup <a href="/signup">here</a>
+        </div>
+    </div>
 </body>
 </html>
