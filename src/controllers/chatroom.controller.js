@@ -30,11 +30,11 @@ module.exports = {
 
     showMessage: async (req, res) => {
         try {
-            const data = await getAllMessage()
-            if (!data) {
+            const messages = await getAllMessage()
+            if (!messages) {
                 return res.send('data not found')
             }
-            params.data = data
+            params.messages = messages
             res.render('chatsfile', params)
         } catch (e) {
             res.send(e)

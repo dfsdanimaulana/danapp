@@ -40,6 +40,7 @@ nav h1 {
     color: var(--soft);
     font-size: 1rem;
     z-index: 999;
+    border-radius: .3rem;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 0 4px -1px var(--dark);
     -webkit-box-shadow: 0 0 4px -1px var(--dark);
@@ -49,6 +50,10 @@ nav h1 {
 .nav-menu-list {
     margin: 1.5rem 1rem;
 }
+.nav-menu-list:hover a {
+    color: var(--light);
+}
+
 .nav-menu.open {
     right: 0;
 }
@@ -80,8 +85,8 @@ nav h1 {
     background-color: #fff;
     padding: .15rem .5rem;
     max-width: fit-content;
+    height: 1.5rem;
     align-self: center;
-    line-height: 1rem;
     margin: 1rem;
     font-size: .75rem;
     font-family: Sans-Serif;
@@ -94,6 +99,7 @@ nav h1 {
     background-color: #fff;
     color: #000;
     max-width: 20rem;
+    min-width: 10rem;
     padding: .5rem;
     display: flex;
     flex-direction: column;
@@ -179,6 +185,19 @@ nav h1 {
     justify-content: space-between;
 }
 /*  input msg end  */
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: .5rem;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--light);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--soft);
+    border-radius: 50px;
+}
 
 /* Responsive */
 

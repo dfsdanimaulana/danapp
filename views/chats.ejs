@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('layouts/cdn') %>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/chat.css" type="text/css" media="all" />
+    <script src="/js/chat.js" type="text/javascript" charset="utf-8" defer></script>
+    <title>Chat</title>
+</head>
+<body>
+    <main>
+        <header class="main-header">
+            <div class="grid-container">
+                <div class="grid-item-navbar">
+                    <h1>DanApp</h1>
+                    <a href="#"><i class="bi bi-search"></i></a>
+                    <div class="nav-btn-container">
+                        <div class="nav-btn shdw">
+                            <div class="nav-btn-icon">
+                                <i class="bi bi-list"></i>
+                            </div>
+                            <ul>
+                                <li class="nav-btn-list"><a href="/profile/<%= currentUser %>">Profile</a></li>
+                                <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
+                                <li class="nav-btn-list"><a href="/page">Page</a></li>
+                                <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
+                                <li class="nav-btn-list"><a href="/chat/logout">logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item-chats">
+                    <a href="#chats">CHATS</a>
+                </div>
+                <div class="grid-item-status">
+                    <a href="#status">STATUS</a>
+                </div>
+            </div>
+        </header>
+        <div class="scroll-container">
+            <section id="chats">
+                <% if (msg) {
+                    %>
+                    <% data.forEach(list => {
+                        %>
+                        <% const messages = msg.filter(v => v.reciver === list.username) %>
+                        <% const len = messages.length%>
+                        <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+
+                            <a href="/profile/<%= list._id %>">
+                                <img src="/<%= list.img %>" alt="not found"></img>
+                        </a>
+
+                        <p>
+                            <%= list.name %>
+                        </p>
+
+                        <div>
+                            <i class="bi bi-check"></i>
+                            <!--<i class="bi bi-check-all"></i>  -->
+                            <p>
+                                <%= messages[len-1].message %>
+                            </p>
+                        </div>
+
+                        <p>
+                            <%= messages[len-1].timeSend %>
+                        </p>
+
+                        <div>
+                            <i class="bi bi-volume-mute"></i>
+                            <p>
+                                <%= len %>
+                            </p>
+                        </div>
+
+                    </div>
+                        <%
+                    }) %>
+                <%
+            } %>
+        </section>
+        <section id="status">
+            <% if (status) {
+                %>
+                <% status.forEach(list => {
+                    %>
+                    <div class="status-container">
+                        <img src="/images/Dani.jpg" alt="not found">
+                        <p>
+                            My status
+                        </p>
+                        <p>
+                            5 minutes ago
+                        </p>
+
+                    </div>
+                    <%
+                }) %>
+                <%
+            } %>
+        </section>
+    </div>
+    <div class="btn-container">
+        <div class="plus">
+            <i class="bi bi-layers"></i>
+        </div>
+        <div class="btn-list shdw">
+            <a href="/contacts"><i class="bi bi-layers"></i></a>
+        </div>
+        <div class="btn-list shdw">
+            <a href="/contacts"><i class="bi bi-layers"></i></a>
+        </div>
+        <div class="btn-list shdw">
+            <a href="/contacts"><i class="bi bi-chat"></i></a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

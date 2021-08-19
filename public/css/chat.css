@@ -1,3 +1,55 @@
+
+/* header start  */
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.grid-container {
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template-areas:
+    'navbar navbar'
+    'chats status';
+    background-color: var(--primary);
+    align-items: center;
+    z-index: 99999;
+    box-shadow: 0 0 4px -1px var(--dark);
+    -webkit-box-shadow: 0 0 4px -1px var(--dark);
+    -moz-box-shadow: 0 0 4px -1px var(--dark);
+    transition: all 0.3s ease-in-out;
+}
+.grid-item-navbar h1 {
+    color: var(--soft);
+    place-self: start;
+}
+.grid-item-navbar {
+    grid-area: navbar;
+    display: grid;
+    grid-template-columns: auto 2.5rem 2.5rem;
+    place-items: center;
+    padding: 0.7rem;
+    font-size: 24px;
+    position: relative;
+}
+.grid-item-chats {
+    grid-area: chats;
+    text-align: center;
+    padding: 1rem;
+}
+.grid-item-status {
+    grid-area: status;
+    text-align: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+/* header end*/
+
 /* chat profile */
 
 .chat-profile {
@@ -98,56 +150,6 @@ section {
 
 /* body scroll end */
 
-/* header start  */
-
-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-}
-
-.grid-container {
-    position: sticky;
-    top: 0;
-    display: grid;
-    grid-template-areas:
-    'navbar navbar'
-    'chats status';
-    background-color: var(--primary);
-    align-items: center;
-    z-index: 99999;
-    box-shadow: 0 0 4px -1px var(--dark);
-    -webkit-box-shadow: 0 0 4px -1px var(--dark);
-    -moz-box-shadow: 0 0 4px -1px var(--dark);
-    transition: all 0.3s ease-in-out;
-}
-.grid-item-navbar h1 {
-    color: var(--soft);
-    place-self: start;
-}
-.grid-item-navbar {
-    grid-area: navbar;
-    display: grid;
-    grid-template-columns: auto 2.5rem 2.5rem;
-    place-items: center;
-    padding: 0.7rem;
-    font-size: 24px;
-    position: relative;
-}
-.grid-item-chats {
-    grid-area: chats;
-    text-align: center;
-    padding: 1rem;
-}
-.grid-item-status {
-    grid-area: status;
-    text-align: center;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-}
-
-/* header end*/
 
 /* Navbar button */
 .nav-btn-container {
@@ -309,6 +311,20 @@ header {
     font-size: .8rem;
     justify-self: start;
     align-self: center;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--light);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--soft);
+    border-radius: 50px;
 }
 
 /* Responsive */
