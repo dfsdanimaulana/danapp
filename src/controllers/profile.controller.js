@@ -17,11 +17,11 @@ module.exports = {
         res.render('profile', params)
     },
 
-    updateData: (req, res) => {
+    updateData: async (req, res) => {
         const data = req.body
         params.currentUser = req.session.user._id
         const oldName = req.session.user.username
-        let query
+        let query = {}
 
         switch (data.updater) {
             case 'username':
@@ -32,7 +32,12 @@ module.exports = {
                     },
                 }
                 try {
-                    message.updateSender(data.dataValue, oldName)
+                    // fix here
+                    const updateSender = await message.updateSender(
+                        data.dataValue,
+                        oldName
+                    )
+                    console.log(updateSender)
                 } catch (e) {
                     console.log(e)
                 }
@@ -64,26 +69,20 @@ module.exports = {
                 break
         }
 
-        profile
-            .updateById(data.id, query)
-            .then((result) => {
-                params.data = result
-                req.session.user = result
-                params.currentUser = req.session.user._id
-                return res.render('profile', params)
-            })
-            .catch((err) => {
-                if (err) {
-                    if (err.codeName === 'DuplicateKey') {
-                        req.flash(
-                            'duplicate_username',
-                            'Username is already exists'
-                        )
-                        return res.redirect(`/profile/${req.session.user._id}`)
-                    }
-                }
-                res.send(err)
-            })
+        try {
+            const newData = await profile.updateById(data.id, query)
+            console.log(newData)
+            params.data = newData
+            req.session.user = newData
+            params.currentUser = req.session.user._id
+            return res.render('profile', params)
+        } catch (error) {
+            if (error.codeName === 'DuplicateKey') {
+                req.flash('duplicate_username', 'Username is already exists')
+                return res.redirect(`/profile/${req.session.user._id}`)
+            }
+            console.log({ error })
+        }
     },
 
     getUsers: async (req, res) => {
