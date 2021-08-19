@@ -2,48 +2,64 @@
 
 .chat-profile {
     display: grid;
-    grid-template-columns: 4rem auto 4rem;
+    grid-template-columns: 5rem auto 4rem;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
     'img name tops'
     'img msg icons';
     box-sizing: border-box;
     border-bottom: 1px solid rgb(143, 176, 226);
-
+    padding: .5rem 0;
+    align-items: center;
     width: 100vw;
-    max-height: 5rem;
+    max-height: 6rem;
 }
 
-.chat-profile a {
-    grid-area: img;
-    place-self: center;
-    border: 1px solid black;
+.grid-center {
+    display: grid;
+    place-items: center;
 }
-.chat-profile a img {
+.brd {}
+.chat-profile div:nth-child(1) {
+    grid-area: img;
+}
+.chat-profile img {
     width: 3.3rem;
     height: 3.3rem;
     border-radius: 50%;
+    border: 2px solid var(--light);
 }
 
-.chat-profile p:nth-child(2) {
+.chat-profile div:nth-child(2) {
     grid-area: name;
-    border: 1px solid black;
 }
+
 .chat-profile div:nth-child(3) {
-    border: 1px solid black;
     grid-area: msg;
-    display: flex;
+    color: rgba(0,0,0,.5);
+    font-size: .8rem;
 }
-.chat-profile p:nth-child(4) {
-    border: 1px solid black;
+
+.chat-profile div:nth-child(4) {
     grid-area: tops;
     font-size: .8rem;
 }
+
 .chat-profile div:nth-child(5) {
-    border: 1px solid black;
     grid-area: icons;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    padding-right: .5rem;
+}
+.chat-profile div:nth-child(5) span {
+    display: inline-block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    background-color: #7aff00;
+    text-align: center;
+    line-height: 1.3rem;
+    font-size: .7rem;
 }
 
 
@@ -139,40 +155,47 @@ header {
     height: 100%;
     width: 100%;
 }
+
 .nav-btn {
     background-color: var(--primary);
     position: absolute;
-    padding: 1rem;
-    width: 10rem;
-    height: 15rem;
-    left: -7rem;
-    top: -1rem;
+    padding: .7rem 1rem 0 0;
+    width: 11rem;
+    left: -8rem;
+    top: -.5rem;
     z-index: 9999;
     border-radius: 0.1rem;
-
-    clip-path: circle(1rem at 8.4rem 1.6rem);
+    clip-path: circle(1.3rem at 9.3rem 1.7rem);
     transition: 0.5s;
     display: grid;
     grid-template-rows: 1rem auto;
 }
+
 .shdw {
     box-shadow: 0 0 4px -1px var(--dark);
     -webkit-box-shadow: 0 0 4px -1px var(--dark);
     -moz-box-shadow: 0 0 4px -1px var(--dark);
 }
 .nav-btn.nav-open {
-    clip-path: circle(20rem at 8.4rem 1.6rem);
+    clip-path: circle(20rem at 9.3rem 2rem);
 }
 .nav-btn-icon {
     justify-self: end;
     color: var(--soft);
+    transition: .3s;
 }
-
+.rotate {
+    transform: rotate(180deg);
+}
 .nav-btn ul {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 1rem;
+    list-style: none;
+}
+.nav-btn ul li {
+    margin: .5rem -0.5rem;
 }
 /* Navbar button end */
 

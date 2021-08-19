@@ -1,0 +1,40 @@
+<% if (msg) {
+    %>
+    <% data.forEach(list => {
+        %>
+        <% const messages = msg.filter(v => v.reciver === list.username) %>
+        <% const len = messages.length%>
+        <div class="card p-2 ">
+            <div class="container">
+                <div class="row row-cols-3">
+                    <div class="col-2 center p-0">
+                        <a href="/profile/<%= list._id %>"></a>
+                        <img src="/<%= list.img %>" class="img-fluid border border-2 border-info rounded-circle" alt="...">
+                    </div>
+                    <div class="col-8" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                        <h6 class="card-title py-1 fs-5"><%= list.name %></h6>
+                        <p class="card-text  d-flex">
+                            <i class="bi bi-check me-1"></i>
+                            <%= messages[len-1].message %>
+                        </p>
+                    </div>
+                    <div class="col-2 center fs-6">
+                        <div class="row">
+                            <%= messages[len-1].timeSend %>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 fs-5 flex-center">
+                                <i class="bi bi-volume-mute h6"></i>
+                            </div>
+                            <div class="col-6 flex-center">
+                                <span class="h6"><%= len %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%
+    }) %>
+    <%
+} %>

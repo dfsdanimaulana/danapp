@@ -12,7 +12,7 @@
 </head>
 <body>
     <main>
-        <header class="main-header">
+        <header class="main-header shdw">
             <div class="grid-container">
                 <div class="grid-item-navbar">
                     <h1>DanApp</h1>
@@ -22,6 +22,7 @@
                             <div class="nav-btn-icon">
                                 <i class="bi bi-list"></i>
                             </div>
+
                             <ul>
                                 <li class="nav-btn-list"><a href="/profile/<%= currentUser %>">Profile</a></li>
                                 <li class="nav-btn-list"><a href="/contacts">Contacts</a></li>
@@ -29,6 +30,7 @@
                                 <li class="nav-btn-list"><a href="/profile/api">Api</a></li>
                                 <li class="nav-btn-list"><a href="/chat/logout">logout</a></li>
                             </ul>
+
                         </div>
                     </div>
                 </div>
@@ -41,83 +43,52 @@
             </div>
         </header>
         <div class="scroll-container">
+
             <section id="chats">
                 <% if (msg) {
                     %>
-                    <% data.forEach(list => {
+                    <%- include('layouts/card', {
+                        msg, data
+                    }) %>
+                    <%
+                } %>
+            </section>
+
+            <section id="status">
+                <% if (status) {
+                    %>
+                    <% status.forEach(list => {
                         %>
-                        <% const messages = msg.filter(v => v.reciver === list.username) %>
-                        <% const len = messages.length%>
-                        <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
-
-                            <a href="/profile/<%= list._id %>">
-                                <img src="/<%= list.img %>" alt="not found"></img>
-                        </a>
-
-                        <p>
-                            <%= list.name %>
-                        </p>
-
-                        <div>
-                            <i class="bi bi-check"></i>
-                            <!--<i class="bi bi-check-all"></i>  -->
+                        <div class="status-container">
+                            <img src="/images/Dani.jpg" alt="not found">
                             <p>
-                                <%= messages[len-1].message %>
+                                My status
                             </p>
-                        </div>
-
-                        <p>
-                            <%= messages[len-1].timeSend %>
-                        </p>
-
-                        <div>
-                            <i class="bi bi-volume-mute"></i>
                             <p>
-                                <%= len %>
+                                5 minutes ago
                             </p>
-                        </div>
 
-                    </div>
+                        </div>
                         <%
                     }) %>
-                <%
-            } %>
-        </section>
-        <section id="status">
-            <% if (status) {
-                %>
-                <% status.forEach(list => {
-                    %>
-                    <div class="status-container">
-                        <img src="/images/Dani.jpg" alt="not found">
-                        <p>
-                            My status
-                        </p>
-                        <p>
-                            5 minutes ago
-                        </p>
-
-                    </div>
                     <%
-                }) %>
-                <%
-            } %>
-        </section>
-    </div>
-    <div class="btn-container">
-        <div class="plus">
-            <i class="bi bi-layers"></i>
+                } %>
+            </section>
         </div>
-        <div class="btn-list shdw">
-            <a href="/contacts"><i class="bi bi-layers"></i></a>
+        <div class="btn-container">
+            <div class="plus">
+                <i class="bi bi-layers"></i>
+            </div>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-layers"></i></a>
+            </div>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-layers"></i></a>
+            </div>
+            <div class="btn-list shdw">
+                <a href="/contacts"><i class="bi bi-chat"></i></a>
+            </div>
         </div>
-        <div class="btn-list shdw">
-            <a href="/contacts"><i class="bi bi-layers"></i></a>
-        </div>
-        <div class="btn-list shdw">
-            <a href="/contacts"><i class="bi bi-chat"></i></a>
-        </div>
-    </div>
-</main>
+    </main>
 </body>
 </html>
