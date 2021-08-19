@@ -5,10 +5,9 @@ const {
     schema,
     validate
 } = require('../utils/userAuth')
-const {
-    getByEmail,
-    saveUser
-} = require('../utils/db.method')
+
+const { message, profile } = require('../models/methods')
+
 
 const params = {}
 
@@ -34,7 +33,7 @@ module.exports = {
             const data = value
             data.username = data.username.replace(/ /g, '_')
             const email = data.email
-            const user = await getByEmail(email)
+            const user = await profile.getByEmail(email)
 
             // cek if user alredy exists
 
@@ -49,7 +48,7 @@ module.exports = {
             const hashedPassword = await bcrypt.hash(data.password, salt)
             data.password = hashedPassword
 
-            await saveUser(data)
+            await profile.saveUser(data)
 
             res.redirect('/contacts')
         } catch (e) {

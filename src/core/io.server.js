@@ -1,9 +1,8 @@
 'use strict'
 
 const socketio = require('socket.io')
-const {
-    saveMessage
-} = require('../utils/db.method')
+
+const { message, profile } = require('../models/methods')
 
 // const {} = require('./utils/message.method')
 const {
@@ -33,7 +32,7 @@ module.exports = (server) => {
 
             // menyimpan ke database
             try {
-                saveMessage(obj.data)
+                message.saveMessage(obj.data)
             } catch (e) {
                 console.log(e)
             }

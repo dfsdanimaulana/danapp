@@ -1,19 +1,13 @@
 'use strict'
 
-const {
-    getUser,
-    updateById,
-    getData,
-    deleteById,
-    updateSender,
-} = require('../utils/db.method')
+const { message, profile } = require('../models/methods')
 
 const params = {}
 
 module.exports = {
     view: async (req, res) => {
         const id = req.params.id
-        const data = await getUser(id)
+        const data = await profile.getUser(id)
         if (!data) {
             return res.redirect('/')
         }
@@ -37,9 +31,12 @@ module.exports = {
                         username: data.dataValue,
                     },
                 }
-                updateSender(data.dataValue, oldName).catch((e) =>
+                try {
+                    message.updateSender(data.dataValue, oldName)
+                } catch (e) {
                     console.log(e)
-                )
+                }
+
                 break
 
             case 'name':
@@ -67,42 +64,41 @@ module.exports = {
                 break
         }
 
-        updateById(data.id, query)
-        .then((result) => {
-            params.data = result
-            req.session.user = result
-            params.currentUser = req.session.user._id
-            return res.render('profile', params)
-        })
-        .catch((err) => {
-            if (err) {
-                if (err.codeName === 'DuplicateKey') {
-                    req.flash(
-                        'duplicate_username',
-                        'Username is already exists'
-                    )
-                    return res.redirect(`/profile/${req.session.user._id}`)
+        profile
+            .updateById(data.id, query)
+            .then((result) => {
+                params.data = result
+                req.session.user = result
+                params.currentUser = req.session.user._id
+                return res.render('profile', params)
+            })
+            .catch((err) => {
+                if (err) {
+                    if (err.codeName === 'DuplicateKey') {
+                        req.flash(
+                            'duplicate_username',
+                            'Username is already exists'
+                        )
+                        return res.redirect(`/profile/${req.session.user._id}`)
+                    }
                 }
-            }
-            res.send(err)
-        })
+                res.send(err)
+            })
     },
 
-    getUsers: async (req,
-        res) => {
+    getUsers: async (req, res) => {
         try {
-            const user = await getData()
+            const user = await profile.getData()
             res.json(user)
         } catch (e) {
             res.send(e)
         }
     },
 
-    deleteUser: async (req,
-        res) => {
+    deleteUser: async (req, res) => {
         try {
             const id = req.params.id
-            await deleteById(id)
+            await profile.deleteById(id)
             res.redirect('/chat/logout')
         } catch (e) {
             res.send(e)

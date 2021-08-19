@@ -2,15 +2,11 @@
 
 const bcrypt = require('bcryptjs')
 
-const {
-    getByUsername,
-    getByEmail
-} = require('../utils/db.method')
+const { profile } = require('../models/methods')
 
 const params = {}
 
 module.exports = {
-
     view: (req, res) => {
         // redirect to chat if session is already set
         if (req.session.isAuth) {
@@ -24,17 +20,11 @@ module.exports = {
     },
 
     cekUser: async (req, res) => {
-
-        const {
-            username,
-            password,
-            checkbox,
-            guest
-        } = req.body
+        const { username, password, checkbox, guest } = req.body
 
         // login as guest
         if (guest) {
-            const user = await getByUsername('dnm17')
+            const user = await profile.getByUsername('dnm17')
             if (!user) return res.send('Guest Error!')
             req.session.isAuth = true
             req.session.user = user
@@ -42,9 +32,10 @@ module.exports = {
         }
 
         // cek if user exist
-        const user = username.indexOf('@') !== -1 ?
-        await getByEmail(username):
-        await getByUsername(username)
+        const user =
+            username.indexOf('@') !== -1
+                ? await profile.getByEmail(username)
+                : await profile.getByUsername(username)
 
         if (!user) {
             req.flash('error', `User not found!`)

@@ -1,10 +1,6 @@
 'use strict'
 
-const {
-    getData,
-    getMessageBySender,
-    getSomeUserByValue,
-} = require('../utils/db.method')
+const { message, profile } = require('../models/methods')
 
 const params = {
     status: [1,
@@ -24,7 +20,7 @@ module.exports = {
 
         // query user message in database by sender
         const sender = req.session.user.username
-        const msg = await getMessageBySender(sender) // array of object
+        const msg = await message.getMessageBySender(sender) // array of object
         if (msg) {
             params.msg = msg
             // remove duplicate reciver
@@ -37,7 +33,7 @@ module.exports = {
                     $in: reciver,
                 },
             }
-            const data = await getSomeUserByValue(query)
+            const data = await profile.getSomeUserByValue(query)
             if (!data) return res.send('Can not display user reciver')
             params.data = data
             return res.render('chat', params)
