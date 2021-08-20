@@ -6,12 +6,8 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 
-const {
-    isAuth
-} = require('./src/utils/middleware')
-
 // server connection
-const app = require('./src/core/server')
+const app = require('./src/config/server')
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({
@@ -44,6 +40,11 @@ app.use(express.static(path.join(__dirname, '/public')))
 require('./src/routes')(app)
 
 // page not found handlers
+
+const {
+    isAuth
+} = require('./src/utils/middleware')
+
 app.use('/', isAuth, (req, res) => {
     res.status(404).render('404')
 })

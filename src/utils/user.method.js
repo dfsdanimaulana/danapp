@@ -4,15 +4,17 @@ const users = []
 
 module.exports = {
 
-    userJoin: (name, id) => users.push({
-        name, id
-    }),
+    userJoin: function(name, id) {
+        users.push({
+            name, id
+        })
+    },
 
-    getCurrentUser: (id) => {
+    getCurrentUser: function(id) {
         return users.find((user) => user.id === id)
     },
 
-    formatName: (obj) => {
+    formatName: function (obj) {
         return {
             name: obj.name,
             content: obj.msg,

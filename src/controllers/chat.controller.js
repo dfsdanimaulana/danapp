@@ -1,6 +1,9 @@
 'use strict'
 
-const { message, profile } = require('../models/methods')
+const {
+    message,
+    profile
+} = require('../models/methods')
 
 const params = {
     status: [1,
@@ -9,11 +12,11 @@ const params = {
 }
 
 module.exports = {
-    view: async (req, res) => {
+    view: function (req, res) {
         res.render('chat', params)
     },
 
-    displaySavedMessage: async (req, res) => {
+    displaySavedMessage: async function (req, res) {
 
         // get logged user by session
         params.currentUser = req.session.user._id
@@ -37,14 +40,13 @@ module.exports = {
             if (!data) return res.send('Can not display user reciver')
             params.data = data
             return res.render('chat', params)
-        } else {
-            res.send('msg not found')
         }
+
         res.render('chat', params)
 
     },
 
-    logout: (req, res) => {
+    logout: function (req, res) {
         if (req.cookies) {
             res.clearCookie('login')
             res.clearCookie('id')

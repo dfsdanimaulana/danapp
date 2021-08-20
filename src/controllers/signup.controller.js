@@ -6,20 +6,23 @@ const {
     validate
 } = require('../utils/userAuth')
 
-const { message, profile } = require('../models/methods')
+const {
+    message,
+    profile
+} = require('../models/methods')
 
 
 const params = {}
 
 module.exports = {
-    view: (req, res) => {
+    view: function (req, res) {
         if (req.session.isAuth && req.session.user) {
             return res.redirect('/chat')
         }
         res.render('signup', params)
     },
 
-    addUser: async (req, res) => {
+    addUser: async function(req, res) {
         // if (req.body) return res.send(validate(req.body))
         try {
             const {

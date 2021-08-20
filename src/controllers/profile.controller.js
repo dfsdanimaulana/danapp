@@ -1,11 +1,14 @@
 'use strict'
 
-const { message, profile } = require('../models/methods')
+const {
+    message,
+    profile
+} = require('../models/methods')
 
 const params = {}
 
 module.exports = {
-    view: async (req, res) => {
+    view: async function (req, res) {
         const id = req.params.id
         const data = await profile.getUser(id)
         if (!data) {
@@ -17,7 +20,7 @@ module.exports = {
         res.render('profile', params)
     },
 
-    updateData: async (req, res) => {
+    updateData: async function(req, res) {
         const data = req.body
         params.currentUser = req.session.user._id
         const oldName = req.session.user.username
@@ -32,14 +35,14 @@ module.exports = {
                     },
                 }
                 try {
-                    // fix here
                     const updateSender = await message.updateSender(
                         data.dataValue,
                         oldName
                     )
-                    console.log(updateSender)
+
                 } catch (e) {
                     console.log(e)
+                    res.send(e)
                 }
 
                 break
@@ -71,7 +74,7 @@ module.exports = {
 
         try {
             const newData = await profile.updateById(data.id, query)
-            console.log(newData)
+
             params.data = newData
             req.session.user = newData
             params.currentUser = req.session.user._id
@@ -81,11 +84,13 @@ module.exports = {
                 req.flash('duplicate_username', 'Username is already exists')
                 return res.redirect(`/profile/${req.session.user._id}`)
             }
-            console.log({ error })
+            console.log({
+                error
+            })
         }
     },
 
-    getUsers: async (req, res) => {
+    getUsers: async function (req, res) {
         try {
             const user = await profile.getData()
             res.json(user)
@@ -94,7 +99,7 @@ module.exports = {
         }
     },
 
-    deleteUser: async (req, res) => {
+    deleteUser: async function(req, res) {
         try {
             const id = req.params.id
             await profile.deleteById(id)

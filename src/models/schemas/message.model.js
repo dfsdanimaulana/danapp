@@ -40,6 +40,4 @@ const msgSchema = new Schema(
 
         const Message = mongoose.model('Message', msgSchema)
 
-        module.exports = {
-            Message,
-        }
+        module.exports = Message

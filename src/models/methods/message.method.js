@@ -1,27 +1,31 @@
 'use strict'
 
-const { Message } = require('../schemas/message.model')
+const {
+    Message
+} = require('../schemas')
 
 
 const message = {
 
-  saveMessage: (data) => {
+    saveMessage: async function (data) {
         const  message = new Message(data)
-        message.save((err, result) => {
-            if (err) throw err
+        try {
+            const result = await message.save()
             console.log(result)
-        })
+        } catch (e) {
+            console.log(e)
+        }
     },
 
-    getAllMessage: () => {
+    getAllMessage: function () {
         return Message.find().sort({
             sender: 1
         })
     },
 
-    updateSender: (newName,
-        oldName) => {
-        Message.updateMany({
+    updateSender: function (newName,
+        oldName) {
+        return Message.updateMany({
             sender: oldName
         },
             {
@@ -29,8 +33,8 @@ const message = {
             })
     },
 
-    getMessageBySender: async (sender,
-        reciver) => {
+    getMessageBySender: async function (sender,
+        reciver) {
 
         const  data = await Message.find({
             sender
@@ -39,8 +43,7 @@ const message = {
         return data
     },
 
-
-    deleteMessage: () => {
+    deleteMessage: function () {
         Message.collection.drop()
     }
 }
