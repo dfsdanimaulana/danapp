@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 
 // server connection
-const app = require('./src/config/server')
+const app = require('./config/server')
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({
@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-require('./src/utils/session')(app)
+require('./utils/session')(app)
 
 // cookies
 app.use(cookieParser('secret string', {
@@ -34,16 +34,16 @@ app.use(flash())
 app.set('view engine', 'ejs')
 
 // access public folder
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '../public')))
 
 // router
-require('./src/routes')(app)
+require('./routes')(app)
 
 // page not found handlers
 
 const {
     isAuth
-} = require('./src/utils/middleware')
+} = require('./utils/middleware')
 
 app.use('/', isAuth, (req, res) => {
     res.status(404).render('404')

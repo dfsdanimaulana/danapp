@@ -1,5 +1,7 @@
 'use strict'
 
+const debug = require('debug')('dev')
+
 const {
     message,
     profile
@@ -24,6 +26,7 @@ module.exports = {
         // query user message in database by sender
         const sender = req.session.user.username
         const msg = await message.getMessageBySender(sender) // array of object
+        debug(msg)
         if (msg) {
             params.msg = msg
             // remove duplicate reciver
