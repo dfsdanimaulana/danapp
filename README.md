@@ -11,7 +11,7 @@
 
 - login & signup
 - edit profile
-- send message
+- send messages
 - sessions & cookies
 
 #### Edit this project
