@@ -13,7 +13,7 @@ if (!str || str === '' || str === ' ') {
     console.log(chalk.red('Please input some message!'))
     return
 }
-console.log(chalk.yellow.italic('Adding untracked files...'))
+console.log(chalk.magenta.italic('Adding untracked files...'))
 exec('git add .', cbAdd)
 
 function cbAdd(err) {
@@ -21,7 +21,7 @@ function cbAdd(err) {
         console.log(err)
         return
     }
-    console.log(chalk.yellow.italic('Commiting files...\n'))
+    console.log(chalk.magenta.italic('Commiting files...\n'))
     exec(`git commit -m "${str}"`, cbCommit)
 }
 
