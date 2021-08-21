@@ -1,15 +1,12 @@
 'use strict'
 
-const {
-    message,
-    profile
-} = require('../models/methods')
-
+const { message, profile } = require('../models/methods')
+const debug = require('debug')('dev')
 
 const params = {}
 
 module.exports = {
-    view: async function(req, res) {
+    view: async function (req, res) {
         const id = req.params.id
         const data = await profile.getUser(id)
         if (!data) return res.send('user not found')
@@ -27,7 +24,7 @@ module.exports = {
         res.render('chatroom', params)
     },
 
-    showMessage: async function(req, res) {
+    showMessage: async function (req, res) {
         try {
             const messages = await message.getAllMessage()
             if (!messages) {
@@ -42,10 +39,10 @@ module.exports = {
     deleteAllMessage: async function (req, res) {
         try {
             const result = await message.deleteMessage()
-            console.log(result)
+            debug(result)
             res.redirect('/chat')
         } catch (e) {
             res.send(e)
         }
-    }
+    },
 }

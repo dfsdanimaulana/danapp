@@ -4,6 +4,7 @@ const {
     Message
 } = require('../schemas')
 
+const debug = require('debug')('dev')
 
 const message = {
 
@@ -11,7 +12,7 @@ const message = {
         const  message = new Message(data)
         try {
             const result = await message.save()
-            console.log(result)
+            debug(result)
         } catch (e) {
             console.log(e)
         }

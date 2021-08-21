@@ -8,8 +8,9 @@
         "test": "jest --watch",
         "test2": "node ./node_modules/jest/bin/jest.js",
         "commit": "node ./src/utils/commit",
-        "predebug":"set DEBUG=dev",
-        "debug": "DEBUG=dev node ./src/app.js"
+        "debug":"set DEBUG=dev & node ./src/app.js",
+        "predebug2":"set DEBUG=dev",
+        "debug2": "DEBUG=dev node ./src/app.js"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",

@@ -2,6 +2,8 @@
 
 const { Profile } = require('../schemas')
 
+const debug = require('debug')('dev')
+
 const profile = {
     getData: function() {
         return Profile.find()
@@ -42,7 +44,7 @@ const profile = {
         const user = new Profile(data)
         user.save((err, result) => {
             if (err) throw err
-            console.log(result)
+            debug(result)
         })
     },
 
