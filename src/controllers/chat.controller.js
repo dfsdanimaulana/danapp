@@ -2,15 +2,10 @@
 
 const debug = require('debug')('dev')
 
-const {
-    message,
-    profile
-} = require('../models/methods')
+const { message, profile } = require('../models/methods')
 
 const params = {
-    status: [1,
-        2,
-        3]
+    status: [1, 2, 3],
 }
 
 module.exports = {
@@ -19,7 +14,6 @@ module.exports = {
     },
 
     displaySavedMessage: async function (req, res) {
-
         // get logged user by session
         params.currentUser = req.session.user._id
 
@@ -31,8 +25,8 @@ module.exports = {
             params.msg = msg
             // remove duplicate reciver
             const reciver = msg
-            .map((v) => v.reciver)
-            .filter((v, i, arr) => arr.indexOf(v) === i)
+                .map((v) => v.reciver)
+                .filter((v, i, arr) => arr.indexOf(v) === i)
             // get and display user by reciver
             let query = {
                 username: {
@@ -46,7 +40,6 @@ module.exports = {
         }
 
         res.render('chat', params)
-
     },
 
     logout: function (req, res) {
