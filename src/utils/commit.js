@@ -1,8 +1,6 @@
 'use strict'
 
-const {
-    exec
-} = require('child_process')
+const { exec } = require('child_process')
 
 const chalk = require('chalk')
 
@@ -19,8 +17,6 @@ function cbAdd(err, strout, stdin) {
         return
     }
     exec(`git commit -m "${str}"`, cbCommit)
-    console.log({strout})
-    console.log({stdin})
 }
 
 function cbCommit(err, strout, stdin) {
@@ -28,8 +24,8 @@ function cbCommit(err, strout, stdin) {
         console.log(err)
         return
     }
-      console.log({ strout })
-      console.log({ stdin })
+    const message = strout
+    console.log({ message })
     console.log('commit done msg : ', str)
 }
 
