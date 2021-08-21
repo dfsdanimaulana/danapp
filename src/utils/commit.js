@@ -25,9 +25,8 @@ function cbCommit(err, strout, stdin) {
         return
     }
     const message = strout
-    console.log(message)
-    console.log(typeof message)
-    console.log('commit done msg : ', str)
+    console.log(chalk.blue(message))
+    console.log(chalk.green('commit done msg : ', str))
 }
 
 // npm run commit -- message
