@@ -9,6 +9,11 @@ args.splice(0, 2)
 
 let str = args.join(' ')
 
+if (!str || str === '' || str === ' ') {
+    console.log(chalk.red('Please input some message!'))
+    return
+}
+
 exec('git add .', cbAdd)
 
 function cbAdd(err, strout, stdin) {
