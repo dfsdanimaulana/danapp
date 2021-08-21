@@ -4,6 +4,8 @@ const {
     exec
 } = require('child_process')
 
+const chalk = require('chalk')
+
 let args = process.argv
 args.splice(0, 2)
 
@@ -17,6 +19,8 @@ function cbAdd(err, strout, stdin) {
         return
     }
     exec(`git commit -m "${str}"`, cbCommit)
+    console.log({strout})
+    console.log({stdin})
 }
 
 function cbCommit(err, strout, stdin) {
@@ -24,6 +28,8 @@ function cbCommit(err, strout, stdin) {
         console.log(err)
         return
     }
+      console.log({ strout })
+      console.log({ stdin })
     console.log('commit done msg : ', str)
 }
 

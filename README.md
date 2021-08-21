@@ -1,6 +1,6 @@
 # **DanApp**
 
-#### Realtime chat application using nodejs
+#### Realtime chat application using
 
 * nodejs
 * express

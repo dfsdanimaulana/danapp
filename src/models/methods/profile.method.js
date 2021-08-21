@@ -1,11 +1,9 @@
 'use strict'
 
-const {
-    Profile
-} = require('../schemas')
+const { Profile } = require('../schemas')
 
 const profile = {
-    getData: function() {
+    getData: function () {
         return Profile.find().sort({
             name: 1,
         })
@@ -15,13 +13,13 @@ const profile = {
         return Profile.findById(id)
     },
 
-    getByUsername: function(username) {
+    getByUsername: function (username) {
         return Profile.findOne({
             username,
         })
     },
 
-    deleteById: function(id) {
+    deleteById: function (id) {
         return Profile.findOneAndDelete({
             _id: id,
         })
@@ -33,13 +31,13 @@ const profile = {
         })
     },
 
-    updateById: function(id, query) {
+    updateById: function (id, query) {
         return Profile.findByIdAndUpdate(id, query, {
             new: true,
         })
     },
 
-    saveUser: function(data) {
+    saveUser: function (data) {
         const user = new Profile(data)
         user.save((err, result) => {
             if (err) throw err
@@ -51,6 +49,5 @@ const profile = {
         return Profile.find(query)
     },
 }
-
 
 module.exports = profile
