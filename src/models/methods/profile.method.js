@@ -6,8 +6,9 @@ const {
 
 const profile = {
     getData: function() {
-        return Profile.find().sort({
-            name: 1,
+        return Profile.find()
+        .sort({
+            name: 1
         })
     },
 

@@ -1,6 +1,6 @@
 # **DanApp**
 
-#### Realtime chat application using nodejs
+#### Realtime chat application using
 
 * nodejs
 * express
@@ -24,3 +24,6 @@
   
 4. testing in android\
 `npm run test2`
+  
+5. Adding untracked file and commit\
+`npm run commit -- <commit message>`
