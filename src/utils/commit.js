@@ -25,7 +25,8 @@ function cbCommit(err, strout, stdin) {
         return
     }
     const message = strout
-    console.log({ message })
+    console.log(message)
+    console.log(typeof message)
     console.log('commit done msg : ', str)
 }
 
