@@ -13,7 +13,7 @@ if (!str || str === '' || str === ' ') {
     console.log(chalk.red('Please input some message!'))
     return
 }
-
+console.log(chalk.yellow.italic('Adding untracked files...'))
 exec('git add .', cbAdd)
 
 function cbAdd(err, strout, stdin) {
@@ -21,6 +21,7 @@ function cbAdd(err, strout, stdin) {
         console.log(err)
         return
     }
+    console.log(chalk.yellow.italic('Commiting files...'))
     exec(`git commit -m "${str}"`, cbCommit)
 }
 
@@ -30,7 +31,9 @@ function cbCommit(err, strout, stdin) {
         return
     }
     console.log(chalk.green(strout))
-    console.log(chalk.blue(`Commit done with message : ${chalk.yellow(`"${str}"`)}`))
+    console.log(
+        chalk.blue(`Commit done with message : ${chalk.yellow(`"${str}"`)}`)
+    )
 }
 
 // npm run commit -- message
