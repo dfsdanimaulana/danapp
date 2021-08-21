@@ -1,0 +1,20 @@
+[{
+    "username":"dnm17",
+    "room":"",
+    "messages":
+    [{
+        "sender":"dewi17",
+        "timeSend":"09:56 AM",
+        "isRead":false,
+        "msg":"hai dani how are you?",
+        "createdAt":"",
+        "updatedAt":""
+    }, {
+        "sender":"antin19",
+        "timeSend":"07:04 AM",
+        "isRead":false,
+        "msg":"good morning?",
+        "createdAt":"",
+        "updatedAt":""
+    }]
+}]

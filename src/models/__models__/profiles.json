@@ -1,0 +1,46 @@
+[{
+    "_id": {
+        "$oid": "6114953f2b904233494bac5d"
+    },
+    "img": "images/Dani.jpg",
+    "status": "Hello i'm using DanApp",
+    "username": "dewi17",
+    "name": "Dewi Renata",
+    "email": "dewi@gmail.com",
+    "contact":["dewi17","antin17"],
+    "password": "$2a$10$q3frXXA/DbRi5B6sjkwkwkwyAu7utZUdOGMnCynN3Hl9xtGduZYD7ZSS.",
+    "isOnline":false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "6114953f2b904233494bac5d"
+    },
+    "img": "images/Dani.jpg",
+    "status": "Hello i'm using DanApp",
+    "username": "dnm17",
+    "name": "Dani Maulana",
+    "email": "dani@gmail.com",
+    "contact":["dewi17","antin17"],
+    "password": "$2a$10$q3frXXA/DbRi5B6wjiwiwwoAyAu7utZUdOGMnCynN3Hl9xtGduZYD7ZSS.",
+    "isOnline":false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}, {
+    "_id": {
+        "$oid": "6114953f2b904233494bac5d"
+    },
+    "img": "images/Dani.jpg",
+    "status": "Hello i'm using DanApp",
+    "username": "antin56",
+    "name": "Antin yuliana",
+    "email": "antin@gmail.com",
+    "contact":["dewi17","antin17"],
+    "password": "$2a$10$q3frXXA/DbRi5B6Y0vAyAu7utZUdOGMnCynN3Hl9xtGsisiduZYD7ZSS.",
+    "isOnline":false,
+    "__v": {
+        "$numberInt": "0"
+    }
+}]

@@ -3,9 +3,10 @@
 const { Profile } = require('../schemas')
 
 const profile = {
-    getData: function () {
-        return Profile.find().sort({
-            name: 1,
+    getData: function() {
+        return Profile.find()
+        .sort({
+            name: 1
         })
     },
 
