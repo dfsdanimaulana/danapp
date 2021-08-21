@@ -24,7 +24,7 @@ function cbCommit(err, strout, stdin) {
         console.log(err)
         return
     }
-    console.log(chalk.pink(strout))
+    console.log(chalk.orange(strout))
     console.log(chalk.green(`Commit done with message : ${chalk.yellow(str)}`))
 }
 
