@@ -21,7 +21,7 @@ function cbAdd(err, strout, stdin) {
         console.log(err)
         return
     }
-    console.log(chalk.yellow.italic('Commiting files...\n\n'))
+    console.log(chalk.yellow.italic('Commiting files...\n'))
     exec(`git commit -m "${str}"`, cbCommit)
 }
 
