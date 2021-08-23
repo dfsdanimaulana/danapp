@@ -30,6 +30,9 @@ Profile.findOne = jest.fn(()=> {
     return Promise.resolve(data)
 })
 
+Profile.prototype.sort = jest.fn(function (obj) {
+    return this.sort((a, b)=> a.name - b.name)
+})
 
 it('get data from profile collection', async()=> {
     const data = await profile.getData()

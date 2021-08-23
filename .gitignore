@@ -2,4 +2,3 @@ node_modules
 request.rest
 coverage
 .eslintrc.js
-.prettierrc.js

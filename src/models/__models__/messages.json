@@ -9,13 +9,33 @@
         "msg":"hai dani how are you?",
         "createdAt": "1970-01-19T20:39:19.310Z",
         "updatedAt":"1970-01-19T20:39:19.310Z"
-    
+
     }, {
         "sender":"antin19",
         "timeSend":"07:04 AM",
         "isRead":false,
         "msg":"good morning?",
-         "createdAt": "1970-01-19T20:39:19.310Z",
-         "updatedAt":"1970-01-19T20:39:19.310Z"
+        "createdAt": "1970-01-19T20:39:19.310Z",
+        "updatedAt":"1970-01-19T20:39:19.310Z"
+    }]
+}, {
+    "username":"dewi17",
+    "room":"",
+    "messages":
+    [{
+        "sender":"dnm17",
+        "timeSend":"09:56 AM",
+        "isRead":false,
+        "msg":"hai dani how are you?",
+        "createdAt": "1970-01-19T20:39:19.310Z",
+        "updatedAt":"1970-01-19T20:39:19.310Z"
+
+    }, {
+        "sender":"antin19",
+        "timeSend":"07:04 AM",
+        "isRead":false,
+        "msg":"good morning?",
+        "createdAt": "1970-01-19T20:39:19.310Z",
+        "updatedAt":"1970-01-19T20:39:19.310Z"
     }]
 }]
