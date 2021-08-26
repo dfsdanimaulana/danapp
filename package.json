@@ -2,16 +2,16 @@
     "name": "danapp",
     "version": "1.0.0",
     "author": "dfsdanimaulana",
-    "main": "app.js",
+    "main": "./bin/www",
     "description":"Web Chat Application building using express and nodejs",
     "scripts": {
-        "start": "node ./src/app.js",
+        "start": "nodemon ./bin/www",
         "test": "jest --watch",
         "test2": "node ./node_modules/jest/bin/jest.js",
         "commit": "node ./src/utils/commit",
-        "debug":"set DEBUG=dev & node ./src/app.js",
+        "debug":"set DEBUG=dev & node ./bin/www",
         "predebug2":"set DEBUG=dev",
-        "debug2": "DEBUG=dev node ./src/app.js"
+        "debug2": "DEBUG=dev node ./bin/www"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",

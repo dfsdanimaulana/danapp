@@ -1,13 +1,11 @@
 'use strict'
 
-const path = require('path')
 const express = require('express')
+const app = express()
+const path = require('path')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
-
-// server connection
-const app = require('./config/server')
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({
@@ -48,3 +46,5 @@ const {
 app.use('/', isAuth, (req, res) => {
     res.status(404).render('404')
 })
+
+module.exports = app
