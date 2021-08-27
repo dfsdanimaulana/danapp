@@ -6,8 +6,6 @@
     "description":"Web Chat Application building using express and nodejs",
     "scripts": {
         "start": "nodemon ./bin/www",
-        "test": "jest --watch",
-        "test2": "node ./node_modules/jest/bin/jest.js",
         "commit": "node ./src/utils/commit",
         "debug":"set DEBUG=dev & node ./bin/www",
         "predebug2":"set DEBUG=dev",
@@ -32,7 +30,6 @@
     "devDependencies": {
         "debug": "^2.6.9",
         "eslint": "^7.32.0",
-        "jest": "^27.0.6",
         "nodemon": "^2.0.12"
     }
 }

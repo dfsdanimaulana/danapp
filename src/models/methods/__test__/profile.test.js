@@ -6,21 +6,6 @@ const {
 
 const profile = require('../profile.method')
 
-const fakeData =
-[{
-    name: 'Dani Maulana',
-    username: 'dnm17',
-    password: '123456',
-    email: 'danimaulana9f@gmail.com',
-    status: 'Hello, World!'
-}, {
-    name: 'Dewi Renata',
-    username: 'dwr17',
-    password: '123456',
-    email: 'dewi@gmail.com',
-    status: 'Hello, World!'
-}]
-
 Profile.find = jest.fn(()=> {
     return Promise.resolve(fakeData)
 })
