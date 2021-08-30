@@ -5,7 +5,7 @@
     "main": "./bin/www",
     "description":"Web Chat Application building using express and nodejs",
     "scripts": {
-        "start": "nodemon ./bin/www",
+        "start": "node ./bin/www",
         "commit": "node ./src/utils/commit",
         "debug":"set DEBUG=dev & node ./bin/www",
         "predebug2":"set DEBUG=dev",
