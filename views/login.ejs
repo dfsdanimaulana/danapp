@@ -1,79 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%- include('layouts/cdn') %>
-    <link rel="stylesheet" href="/css/login.css" type="text/css" media="all" />
-    <script src="/js/login.js" type="text/javascript" charset="utf-8" defer></script>
-    <title>DanApp | Login Page</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <%- include('layouts/cdn') %>
+        <link
+            rel="stylesheet"
+            href="/css/login.css"
+            type="text/css"
+            media="all"
+        />
+        <script
+            src="/js/login.js"
+            type="text/javascript"
+            charset="utf-8"
+            defer
+        ></script>
+        <title>DanApp | Login Page</title>
+    </head>
+    <body>
+        <!-- start -->
+        <div class="container d-flex flex-column align-items-center p-5">
+            <h1 class="mb-5">Login</h1>
 
-    <!-- start -->
-    <div class="container d-flex flex-column align-items-center p-5">
-        <h1 class="mb-5">Login</h1>
-
-        <form class="d-flex flex-column mb-5" action="/login" method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Email or Username</label>
-                <input
-                name="username"
-                required
-                autofocus
-                autocomplete="off"
-                type="text"
-                class="form-control shadow-sm"
-                id="username"
-                aria-describedby="userErrorBlock">
-                <div id="userErrorBlock" class="form-text text-danger text-center">
-                    User not found!
+            <form class="d-flex flex-column mb-5" action="/login" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label"
+                        >Email or Username</label
+                    >
+                    <input
+                        name="username"
+                        required
+                        autofocus
+                        autocomplete="off"
+                        type="text"
+                        class="form-control shadow-sm"
+                        id="username"
+                        aria-describedby="userErrorBlock"
+                    />
+                    <% if (error.length !== 0) { %>
+                    <div
+                        id="userErrorBlock"
+                        class="form-text text-danger text-center"
+                    >
+                        <%= error %> 
+                    </div>
+                    <% } %>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                name="password"
-                required
-                autofocus
-                autocomplete="off"
-                type="password"
-                class="form-control shadow-sm"
-                id="password"
-                aria-describedby="passwordErrorBlock">
-                <div id="passwordErrorBlock" class="form-text text-danger text-center">
-                    Incorrect password!
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        name="password"
+                        required
+                        autofocus
+                        autocomplete="off"
+                        type="password"
+                        class="form-control shadow-sm"
+                        id="password"
+                        aria-describedby="passwordErrorBlock"
+                    />
+                    <% if (error.length !== 0) { %>
+                    <div
+                        id="userErrorBlock"
+                        class="form-text text-danger text-center"
+                    >
+                        User not found!
+                    </div>
+                    <% } %>
                 </div>
-            </div>
 
-            <div class="mb-4 form-check">
-                <input name="checkbox" type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
-            <button type="submit" class="btn-sm shadow-sm btn-primary justify-self-center">Submit</button>
-        </form>
-        <!-- end -->
-
-        <div class="others m-3 text-center">
-            <h6>Login as guest :</h6>
-
-            <form class="mb-3" method="POST" action="/login">
-                <input name="guest" value="true" hidden>
-                <button type="submit" class="btn-sm shadow-sm btn-info text-light m-3">Guest</button>
+                <div class="mb-4 form-check">
+                    <input
+                        name="checkbox"
+                        type="checkbox"
+                        class="form-check-input"
+                        id="exampleCheck1"
+                    />
+                    <label class="form-check-label" for="exampleCheck1"
+                        >Remember me</label
+                    >
+                </div>
+                <button
+                    type="submit"
+                    class="btn-sm shadow-sm btn-primary justify-self-center"
+                >
+                    Submit
+                </button>
             </form>
+            <!-- end -->
 
-            <h6 class="mb-3">Or login with :</h6>
-            <div class="d-flex justify-content-around fs-1">
-                <a href="#"><i class="bi bi-google"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
+            <div class="others m-3 text-center">
+                <h6>Login as guest :</h6>
+
+                <form class="mb-3" method="POST" action="/login">
+                    <input name="guest" value="true" hidden />
+                    <button
+                        type="submit"
+                        class="btn-sm shadow-sm btn-info text-light m-3"
+                    >
+                        Guest
+                    </button>
+                </form>
+
+                <h6 class="mb-3">Or login with :</h6>
+                <div class="d-flex justify-content-around fs-1">
+                    <a href="#"><i class="bi bi-google"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <!-- <li><a href="#"><i class="bi bi-twitter"></i></a></li> -->
+                </div>
+            </div>
+            <div class="footer">
+                New user ? signup <a href="/signup">here</a>
             </div>
         </div>
-        <div class="footer">
-            New user ? signup <a href="/signup">here</a>
-        </div>
-    </div>
-</body>
+    </body>
 </html>

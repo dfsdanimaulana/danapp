@@ -7,9 +7,10 @@ module.exports = (app) => {
     app.use(
         session({
             secret: 'key that will sign cookie in the browser',
-            resave: false,
-            saveUninitialized: false,
+            resave: true,
+            saveUninitialized: true,
             cookie: {
+                maxAge:6000,
                 // secure : true, -> enable in https
                 httpOnly: true // only send through server and browser
 
