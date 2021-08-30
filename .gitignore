@@ -1,4 +1,4 @@
 node_modules
 request.rest
-__coverage__
+coverage
 .eslintrc.js
