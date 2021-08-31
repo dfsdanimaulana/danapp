@@ -10,7 +10,7 @@ module.exports = (app) => {
             resave: true,
             saveUninitialized: true,
             cookie: {
-                maxAge:6000,
+                // maxAge:6000,
                 // secure : true, -> enable in https
                 httpOnly: true // only send through server and browser
 
