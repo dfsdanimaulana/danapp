@@ -34,6 +34,9 @@ app.set('view engine', 'ejs')
 // access public folder
 app.use(express.static(path.join(__dirname, '../public')))
 
+// upload file handler
+require('./utils/uploadImg')(app)
+
 // router
 require('./routes')(app)
 

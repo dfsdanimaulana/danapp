@@ -6,9 +6,11 @@ const router = express.Router()
 module.exports = (app) => {
     const {
         view,
-        addUser
+        addUser,
+        uploadImg
     } = require('../controllers/signup.controller')
 
+    router.post('/upload', uploadImg)
     router.get('/', view)
     router.post('/', addUser)
 
