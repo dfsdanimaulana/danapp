@@ -19,7 +19,7 @@ module.exports = (app) => {
     router.get('/search', (req, res)=> {
         res.render('livesearch')
     })
-    router.get('/:id', isAuth, view)
+    router.get('/:id',isAuth, view)
     router.put('/', updateData)
 
 

@@ -25,10 +25,25 @@
                 <li><a href="/profile/d/<%= data._id %>" onclick="prompt('Are you sure want to delete this user?')">Delete profile</a></li>
             </ul>
         </div>
-        <a href="#">
-            <img src=/<%= data.img %> alt="not found"></img>
-    </a>
 
+        <div class="img-container">
+            <a href="#">
+                <img src=/<%= data.img %> alt="not found"></img>
+               <i class="bi bi-plus-circle"></i>
+            </a>
+        </div>
+        <div class="modal-img-container">
+            <div class="modal-img">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <i class="bi bi-x-circle position-absolute top-0 start-100 translate-middle"></i>
+                    <label for="image">
+                    <img src="/images/Dani.jpg" class="img-thumbnail mb-2">
+                        <input type="file" name="image" id="image">
+                    </label>
+                    <button class="btn btn-info" type="button">Change</button>
+                </form>
+            </div>
+        </div>
     <div class="box">
         <i class="bi bi-at"></i>
         <span class="desc">

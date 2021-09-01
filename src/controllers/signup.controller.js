@@ -48,12 +48,24 @@ exports.addUser = async function (req, res) {
     }
 }
 
-exports.uploadImg = function (req,res,next){
+exports.uploadImg = function (req, res, next) {
     console.log(req.file)
-    if(!req.file){
+    if (!req.file) {
         return res.send('file not found!')
     }
     const image = req.file.path // sudah di process sama multer tinggal ambil pathnya
     console.log(image)
     res.redirect('/login')
 }
+/*
+{
+  fieldname: 'image',
+  originalname: 'IMG_5805.JPG',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'images',
+  filename: '1630432590744-IMG_5805.JPG',
+  path: 'images\\1630432590744-IMG_5805.JPG',
+  size: 1383158
+}
+*/

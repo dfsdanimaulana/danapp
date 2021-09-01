@@ -79,3 +79,20 @@ if (currentUser !== thisUser) {
         el.style.visibility = 'hidden'
     })
 }
+
+// modal profile start
+
+const profile_edit = document.querySelector('.img-container a i')
+
+const modal_img_container = document.querySelector('.modal-img-container')
+const modal_img = document.querySelector('.modal-img')
+const modal_img_i = document.querySelector('.modal-img i')
+const modal_img_form = document.querySelector('.modal-img form')
+
+profile_edit.addEventListener('click',()=>{
+    modal_img_container.style.display = 'block'
+})
+
+modal_img_i.addEventListener('click',()=>{
+    modal_img_container.style.display = 'none'
+})
