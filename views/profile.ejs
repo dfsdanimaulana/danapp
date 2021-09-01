@@ -37,10 +37,10 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     <i class="bi bi-x-circle position-absolute top-0 start-100 translate-middle"></i>
                     <label for="image">
-                    <img src="/images/Dani.jpg" class="img-thumbnail mb-2">
-                        <input type="file" name="image" id="image">
+                    <img src="/images/Dani.jpg" class="img-thumbnail mb-2 " id="profile-img">
+                        <input type="file" name="image" id="image" onchange="return fileValidation(this.id)">
                     </label>
-                    <button class="btn btn-info" type="button">Change</button>
+                    <button class="btn btn-info" type="submit">Change</button>
                 </form>
             </div>
         </div>
