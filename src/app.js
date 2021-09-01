@@ -6,6 +6,7 @@ const path = require('path')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+const session = require('express-session')
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(express.urlencoded({
@@ -18,7 +19,17 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-require('./utils/session')(app)
+app.use(session(
+    {
+        secret: 'key that will sign cookie in the browser',
+        resave: true,
+        saveUninitialized: true,
+        cookie: {
+            // secure : true, -> enable in https
+            httpOnly: true // only send through server and browser
+        }
+    })
+)
 
 // cookies
 app.use(cookieParser('secret string', {
@@ -33,6 +44,9 @@ app.set('view engine', 'ejs')
 
 // access public folder
 app.use(express.static(path.join(__dirname, '../public')))
+
+// database connection
+require('./config/db.connect')
 
 // router
 require('./routes')(app)

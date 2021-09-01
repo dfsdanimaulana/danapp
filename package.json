@@ -1,8 +1,8 @@
 {
     "name": "danapp",
     "version": "1.0.0",
-    "author": "dfsdanimaulana",
-    "main": "./bin/www",
+    "author": "dfsdanimaulana <danimaulana9f@gmail.com>",
+    "main": "app.js",
     "description":"Web Chat Application building using express and nodejs",
     "scripts": {
         "start": "node ./bin/www",
