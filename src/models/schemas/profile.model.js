@@ -8,6 +8,10 @@ const {
 } = mongoose
 
 const ProfileSchema = new Schema({
+    images: {
+        type: String,
+        default:'images/sample.jpg'
+    },
     img: {
         type: String,
         default: 'images/Dani.jpg',

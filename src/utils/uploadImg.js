@@ -19,6 +19,7 @@ const fileFilter = (req, file, cb) => {
     ) {
         cb(null, true)
     } else {
+        console.log('some error in multer')
         cb(null, false)
     }
 }

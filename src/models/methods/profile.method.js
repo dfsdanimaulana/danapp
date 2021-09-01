@@ -5,10 +5,9 @@ const { Profile } = require('../schemas')
 const debug = require('debug')('dev')
 
 const profile = {
-    getData: function() {
-        return Profile.find()
-        .sort({
-            name: 1
+    getData: function () {
+        return Profile.find().sort({
+            name: 1,
         })
     },
 
@@ -50,6 +49,18 @@ const profile = {
 
     getSomeUserByValue: function (query) {
         return Profile.find(query)
+    },
+    
+    saveImgPath: function (path, id) {
+        return Profile.findByIdAndUpdate(
+            id,
+            {
+                images: path,
+            },
+            {
+                new: true,
+            }
+        )
     },
 }
 
