@@ -1,6 +1,7 @@
 'use strict'
 
 const { message, profile } = require('../models/methods')
+const { saveImgPath } = require('../models/methods/profile.method')
 
 const params = {}
 
@@ -104,6 +105,14 @@ exports.deleteUser = async function (req, res) {
     }
 }
 
-exports.uploadUserImage = function (req, res) {
-    res.send(req.file)
+exports.uploadUserImage = async function (req, res) {
+    if(!req.file) return res.send('Please input some picture!')
+    const id = req.body.id
+    const path = req.file.path
+    try {
+        const data = await saveImgPath(path, id)
+        res.redirect(`/profile/${id}`)
+    } catch (err) {
+        return res.send(err)
+    }
 }

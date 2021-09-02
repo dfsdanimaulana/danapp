@@ -28,7 +28,7 @@
 
         <div class="img-container">
             <a href="#">
-                <img src=/<%= data.img %> alt="not found"></img>
+                <img src="/<%= data.image %>" alt="not found"></img>
                <i class="bi bi-plus-circle"></i>
             </a>
         </div>
@@ -36,13 +36,13 @@
         <div class="modal-img-container">
             <div class="modal-img">
                 <form action="/profile" method="POST" enctype="multipart/form-data">
-                    <i class="bi bi-x-circle position-absolute top-0 start-100 translate-middle"></i>
-                    <label for="image">
-                    <img src="/images/Dani.jpg" class="img-thumbnail mb-2 " id="profile-img">
+                    <i class="bi bi-x-circle align-self-end"></i>
+                    <label for="image" class="mb-3">
+                    <img src="/<%= data.image %>" class="img-thumbnail w-100 h-100 " id="profile-img">
                         <input type="file" name="image" id="image" onchange="return fileValidation(this.id)" accept="image/*">
                         <input type="text" name="id" value="<%= data._id %>" hidden>
                     </label>
-                    <button class="btn btn-info" type="submit">Update</button>
+                    <button class="btn btn-sm btn-info" type="submit">Update</button>
                 </form>
             </div>
         </div>

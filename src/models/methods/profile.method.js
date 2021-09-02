@@ -43,7 +43,7 @@ const profile = {
         const user = new Profile(data)
         user.save((err, result) => {
             if (err) throw err
-            debug(result)
+            console.log(result)
         })
     },
 
@@ -55,7 +55,7 @@ const profile = {
         return Profile.findByIdAndUpdate(
             id,
             {
-                images: path,
+                image: path,
             },
             {
                 new: true,

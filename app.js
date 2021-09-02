@@ -8,16 +8,11 @@ const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const cors = require('cors')
 
-
 // allow request from another domain
 app.use(cors())
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-)
+app.use(express.urlencoded({ extended: true }))
 
 // content type json
 app.use(express.json())
@@ -29,11 +24,7 @@ app.use(methodOverride('_method'))
 require('./src/utils/session')(app)
 
 // cookies
-app.use(
-    cookieParser('secret string', {
-        expires: new Date(Date.now + 150000),
-    })
-)
+app.use(cookieParser('secret string'))
 
 // flash message : only can use once so it will disappear when already used
 app.use(flash())
@@ -45,7 +36,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, './public')))
 
 // access images folder
-app.use('/images',express.static(path.join(__dirname, './images')))
+app.use('/images', express.static(path.join(__dirname, './images')))
 
 // routes
 require('./src/routes')(app)

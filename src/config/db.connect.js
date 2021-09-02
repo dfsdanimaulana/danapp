@@ -15,5 +15,5 @@ mongoose.connect(process.env.DB_ATLAS, {
 mongoose.set('returnOriginal', false)
 
 mongoose.connection
-    .on('error', console.error.bind(console, 'Connection Error!'))
+    .on('error', console.error.bind(console, new Error('Database Connection Error!')))
     .once('open', () => console.log(chalk.italic.blue('Database Connected!')))
