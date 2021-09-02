@@ -1,6 +1,6 @@
 'use strict'
 
-const app = require('../src/app')
+const app = require('../app')
 const server = require('http').createServer(app)
 const chalk = require('chalk')
 

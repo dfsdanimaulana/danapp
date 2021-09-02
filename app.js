@@ -6,18 +6,11 @@ const path = require('path')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+const cors = require('cors')
 
-// set header cors policy browser
 
-app.use((req, res, next) => {
-    // mengizinkan api kita di aksess dari dalam website manapun
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    // http method yg di izinkan
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-    // SET header content type and authorization
-    res.setHeader('Access-Control-Allow-Headers', 'Content/Type, Authorization')
-    next()
-})
+// allow request from another domain
+app.use(cors())
 
 // built-in middleware yg di gunakan untuk memparsing data yg dikirm melalui url
 app.use(
@@ -25,6 +18,7 @@ app.use(
         extended: true,
     })
 )
+
 // content type json
 app.use(express.json())
 
@@ -32,7 +26,7 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-require('./utils/session')(app)
+require('./src/utils/session')(app)
 
 // cookies
 app.use(
@@ -48,17 +42,17 @@ app.use(flash())
 app.set('view engine', 'ejs')
 
 // access public folder
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, './public')))
 
-// upload file handler
-require('./utils/uploadImg')(app)
+// access images folder
+app.use('/images',express.static(path.join(__dirname, './images')))
 
-// router
-require('./routes')(app)
+// routes
+require('./src/routes')(app)
 
 // page not found handlers
 
-const { isAuth } = require('./utils/middleware')
+const { isAuth } = require('./src/utils/middleware')
 
 app.use('/', isAuth, (req, res) => {
     res.status(404).render('404')

@@ -1,16 +1,15 @@
 'use strict'
 
-const routes =
-[
+const routes = [
     'chatroom',
     'page',
     'chat',
     'signup',
     'profile',
     'contacts',
-    'login'
+    'login',
 ]
 
 module.exports = (app) => {
-    routes.map(route => require(`./${route}.route`)(app))
+    routes.map((route) => require(`./${route}.route`)(app))
 }

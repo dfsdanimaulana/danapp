@@ -104,12 +104,6 @@ exports.deleteUser = async function (req, res) {
     }
 }
 
-exports.uploadImage = function (req, res) {
-    console.log(req.params.id)
-    if(req.file){
-        console.log(req.file)
-
-    }
-    console.log('done')
-    res.redirect('/login')
+exports.uploadUserImage = function (req, res) {
+    res.send(req.file)
 }

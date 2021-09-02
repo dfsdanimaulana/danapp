@@ -54,8 +54,8 @@ exports.uploadImg = function (req, res, next) {
         return res.send('file not found!')
     }
     const image = req.file.path // sudah di process sama multer tinggal ambil pathnya
-    console.log(image)
-    res.redirect('/login')
+    res.json({image})
+
 }
 /*
 {

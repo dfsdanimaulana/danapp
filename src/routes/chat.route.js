@@ -1,7 +1,7 @@
 'use strict'
 
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
+
 const {
     view,
     logout,
@@ -16,5 +16,6 @@ module.exports = (app) => {
     router.get('/logout', logout)
     router.get('/backup', view)
     router.get('/', hasCookie, isAuth, displaySavedMessage)
+
     app.use('/chat', router)
 }
