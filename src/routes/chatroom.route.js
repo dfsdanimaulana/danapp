@@ -10,9 +10,10 @@ const {
 
 const { isAuth } = require('../utils/middleware')
 
-module.exports = (app) => {
-    router.delete('/', deleteAllMessage)
-    router.get('/api', showMessage)
-    router.get('/:id/:name', isAuth, view)
-    app.use('/chatroom', router)
-}
+
+router.delete('/', deleteAllMessage)
+router.get('/api', showMessage)
+router.get('/:id/:name', isAuth, view)
+
+module.exports = router
+

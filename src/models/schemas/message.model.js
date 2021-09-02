@@ -1,10 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const {
-    Schema
-} = mongoose
 const moment = require('moment')
+
+const mongoose = require('mongoose')
 
 const opts = {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
@@ -12,7 +10,7 @@ const opts = {
         currentTime: () => Math.floor(Date.now() / 1000)
     },
 }
-const msgSchema = new Schema(
+const msgSchema = new mongoose.Schema(
     {
         sender: {
             required: true,

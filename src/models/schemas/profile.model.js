@@ -1,11 +1,10 @@
 'use strict'
 
-const mongoose = require('mongoose')
 const moment = require('moment')
 
-const { Schema } = mongoose
+const mongoose = require('mongoose')
 
-const ProfileSchema = new Schema({
+const ProfileSchema = new mongoose.Schema({
     image: {
         type: String,
         default: 'images/male.png',

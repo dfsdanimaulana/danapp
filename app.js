@@ -39,10 +39,15 @@ app.use(express.static(path.join(__dirname, './public')))
 app.use('/images', express.static(path.join(__dirname, './images')))
 
 // routes
-require('./src/routes')(app)
+app.use('/chat', require('./src/routes/chat.route'))
+app.use('/chatroom', require('./src/routes/chatroom.route'))
+app.use('/contacts', require('./src/routes/contacts.route'))
+app.use('/profile', require('./src/routes/profile.route'))
+app.use('/login', require('./src/routes/login.route'))
+app.use('/signup', require('./src/routes/signup.route'))
+app.use('/page', require('./src/routes/page.route'))
 
 // page not found handlers
-
 const { isAuth } = require('./src/utils/middleware')
 
 app.use('/', isAuth, (req, res) => {
