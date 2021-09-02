@@ -46,7 +46,7 @@ require('./src/routes')(app)
 const { isAuth } = require('./src/utils/middleware')
 
 app.use('/', isAuth, (req, res) => {
-    res.status(404).render('404')
+    res.status(404).send('404 | Page not found')
 })
 
 module.exports = app
