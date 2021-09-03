@@ -1,11 +1,11 @@
-<% data.forEach((list,i, v) => {
+<% data.forEach(list=> {
     %>
     <% const messages = msg.filter(v => v.reciver === list.username) %>
     <% const len = messages.length%>
     <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
         <div class="grid-center brd">
             <a href="/profile/<%= list._id %>">
-                <img src="/images/thumbnail/<% v.image %>" alt="not found"></img>
+                <img src="/images/thumb/<% list.image %>" alt="not found"></img>
         </a>
     </div>
     <div class="brd">

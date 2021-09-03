@@ -1,8 +1,6 @@
 'use strict'
 
-const {
-    Message
-} = require('../schemas')
+const {Message} = require('../schemas')
 
 const debug = require('debug')('dev')
 

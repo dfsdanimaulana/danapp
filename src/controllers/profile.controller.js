@@ -2,7 +2,7 @@
 
 const { message, profile } = require('../models/methods')
 const { saveImageToDB } = require('../models/methods/profile.method')
-const { profileImage, thumbnailImage } = require('../utils/resizeImage')
+// const { profileImage, thumbnailImage } = require('../utils/resizeImage')
 
 const params = {}
 
@@ -111,8 +111,8 @@ exports.uploadUserImage = async function (req, res) {
     const id = req.body.id
     const path = req.file.path
     try {
-        await profileImage(path)
-        await thumbnailImage(path)
+       // await profileImage(path)
+       // await thumbnailImage(path)
 
         const data = await saveImageToDB(path, id)
         console.log(data)

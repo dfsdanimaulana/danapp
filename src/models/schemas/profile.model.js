@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const ProfileSchema = new mongoose.Schema({
     image: {
         type: String,
-        default: 'images/male.png',
+        default: 'male.png',
     },
     name: {
         type: String,
@@ -38,10 +38,6 @@ const ProfileSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "Hello i'm using DanApp",
-    },
-    message: {
-        type: String,
-        default: 'Hai guys...',
     },
     timeSend: {
         type: String,

@@ -43,24 +43,51 @@
             </div>
         </header>
         <div class="scroll-container">
-
             <section id="chats">
                 <% if (msg) {
                     %>
-                    <%- include('layouts/card', {
-                        msg, data
+                    <% data.forEach(list=> {
+                        %>
+                        <% const messages = msg.filter(v => v.reciver === list.username) %>
+                        <% const len = messages.length%>
+                        <div class="chat-profile" onclick="window.location.href = '/chatroom/<%= list._id %>/<%= list.name %>'">
+                            <div class="grid-center brd">
+                                <a href="/profile/<%= list._id %>">
+                                    <img src="/images/thumb/<%= list.image %>" alt="not found"></img>
+                            </a>
+                        </div>
+                        <div class="brd">
+                            <%= list.name %>
+                        </div>
+                        <div class="brd">
+                            <i class="bi bi-check"></i>
+                            <!--<i class="bi bi-check-all"></i>  -->
+                            <span>
+                                <%= messages[len-1].message %>
+                            </span>
+                        </div>
+                        <div class="brd">
+                            <%= messages[len-1].timeSend %>
+                        </div>
+                        <div class="brd">
+                            <i class="bi bi-volume-mute"></i>
+                            <span>
+                                <%= len %>
+                            </span>
+                        </div>
+                    </div>
+                        <%
                     }) %>
                     <%
                 } %>
             </section>
-
             <section id="status">
                 <% if (status) {
                     %>
                     <% status.forEach(list => {
                         %>
                         <div class="status-container">
-                            <img src="/images/male.png" alt="not found">
+                            <img src="/images/thumb/male.png" alt="not found">
                             <p>
                                 My status
                             </p>
