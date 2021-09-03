@@ -1,21 +1,18 @@
 'use strict'
 
 const bcrypt = require('bcryptjs')
-const { schema, validate } = require('../utils/userAuth')
+const { schema, validate } = require('../utils/validation')
 
-const { message, profile } = require('../models/methods')
-
-const params = {}
+const { profile } = require('../models/methods')
 
 exports.view = function (req, res) {
     if (req.session.isAuth && req.session.user) {
         return res.redirect('/chat')
     }
-    res.render('signup', params)
+    res.render('signup')
 }
 
 exports.addUser = async function (req, res) {
-    // if (req.body) return res.send(validate(req.body))
     try {
         const { error, value } = await schema.validate(req.body)
         if (error) {
@@ -47,25 +44,3 @@ exports.addUser = async function (req, res) {
         return res.send(e)
     }
 }
-
-exports.uploadImg = function (req, res, next) {
-    console.log(req.file)
-    if (!req.file) {
-        return res.send('file not found!')
-    }
-    const image = req.file.path // sudah di process sama multer tinggal ambil pathnya
-    res.json({image})
-
-}
-/*
-{
-  fieldname: 'image',
-  originalname: 'IMG_5805.JPG',
-  encoding: '7bit',
-  mimetype: 'image/jpeg',
-  destination: 'images',
-  filename: '1630432590744-IMG_5805.JPG',
-  path: 'images\\1630432590744-IMG_5805.JPG',
-  size: 1383158
-}
-*/

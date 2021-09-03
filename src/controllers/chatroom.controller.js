@@ -35,6 +35,7 @@ exports.showMessage = async function (req, res) {
         res.send(e)
     }
 }
+
 exports.deleteAllMessage = async function (req, res) {
     try {
         const result = await message.deleteMessage()

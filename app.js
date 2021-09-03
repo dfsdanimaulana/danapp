@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const cors = require('cors')
+const session = require('express-session')
 
 // allow request from another domain
 app.use(cors())
@@ -21,7 +22,16 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-require('./src/utils/session')(app)
+app.use(session({
+            secret: 'key that will sign cookie in the browser',
+            resave: true,
+            saveUninitialized: true,
+            cookie: {
+                    // maxAge:6000,
+                    // secure : true, -> enable in https
+                    httpOnly: true // only send through server and browser
+                    }
+            }))
 
 // cookies
 app.use(cookieParser('secret string'))
@@ -32,10 +42,8 @@ app.use(flash())
 // view engine
 app.set('view engine', 'ejs')
 
-// access public folder
+// set static folder
 app.use(express.static(path.join(__dirname, './public')))
-
-// access images folder
 app.use('/images', express.static(path.join(__dirname, './images')))
 
 // routes

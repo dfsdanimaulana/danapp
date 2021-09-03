@@ -116,3 +116,16 @@ exports.uploadUserImage = async function (req, res) {
         return res.send(err)
     }
 }
+
+/*
+{
+  fieldname: 'image',
+  originalname: 'IMG_5805.JPG',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'images',
+  filename: '1630432590744-IMG_5805.JPG',
+  path: 'images\\1630432590744-IMG_5805.JPG',
+  size: 1383158
+}
+*/
