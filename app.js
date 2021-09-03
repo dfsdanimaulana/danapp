@@ -1,13 +1,14 @@
 'use strict'
 
-const express = require('express')
-const app = express()
 const path = require('path')
+const express = require('express')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const cors = require('cors')
 const session = require('express-session')
+
+const app = express()
 
 // allow request from another domain
 app.use(cors())
@@ -22,16 +23,18 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 // session
-app.use(session({
-            secret: 'key that will sign cookie in the browser',
-            resave: true,
-            saveUninitialized: true,
-            cookie: {
-                    // maxAge:6000,
-                    // secure : true, -> enable in https
-                    httpOnly: true // only send through server and browser
-                    }
-            }))
+app.use(
+    session({
+        secret: 'key that will sign cookie in the browser',
+        resave: true,
+        saveUninitialized: true,
+        cookie: {
+            // maxAge:6000,
+            // secure : true, -> enable in https
+            httpOnly: true, // only send through server and browser
+        },
+    })
+)
 
 // cookies
 app.use(cookieParser('secret string'))

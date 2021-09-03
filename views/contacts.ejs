@@ -23,7 +23,7 @@
     <% data.forEach(list => { %>
         <div class="contact-profile">
             <a href="/profile/<%= list._id %>">
-                <img src="/<%= list.image %>" alt="not found"></img>
+                <img src="/images/thumbnail/<%= list.image %>" alt="not found"></img>
             </a>
             <p>
                 <%= list.name %>

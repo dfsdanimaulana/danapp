@@ -3,6 +3,7 @@
 const debug = require('debug')('dev')
 
 const { message, profile } = require('../models/methods')
+const { getImageByUsername } = require('../models/methods/profile.method')
 
 const params = {
     status: [1, 2, 3],

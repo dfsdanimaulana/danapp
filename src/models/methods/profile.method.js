@@ -50,12 +50,17 @@ const profile = {
     getSomeUserByValue: function (query) {
         return Profile.find(query)
     },
-    
-    saveImgPath: function (path, id) {
+    getImageByUsername: function (username) {
+        return Profile.findOne({
+            username,
+        })
+    },
+    saveImageToDB: function (path, id) {
+        const image = path.split('\\')[1]
         return Profile.findByIdAndUpdate(
             id,
             {
-                image: path,
+                image: image,
             },
             {
                 new: true,

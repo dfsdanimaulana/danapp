@@ -28,7 +28,7 @@
 
         <div class="img-container">
             <a href="#">
-                <img src="/<%= data.image %>" alt="not found"></img>
+                <img src="/images/profile/<%= data.image %>" alt="not found"></img>
                <i class="bi bi-plus-circle"></i>
             </a>
         </div>
@@ -38,7 +38,7 @@
                 <form action="/profile" method="POST" enctype="multipart/form-data">
                     <i class="bi bi-x-circle align-self-end"></i>
                     <label for="image" class="mb-3">
-                    <img src="/<%= data.image %>" class="img-thumbnail w-100 h-100 " id="profile-img">
+                    <img src="/images/profile/<%= data.image %>" class="img-thumbnail w-100 h-100 " id="profile-img">
                         <input type="file" name="image" id="image" onchange="return fileValidation(this.id)" accept="image/*">
                         <input type="text" name="id" value="<%= data._id %>" hidden>
                     </label>
