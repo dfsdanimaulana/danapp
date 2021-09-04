@@ -2,11 +2,8 @@
 
 const fs = require('fs')
 const { message, profile } = require('../models/methods')
-const {
-    saveImageToDB,
-    getImageById,
-} = require('../models/methods/profile.method')
 const { profileImage, thumbnailImage } = require('../utils/resizeImage')
+const deleteOldImage = require('../utils/deleteOldImage')
 
 const params = {}
 
@@ -103,6 +100,9 @@ exports.getUsers = async function (req, res) {
 exports.deleteUser = async function (req, res) {
     try {
         const id = req.params.id
+        // delete user image
+        await deleteOldImage(id)
+
         await profile.deleteById(id)
         res.redirect('/chat/logout')
     } catch (e) {
@@ -126,7 +126,7 @@ exports.uploadUserImage = async function (req, res) {
         fs.unlinkSync(req.file.path)
 
         // save path to database
-        const data = await saveImageToDB(path, id)
+        const data = await profile.saveImageToDB(path, id)
 
         res.redirect(`/profile/${id}`)
     } catch (err) {
@@ -134,28 +134,6 @@ exports.uploadUserImage = async function (req, res) {
     }
 }
 
-async function deleteOldImage(id) {
-    // get oldimage name from database
-    const oldImage = await getImageById(id)
-    const imageName = oldImage.image
-
-    if (imageName === 'male.png' || imageName === 'female.png') {
-        return
-    }
-    const thumPath = `./images/profile/${imageName}`
-    const profilePath = `./images/thumb/${imageName}`
-
-    try {
-        if (fs.existsSync(thumPath) && fs.existsSync(profilePath)) {
-            fs.unlinkSync(thumPath)
-            fs.unlinkSync(profilePath)
-        } else {
-            return
-        }
-    } catch (e) {
-        console.log(e)
-    }
-}
 /*
 {
   fieldname: 'image',
