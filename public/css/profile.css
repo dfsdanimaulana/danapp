@@ -160,6 +160,7 @@ form button {
     background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-img {
+    padding: 0 !important;
     top: 50%;
     left: 50%;
     /* width: 50%; */
@@ -170,15 +171,14 @@ form button {
     border-radius: 0.3rem;
 }
 
+#modal-image-form {
+    box-sizing: content-box;
+    /* width: 15rem;
+    height: 15rem; */
+}
 .modal-img i {
     font-size: 1.5rem;
     cursor: pointer;
-}
-.modal-img form {
-    position: relative;
-    box-sizing: content-box;
-    width: 15rem;
-    height: 15rem;
 }
 .modal-img label {
     width: 100%;

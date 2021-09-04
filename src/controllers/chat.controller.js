@@ -3,7 +3,6 @@
 const debug = require('debug')('dev')
 
 const { message, profile } = require('../models/methods')
-const { getImageByUsername } = require('../models/methods/profile.method')
 
 const params = {
     status: [1, 2, 3],
@@ -16,7 +15,7 @@ exports.view = function (req, res) {
 exports.displaySavedMessage = async function (req, res) {
     // get logged user by session
     params.currentUser = req.session.user._id
-
+    
     // query user message in database by sender
     const sender = req.session.user.username
     const msg = await message.getMessageBySender(sender) // array of object
